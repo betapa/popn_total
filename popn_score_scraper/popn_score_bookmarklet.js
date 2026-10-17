@@ -18,7 +18,7 @@
         console.log(msg);
     }
 
-    // GitHub 토큰 처리 (localStorage에 저장하여 매번 묻지 않게 함)
+    // GitHub 토큰 처리
     let token = localStorage.getItem('GITHUB_PAT');
     if (!token) {
         token = prompt("GitHub Personal Access Token (PAT)을 입력하세요:\n(이 브라우저에 저장됩니다)");
@@ -30,6 +30,7 @@
         localStorage.setItem('GITHUB_PAT', token);
     }
 
+    // "image_185c19.png" 에 명시된 메달 조건에 맞춰 정확히 매핑합니다.
     function getMedalName(src) {
         if (!src || src.includes('meda_none')) return '';
         const match = src.match(/meda_([a-k])\.png/);
@@ -77,56 +78,61 @@
 
     async function fetchPlayData(versionName) {
         const dataMap = {};
-        let page = 0;
         
-        while (true) {
-            updateStatus(`[${versionName}] 페이지 ${page} 탐색 중...`);
-            const vQuery = versionName === 'popn29' ? 0 : 1; 
-            const url = `https://p.eagate.573.jp/game/popn/${versionName}/playdata/mu_top.html?page=${page}&version=${vQuery}&category=0&keyword=&sort=none&sort_type=none`;
+        // popn29는 0~29번이 실제 버전, jamfizz는 0번이 'ALL'이므로 중복 탐색을 막기 위해 1~29번을 탐색합니다.
+        const startVer = versionName === 'popn29' ? 0 : 1;
+
+        for (let v = startVer; v <= 29; v++) {
+            let page = 0;
             
-            const response = await fetch(url);
-            const html = await response.text();
-            
-            const parser = new DOMParser();
-            const doc = parser.parseFromString(html, "text/html");
+            while (true) {
+                updateStatus(`[${versionName}] 버전 ${v}, 페이지 ${page} 탐색 중...`);
+                const url = `https://p.eagate.573.jp/game/popn/${versionName}/playdata/mu_top.html?page=${page}&version=${v}&category=0&keyword=&sort=none&sort_type=none`;
+                
+                const response = await fetch(url);
+                const html = await response.text();
+                
+                const parser = new DOMParser();
+                const doc = parser.parseFromString(html, "text/html");
 
-            const items = doc.querySelectorAll('ul.mu_list_table > li:not(.st_th)');
-            if (items.length === 0) break;
+                const items = doc.querySelectorAll('ul.mu_list_table > li:not(.st_th)');
+                if (items.length === 0) break;
 
-            items.forEach(li => {
-                const titleEl = li.querySelector('.col_music a');
-                if (!titleEl) return;
-                const title = titleEl.innerText.trim();
+                items.forEach(li => {
+                    const titleEl = li.querySelector('.col_music a');
+                    if (!titleEl) return;
+                    const title = titleEl.innerText.trim();
 
-                const diffs = [
-                    { name: 'light', col: 'col_5' },
-                    { name: 'normal', col: 'col_normal' },
-                    { name: 'hyper', col: 'col_hyper' },
-                    { name: 'ex', col: 'col_ex' }
-                ];
+                    const diffs = [
+                        { name: 'light', col: 'col_5' },
+                        { name: 'normal', col: 'col_normal' },
+                        { name: 'hyper', col: 'col_hyper' },
+                        { name: 'ex', col: 'col_ex' }
+                    ];
 
-                diffs.forEach(diff => {
-                    const col = li.querySelector(`.${diff.col}`);
-                    if (col) {
-                        const img = col.querySelector('img:nth-child(1)');
-                        const scoreText = col.innerText.replace(/[^0-9]/g, '');
-                        const score = scoreText ? parseInt(scoreText, 10) : 0;
-                        const medalSrc = img ? img.src : '';
-                        const medal = getMedalName(medalSrc);
+                    diffs.forEach(diff => {
+                        const col = li.querySelector(`.${diff.col}`);
+                        if (col) {
+                            const img = col.querySelector('img:nth-child(1)');
+                            const scoreText = col.innerText.replace(/[^0-9]/g, '');
+                            const score = scoreText ? parseInt(scoreText, 10) : 0;
+                            const medalSrc = img ? img.src : '';
+                            const medal = getMedalName(medalSrc);
 
-                        if (score > 0 || medal !== '') {
-                            dataMap[`${title}_${diff.name}`] = { score, medal };
+                            if (score > 0 || medal !== '') {
+                                dataMap[`${title}_${diff.name}`] = { score, medal };
+                            }
                         }
-                    }
+                    });
                 });
-            });
 
-            if (items.length < 25) {
-                updateStatus(`[${versionName}] 탐색 완료.`);
-                break;
+                // 곡이 25개 미만이면 해당 버전의 마지막 페이지이므로 루프 탈출
+                if (items.length < 25) {
+                    break;
+                }
+                page++;
+                await new Promise(r => setTimeout(r, 500)); // 과부하 방지용 딜레이
             }
-            page++;
-            await new Promise(r => setTimeout(r, 500));
         }
         return dataMap;
     }
@@ -148,7 +154,7 @@
         }
 
         const fileData = await fileRes.json();
-        const fileSha = fileData.sha; // 파일 업데이트 시 반드시 필요함
+        const fileSha = fileData.sha; 
         
         // base64로 인코딩된 파일 내용을 디코딩
         const csvText = decodeURIComponent(atob(fileData.content).split('').map(function(c) {
@@ -178,7 +184,7 @@
             data.push(rowObj);
         }
 
-        // 2. 스코어 데이터 수집
+        // 2. 0~29 버전에 걸친 스코어 데이터 수집
         const hcData = await fetchPlayData('popn29');
         const jfData = await fetchPlayData('jamfizz');
 
