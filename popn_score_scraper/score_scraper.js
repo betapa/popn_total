@@ -1,10 +1,12 @@
-// popn_score_scraper/popn_score_bookmarklet.js
-
 (async function() {
-    // 이미 실행 중인지 확인
     if (document.getElementById('popn-scraper-ui')) return;
 
-    // UI 오버레이 생성 (진행 상황 표시용)
+    // --- 설정 변수 (본인 레포지토리에 맞게 수정) ---
+    const REPO_OWNER = 'betapa'; // 깃허브 아이디
+    const REPO_NAME = 'popn_total'; // 레포지토리 이름
+    const FILE_PATH = 'popn_homepage_scraper/popn_music_list_single.csv'; // 저장할 파일 경로
+    // -----------------------------------------------
+
     const ui = document.createElement('div');
     ui.id = 'popn-scraper-ui';
     ui.style.cssText = 'position:fixed;top:20px;right:20px;padding:20px;background:rgba(0,0,0,0.8);color:#fff;z-index:99999;border-radius:10px;font-family:sans-serif;box-shadow:0 4px 6px rgba(0,0,0,0.3);';
@@ -16,10 +18,20 @@
         console.log(msg);
     }
 
-    // 메달 이미지 파일명을 기반으로 텍스트 매핑 (image_185c19.png 조건)
+    // GitHub 토큰 처리 (localStorage에 저장하여 매번 묻지 않게 함)
+    let token = localStorage.getItem('GITHUB_PAT');
+    if (!token) {
+        token = prompt("GitHub Personal Access Token (PAT)을 입력하세요:\n(이 브라우저에 저장됩니다)");
+        if (!token) {
+            updateStatus("토큰이 없어 작업을 취소합니다.");
+            setTimeout(() => document.body.removeChild(ui), 3000);
+            return;
+        }
+        localStorage.setItem('GITHUB_PAT', token);
+    }
+
     function getMedalName(src) {
         if (!src || src.includes('meda_none')) return '';
-        // e-amusement 메달 파일명 규칙 대응 (meda_a ~ meda_k)
         const match = src.match(/meda_([a-k])\.png/);
         if (!match) return '';
         
@@ -32,7 +44,6 @@
         return medalMap[match[1]] || '';
     }
 
-    // CSV 파싱 유틸
     function parseCSVRow(str) {
         let result = [], inQuotes = false, val = '';
         for (let i = 0; i < str.length; i++) {
@@ -57,14 +68,19 @@
         return str;
     }
 
-    // 플레이 데이터 스크래핑 함수
+    // UTF-8 문자열을 Base64로 인코딩 (GitHub API 요구사항)
+    function utf8ToBase64(str) {
+        return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
+            return String.fromCharCode('0x' + p1);
+        }));
+    }
+
     async function fetchPlayData(versionName) {
         const dataMap = {};
         let page = 0;
         
         while (true) {
             updateStatus(`[${versionName}] 페이지 ${page} 탐색 중...`);
-            // version=0(popn29) 또는 version=1(jamfizz) 인덱스 대응용
             const vQuery = versionName === 'popn29' ? 0 : 1; 
             const url = `https://p.eagate.573.jp/game/popn/${versionName}/playdata/mu_top.html?page=${page}&version=${vQuery}&category=0&keyword=&sort=none&sort_type=none`;
             
@@ -74,7 +90,6 @@
             const parser = new DOMParser();
             const doc = parser.parseFromString(html, "text/html");
 
-            // 곡 리스트 가져오기
             const items = doc.querySelectorAll('ul.mu_list_table > li:not(.st_th)');
             if (items.length === 0) break;
 
@@ -93,8 +108,8 @@
                 diffs.forEach(diff => {
                     const col = li.querySelector(`.${diff.col}`);
                     if (col) {
-                        const img = col.querySelector('img:nth-child(1)'); // 메달 이미지
-                        const scoreText = col.innerText.replace(/[^0-9]/g, ''); // 점수 (정수형 변환)
+                        const img = col.querySelector('img:nth-child(1)');
+                        const scoreText = col.innerText.replace(/[^0-9]/g, '');
                         const score = scoreText ? parseInt(scoreText, 10) : 0;
                         const medalSrc = img ? img.src : '';
                         const medal = getMedalName(medalSrc);
@@ -106,34 +121,49 @@
                 });
             });
 
-            // 페이지에 로드된 곡이 25개 미만이면 마지막 페이지
             if (items.length < 25) {
                 updateStatus(`[${versionName}] 탐색 완료.`);
                 break;
             }
             page++;
-            await new Promise(r => setTimeout(r, 500)); // 과부하 방지 딜레이
+            await new Promise(r => setTimeout(r, 500));
         }
         return dataMap;
     }
 
     try {
-        // 1. 기존 통합 CSV 로드 (Github 레포지토리의 Raw URL 사용)
-        updateStatus("기본 CSV 파일을 로드하는 중...");
-        const csvUrl = 'https://raw.githubusercontent.com/betapa/popn_total/main/popn_homepage_scraper/popn_music_list_single.csv';
-        const csvRes = await fetch(csvUrl);
+        // 1. GitHub API를 통해 기존 CSV 파일 로드 및 sha 값 확보
+        updateStatus("GitHub에서 기존 CSV를 불러옵니다...");
+        const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
         
-        if (!csvRes.ok) {
-            updateStatus("CSV 로드 실패! 레포지토리 경로를 확인하세요.");
-            setTimeout(() => document.body.removeChild(ui), 3000);
+        const fileRes = await fetch(apiUrl, {
+            headers: { 'Authorization': `token ${token}` }
+        });
+        
+        if (!fileRes.ok) {
+            updateStatus("GitHub 연동 실패. 토큰이나 경로를 확인하세요.");
+            if (fileRes.status === 401) localStorage.removeItem('GITHUB_PAT'); // 토큰 재입력 유도
+            setTimeout(() => document.body.removeChild(ui), 4000);
             return;
         }
 
-        const csvText = await csvRes.text();
+        const fileData = await fileRes.json();
+        const fileSha = fileData.sha; // 파일 업데이트 시 반드시 필요함
+        
+        // base64로 인코딩된 파일 내용을 디코딩
+        const csvText = decodeURIComponent(atob(fileData.content).split('').map(function(c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+        }).join(''));
+
         const lines = csvText.split('\n').map(line => line.trim()).filter(line => line !== '');
         
-        const headers = parseCSVRow(lines[0]);
-        // 새 칼럼 추가
+        // 첫 번째 문자열에 BOM(\uFEFF)이 있으면 제거
+        let headerLine = lines[0];
+        if (headerLine.charCodeAt(0) === 0xFEFF) {
+            headerLine = headerLine.substring(1);
+        }
+
+        const headers = parseCSVRow(headerLine);
         if (!headers.includes("medal")) headers.push("medal");
         if (!headers.includes("score")) headers.push("score");
         if (!headers.includes("best_version")) headers.push("best_version");
@@ -148,13 +178,12 @@
             data.push(rowObj);
         }
 
-        // 2. High☆Cheers!! (hc) 와 Jam&Fizz (jf) 데이터 수집
+        // 2. 스코어 데이터 수집
         const hcData = await fetchPlayData('popn29');
         const jfData = await fetchPlayData('jamfizz');
 
         updateStatus("데이터 비교 및 병합 중...");
 
-        // 3. 비교 병합 로직
         data.forEach(row => {
             const key = `${row.title}_${row.dif_name}`;
             const hc = hcData[key] || { score: 0, medal: '' };
@@ -164,7 +193,6 @@
             let bestMedal = '';
             let bestVer = '';
 
-            // 점수 비교 (동점일 경우 hc를 우선)
             if (hc.score > 0 || jf.score > 0) {
                 if (hc.score >= jf.score) {
                     bestScore = hc.score;
@@ -176,7 +204,6 @@
                     bestVer = 'jf';
                 }
             } else if (hc.medal || jf.medal) {
-                // 스코어가 0이어도 클리어 메달만 존재하는 경우 처리
                 bestMedal = hc.medal || jf.medal;
                 bestVer = hc.medal ? 'hc' : 'jf';
             }
@@ -186,27 +213,38 @@
             row.best_version = bestVer;
         });
 
-        updateStatus("CSV 파일 생성 중...");
+        updateStatus("GitHub로 갱신된 파일을 전송 중...");
 
-        // 4. 새로운 CSV 다운로드 트리거
         let newCsvStr = headers.join(',') + '\n';
         data.forEach(row => {
             newCsvStr += headers.map(h => escapeCSV(row[h])).join(',') + '\n';
         });
 
-        // UTF-8 BOM 추가하여 한글 깨짐 방지
-        const blob = new Blob(['\uFEFF' + newCsvStr], { type: 'text/csv;charset=utf-8;' });
-        const link = document.createElement("a");
-        const url = URL.createObjectURL(blob);
-        link.setAttribute("href", url);
-        link.setAttribute("download", "popn_music_list_single.csv");
-        link.style.visibility = 'hidden';
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
+        // 엑셀 한글 깨짐 방지를 위한 BOM 추가 후 Base64 인코딩
+        const encodedContent = utf8ToBase64('\uFEFF' + newCsvStr);
 
-        updateStatus("완료! 파일이 다운로드되었습니다.");
-        setTimeout(() => document.body.removeChild(ui), 4000);
+        // 3. GitHub API로 파일 업데이트(PUT)
+        const putRes = await fetch(apiUrl, {
+            method: 'PUT',
+            headers: {
+                'Authorization': `token ${token}`,
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                message: "Update play data scores via bookmarklet",
+                content: encodedContent,
+                sha: fileSha
+            })
+        });
+
+        if (putRes.ok) {
+            updateStatus("완료! GitHub에 성공적으로 저장되었습니다.");
+        } else {
+            const errJson = await putRes.json();
+            updateStatus(`저장 실패: ${errJson.message}`);
+        }
+
+        setTimeout(() => document.body.removeChild(ui), 5000);
 
     } catch (e) {
         console.error(e);
