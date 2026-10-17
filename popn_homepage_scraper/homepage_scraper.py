@@ -1,5 +1,4 @@
 import os
-import requests
 import csv
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, quote
@@ -7,13 +6,16 @@ import re
 import time
 import unicodedata
 
+# Cloudflare 우회를 위해 기본 requests 대신 curl_cffi의 requests 사용
+from curl_cffi import requests
+
 # 1. 크롤링할 대상 기본 URL 및 헤더 설정
 BASE_URL = "https://p.eagate.573.jp"
 HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
 }
 
-# 2. 저장 경로 설정 (현재 실행 중인 파이썬 파일의 위치를 기준으로 설정)
+# 2. 저장 경로 설정
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 IMAGES_DIR = os.path.join(BASE_DIR, "images")
 CSV_FILENAME = os.path.join(BASE_DIR, "popn_music_list.csv")
@@ -42,17 +44,19 @@ def normalize_title(title):
 
 def fetch_wiki_data(session):
     """popn.wiki에서 40~50 레벨 데이터를 수집하여 딕셔너리로 반환"""
-    print("\n[Wiki 정보 수집] popn.wiki에서 29~50레벨 세부 정보(BPM, Notes, Tier)를 수집합니다...")
+    print("\n[Wiki 정보 수집] popn.wiki에서 40~50레벨 세부 정보(BPM, Notes, Tier)를 수집합니다...")
     wiki_data = {}
     
-    for lv in range(29, 51):
+    for lv in range(40, 51):
         url = f"https://popn.wiki/{quote('難易度表')}/lv{lv}"
         level_total_songs = 0
         level_tier_collected = 0
         
         try:
+            # impersonate 옵션이 포함된 session으로 요청
             response = session.get(url, headers=HEADERS)
             response.encoding = 'utf-8'
+            
             if response.status_code != 200:
                 print(f"Lv{lv} 페이지 로드 실패 (Status: {response.status_code})")
                 continue
@@ -62,18 +66,15 @@ def fetch_wiki_data(session):
             
             for row in rows:
                 cols = row.find_all('td')
-                # <td> 태그가 7개 혹은 8개인 경우를 모두 포괄하기 위해 뒤에서부터 접근
                 if len(cols) < 7:
                     continue
                 
-                # 열 개수가 유동적(7~8개)이므로 음수 인덱스로 고정 접근
                 genre_diff_text = cols[-6].text.strip()
                 title_text = cols[-5].text.strip()
-                bpm = cols[-4].text.strip()         # 텍스트 형태 그대로 보존
-                notes = cols[-2].text.strip()       # 노트 수
-                tier_raw = cols[-1].text.strip()    # 난이도 티어
+                bpm = cols[-4].text.strip()
+                notes = cols[-2].text.strip()
+                tier_raw = cols[-1].text.strip()
                 
-                # 난이도 문자(EX, H, N, E) 추출 (공식 데이터 분류에 매칭)
                 diff_val = ""
                 diff_match = re.search(r'\((EX|H|N|E)\)$', genre_diff_text, re.IGNORECASE)
                 if diff_match:
@@ -83,8 +84,6 @@ def fetch_wiki_data(session):
                     elif d == 'N': diff_val = 'normal'
                     elif d == 'E': diff_val = 'light'
                 
-                # 난이도 지수 값만 추출 (± 표준편차 문자열 대응)
-                # 정규식: 여는 괄호 '(' 바로 뒤에 나오는 부호(생략가능)+숫자+소수점만 그룹핑
                 dif_tier = ""
                 tier_match = re.search(r'\(([-+]?\d+\.?\d*)', tier_raw)
                 if tier_match:
@@ -132,7 +131,8 @@ def main():
     music_data_list = []
     music_data_single_list = []
     
-    session = requests.Session()
+    # curl_cffi를 사용하여 Chrome 브라우저의 TLS Fingerprint로 위장 (Cloudflare 403 우회)
+    session = requests.Session(impersonate="chrome110")
     
     # 1. 위키 데이터 선행 수집
     wiki_data = fetch_wiki_data(session)
@@ -149,13 +149,13 @@ def main():
             print(f"▶ 탐색 중: Version {version} ({current_version_name}), Page {page}")
             
             response = session.get(url, headers=HEADERS)
-            response.encoding = 'utf-8'
             
             if response.status_code != 200:
                 print(f"페이지 로드 실패 (Status: {response.status_code}): {url}")
                 break
                 
-            soup = BeautifulSoup(response.text, 'html.parser')
+            # curl_cffi는 response.content로 파싱하는 것이 인코딩 문제 예방에 좋습니다
+            soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'html.parser')
             
             ul_tables = soup.find_all('ul', class_='mu_list_table')
             target_ul = None
@@ -185,7 +185,6 @@ def main():
                     li_info = list_items[i+1]
                     li_level = list_items[i+2]
                     
-                    # 이미지 및 텍스트 정보 추출
                     img_tag = li_img.find('img')
                     img_url = urljoin(BASE_URL, img_tag['src']) if img_tag and 'src' in img_tag.attrs else ""
                     
@@ -203,7 +202,6 @@ def main():
                     if img_url:
                         download_image(session, img_url, version, title)
                         
-                    # 기존 방식(Wide Form)
                     music_data_list.append({
                         "Version_Num": version,
                         "Version_Name": current_version_name,
@@ -216,7 +214,6 @@ def main():
                         "EX": level_ex
                     })
                     
-                    # 신규 방식(Single Form) - Wiki 정보 결합
                     difficulties = [
                         ("light", level_light),
                         ("normal", level_normal),
@@ -227,7 +224,7 @@ def main():
                     norm_t = normalize_title(title)
                     
                     for dif_name, level in difficulties:
-                        if level != "-": # 해당 난이도 패턴이 존재할 경우에만
+                        if level != "-": 
                             w_data = wiki_data.get((norm_t, dif_name), {})
                             
                             music_data_single_list.append({
@@ -247,7 +244,6 @@ def main():
                     print(f"데이터 파싱 에러 발생: {e}")
                     continue
             
-            # 다음 페이지 진행 여부 판단
             if song_count < 25:
                 print(f"→ 해당 버전의 마지막 페이지입니다. (Version {version} 완료)\n")
                 break
@@ -256,8 +252,6 @@ def main():
             time.sleep(0.5) 
 
     # 4. 전체 데이터를 CSV 파일로 저장
-    
-    # 4-1. 기존 방식 CSV 쓰기
     csv_headers = ["Version_Num", "Version_Name", "Genre", "Title", "Artist", "Light", "Normal", "Hyper", "EX"]
     with open(CSV_FILENAME, mode='w', encoding='utf-8-sig', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=csv_headers)
@@ -265,7 +259,6 @@ def main():
         for data in music_data_list:
             writer.writerow(data)
             
-    # 4-2. Single 방식 (wiki 속성 포함) CSV 쓰기
     single_headers = ["version_num", "version_name", "genre", "title", "artist", "dif_name", "level", "bpm", "notes", "dif_tier"]
     with open(CSV_SINGLE_FILENAME, mode='w', encoding='utf-8-sig', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=single_headers)
