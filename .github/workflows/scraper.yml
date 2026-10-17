@@ -31,7 +31,7 @@ jobs:
     - name: 크롤러 파이썬 스크립트 실행
       run: |
         # 실제 파이썬 파일의 경로에 맞게 이름을 수정하세요.
-        python popn_homepage_scraper/scraper.py 
+        python popn_homepage_scraper/homepage_scraper.py 
 
     - name: 크롤링 결과물(CSV, 이미지 폴더) 커밋 및 푸시
       run: |
