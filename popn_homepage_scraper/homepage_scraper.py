@@ -12,7 +12,9 @@ from curl_cffi import requests
 # 1. 크롤링할 대상 기본 URL 및 헤더 설정
 BASE_URL = "https://p.eagate.573.jp"
 HEADERS = {
-    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36"
+    "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
+    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+    "Accept-Language": "ko-KR,ko;q=0.9,ja-JP;q=0.8,ja;q=0.7,en-US;q=0.6"
 }
 
 # 2. 저장 경로 설정
@@ -48,63 +50,78 @@ def fetch_wiki_data(session):
     wiki_data = {}
     
     for lv in range(40, 51):
-        url = f"https://popn.wiki/{quote('難易度表')}/lv{lv}"
+        target_path = quote('難易度表') + f"/lv{lv}"
+        
+        # 1순위: 다이렉트 URL / 2순위: 구글 번역기 프록시 우회 URL (데이터센터 IP 차단 우회용)
+        urls_to_try = [
+            f"https://popn.wiki/{target_path}",
+            f"https://popn-wiki.translate.goog/{target_path}?_x_tr_sl=ja&_x_tr_tl=ja&_x_tr_hl=ko&_x_tr_pto=wapp"
+        ]
+        
         level_total_songs = 0
         level_tier_collected = 0
+        success = False
         
-        try:
-            # impersonate 옵션이 포함된 session으로 요청
-            response = session.get(url, headers=HEADERS)
-            response.encoding = 'utf-8'
-            
-            if response.status_code != 200:
-                print(f"Lv{lv} 페이지 로드 실패 (Status: {response.status_code})")
-                continue
+        for url in urls_to_try:
+            try:
+                response = session.get(url, headers=HEADERS, timeout=15)
+                response.encoding = 'utf-8'
                 
-            soup = BeautifulSoup(response.text, 'html.parser')
-            rows = soup.select('table tbody tr')
-            
-            for row in rows:
-                cols = row.find_all('td')
-                if len(cols) < 7:
-                    continue
-                
-                genre_diff_text = cols[-6].text.strip()
-                title_text = cols[-5].text.strip()
-                bpm = cols[-4].text.strip()
-                notes = cols[-2].text.strip()
-                tier_raw = cols[-1].text.strip()
-                
-                diff_val = ""
-                diff_match = re.search(r'\((EX|H|N|E)\)$', genre_diff_text, re.IGNORECASE)
-                if diff_match:
-                    d = diff_match.group(1).upper()
-                    if d == 'EX': diff_val = 'ex'
-                    elif d == 'H': diff_val = 'hyper'
-                    elif d == 'N': diff_val = 'normal'
-                    elif d == 'E': diff_val = 'light'
-                
-                dif_tier = ""
-                tier_match = re.search(r'\(([-+]?\d+\.?\d*)', tier_raw)
-                if tier_match:
-                    dif_tier = tier_match.group(1)
-                
-                norm_title = normalize_title(title_text)
-                if norm_title and diff_val:
-                    level_total_songs += 1
-                    if dif_tier:
-                        level_tier_collected += 1
-                        
-                    wiki_data[(norm_title, diff_val)] = {
-                        "bpm": bpm,
-                        "notes": notes,
-                        "dif_tier": dif_tier
-                    }
+                if response.status_code == 200:
+                    success = True
+                    soup = BeautifulSoup(response.text, 'html.parser')
+                    rows = soup.select('table tbody tr')
                     
-            print(f" - Wiki Lv{lv} 수집 결과 : 총 {level_total_songs}곡 중 난이도 지수 {level_tier_collected}개 추출 완료")
+                    for row in rows:
+                        cols = row.find_all('td')
+                        if len(cols) < 7:
+                            continue
+                        
+                        # 뒤에서부터 접근 (구글 번역기가 삽입하는 태그 변동 대응)
+                        genre_diff_text = cols[-6].text.strip()
+                        title_text = cols[-5].text.strip()
+                        bpm = cols[-4].text.strip()
+                        notes = cols[-2].text.strip()
+                        tier_raw = cols[-1].text.strip()
+                        
+                        diff_val = ""
+                        diff_match = re.search(r'\((EX|H|N|E)\)$', genre_diff_text, re.IGNORECASE)
+                        if diff_match:
+                            d = diff_match.group(1).upper()
+                            if d == 'EX': diff_val = 'ex'
+                            elif d == 'H': diff_val = 'hyper'
+                            elif d == 'N': diff_val = 'normal'
+                            elif d == 'E': diff_val = 'light'
+                        
+                        dif_tier = ""
+                        tier_match = re.search(r'\(([-+]?\d+\.?\d*)', tier_raw)
+                        if tier_match:
+                            dif_tier = tier_match.group(1)
+                        
+                        norm_title = normalize_title(title_text)
+                        if norm_title and diff_val:
+                            level_total_songs += 1
+                            if dif_tier:
+                                level_tier_collected += 1
+                                
+                            wiki_data[(norm_title, diff_val)] = {
+                                "bpm": bpm,
+                                "notes": notes,
+                                "dif_tier": dif_tier
+                            }
+                    
+                    print(f" - Wiki Lv{lv} 수집 결과 : 총 {level_total_songs}곡 중 난이도 지수 {level_tier_collected}개 추출 완료")
+                    break # 성공 시 다음 URL은 시도하지 않음
+                else:
+                    print(f"   (Lv{lv} 시도 실패: {response.status_code})")
+                    
+            except Exception as e:
+                print(f"   (Lv{lv} 연결 에러 발생: {e})")
+                
+        if not success:
+            print(f" [!] Lv{lv} 페이지는 프록시 우회로도 로드할 수 없었습니다.")
             
-        except Exception as e:
-            print(f"Wiki Lv{lv} 데이터 수집 중 에러 발생: {e}")
+        time.sleep(1) # 과부하 방지
             
     print(f"위키 데이터 수집 완료. (총 {len(wiki_data)}개의 패턴 데이터 확보)\n")
     return wiki_data
@@ -124,15 +141,15 @@ def download_image(session, img_url, version_num, file_name):
             img_data = session.get(img_url, headers=HEADERS).content
             with open(file_path, 'wb') as handler:
                 handler.write(img_data)
-        except Exception as e:
-            print(f"[이미지 다운로드 실패] {file_path} - {e}")
+        except Exception:
+            pass # 로그 간소화를 위해 에러 무시
 
 def main():
     music_data_list = []
     music_data_single_list = []
     
-    # curl_cffi를 사용하여 Chrome 브라우저의 TLS Fingerprint로 위장 (Cloudflare 403 우회)
-    session = requests.Session(impersonate="chrome110")
+    # Chrome 120 버전의 지문(Fingerprint)으로 완전 위장
+    session = requests.Session(impersonate="chrome120")
     
     # 1. 위키 데이터 선행 수집
     wiki_data = fetch_wiki_data(session)
@@ -154,7 +171,6 @@ def main():
                 print(f"페이지 로드 실패 (Status: {response.status_code}): {url}")
                 break
                 
-            # curl_cffi는 response.content로 파싱하는 것이 인코딩 문제 예방에 좋습니다
             soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'html.parser')
             
             ul_tables = soup.find_all('ul', class_='mu_list_table')
