@@ -1,33 +1,34 @@
 (async function() {
     if (document.getElementById('popn-scraper-ui')) return;
 
-    // --- 설정 변수 ---
-    const REPO_OWNER = 'betapa'; 
-    const REPO_NAME = 'popn_total';
-    const FILE_PATH = 'popn_homepage_scraper/popn_music_list_single.csv';
-    // -----------------
+    // --- 설정 변수 (본인 레포지토리에 맞게 수정) ---
+    const REPO_OWNER = 'betapa'; // 깃허브 아이디
+    const REPO_NAME = 'popn_total'; // 레포지토리 이름
+    const FILE_PATH = 'popn_homepage_scraper/popn_music_list_single.csv'; // 저장할 파일 경로
+    // -----------------------------------------------
 
-    // UI 오버레이 생성
     const ui = document.createElement('div');
     ui.id = 'popn-scraper-ui';
-    ui.style.cssText = 'position:fixed;top:20px;right:20px;padding:20px;background:rgba(0,0,0,0.85);color:#fff;z-index:99999;border-radius:10px;font-family:sans-serif;box-shadow:0 4px 6px rgba(0,0,0,0.3);max-height:80vh;overflow-y:auto;width:340px;';
-    ui.innerHTML = '<h3 style="margin:0 0 10px 0;color:#fff;font-size:16px;">팝픈 스코어 스크래퍼</h3><p id="popn-scraper-status" style="margin:0;font-size:13px;word-break:keep-all;font-weight:bold;color:#4ade80;">초기화 중...</p><ul id="popn-scraper-log" style="margin-top:10px;padding-left:15px;font-size:11px;color:#ccc;max-height:250px;overflow-y:auto;"></ul>';
+    ui.style.cssText = 'position:fixed;top:20px;right:20px;padding:20px;background:rgba(0,0,0,0.85);color:#fff;z-index:99999;border-radius:10px;font-family:sans-serif;box-shadow:0 4px 6px rgba(0,0,0,0.3);max-height:80vh;overflow-y:auto;width:360px;';
+    ui.innerHTML = '<h3 style="margin:0 0 10px 0;color:#fff;font-size:16px;">팝픈 스코어 스크래퍼</h3><p id="popn-scraper-status" style="margin:0;font-size:13px;word-break:keep-all;font-weight:bold;color:#4ade80;">초기화 중...</p><ul id="popn-scraper-log" style="margin-top:10px;padding-left:15px;font-size:12px;color:#ccc;max-height:300px;overflow-y:auto;list-style-type:square;"></ul>';
     document.body.appendChild(ui);
 
+    // 단순 상태 표시는 화면에만 띄우고 콘솔에는 남기지 않음
     function updateStatus(msg) {
         document.getElementById('popn-scraper-status').innerText = msg;
     }
 
+    // 곡 확인, 에러 등 주요 로그는 화면 누적 및 콘솔 출력
     function addLog(msg) {
         const ul = document.getElementById('popn-scraper-log');
         const li = document.createElement('li');
         li.innerText = msg;
         ul.appendChild(li);
         ul.scrollTop = ul.scrollHeight;
-        console.log(msg);
+        console.log(msg); // 콘솔 출력
     }
 
-    // GitHub 토큰 체크 및 저장
+    // GitHub 토큰 처리
     let token = localStorage.getItem('GITHUB_PAT');
     if (!token) {
         token = prompt("GitHub Personal Access Token (PAT)을 입력하세요:\n(이 브라우저에 저장됩니다)");
@@ -39,11 +40,12 @@
         localStorage.setItem('GITHUB_PAT', token);
     }
 
-    // 메달명 변환 함수 (image_185c19.png 기준)
+    // 메달 이미지 텍스트 변환
     function getMedalName(src) {
         if (!src || src.includes('meda_none')) return '';
         const match = src.match(/meda_([a-k])\.png/);
         if (!match) return '';
+        
         const medalMap = {
             'a': '금☆', 'b': '은☆', 'c': '은◇', 'd': '은○',
             'e': '동☆', 'f': '동◇', 'g': '동○',
@@ -53,7 +55,6 @@
         return medalMap[match[1]] || '';
     }
 
-    // 곡 제목 정규화 (공식 홈페이지 간, 위키 간 매칭 누락 방지용)
     function normalizeTitle(title) {
         if (!title) return '';
         let s = title.normalize('NFKC').toLowerCase();
@@ -92,21 +93,20 @@
         }));
     }
 
-    // 각 사이트 플레이 데이터 스크래퍼
+    // 공식 사이트 스코어 수집
     async function fetchPlayData(versionName) {
         const dataMap = {};
         addLog(`=== [${versionName}] 데이터 수집 시작 ===`);
 
-        // 버전별 범위 설정 (popn29는 0~29, jamfizz는 1~28 버전까지 존재)
         const minVer = (versionName === 'popn29') ? 0 : 1;
         const maxVer = (versionName === 'popn29') ? 29 : 28;
 
         for (let v = minVer; v <= maxVer; v++) {
             let page = 0;
-            let verSongCount = 0;
-            let verChartCount = 0;
 
             while (true) {
+                updateStatus(`[${versionName}] 버전 ${v}, 페이지 ${page} 탐색 중...`);
+                
                 const url = `https://p.eagate.573.jp/game/popn/${versionName}/playdata/mu_top.html?page=${page}&version=${v}&category=0&keyword=&sort=none&sort_type=none`;
                 
                 const response = await fetch(url);
@@ -114,27 +114,25 @@
                 const parser = new DOMParser();
                 const doc = parser.parseFromString(html, "text/html");
 
-                // 테이블 헤더(.st_th, .th_music) 제외한 실제 곡 데이터 항목만 추출
                 const items = Array.from(doc.querySelectorAll('ul.mu_list_table > li')).filter(li => 
                     !li.classList.contains('st_th') && !li.querySelector('.th_music')
                 );
                 
-                if (items.length === 0) break; // 검색된 곡이 없으면 다음 버전으로
+                if (items.length === 0) break; 
 
                 for (const li of items) {
                     let title = '';
                     let diffsNodes = [];
 
-                    // 사이트별 DOM 구조 분기 처리
                     if (versionName === 'jamfizz') {
                         const titleEl = li.querySelector('.col_music a');
                         if (!titleEl) continue;
                         title = titleEl.innerText.trim();
                         diffsNodes = [
-                            li.querySelector('.col_5'),      // Light(Easy)
-                            li.querySelector('.col_normal'), // Normal
-                            li.querySelector('.col_hyper'),  // Hyper
-                            li.querySelector('.col_ex')      // EX
+                            li.querySelector('.col_5'),      
+                            li.querySelector('.col_normal'), 
+                            li.querySelector('.col_hyper'),  
+                            li.querySelector('.col_ex')      
                         ];
                     } else { // popn29
                         const divs = li.querySelectorAll(':scope > div');
@@ -144,9 +142,6 @@
                         title = titleEl.innerText.trim();
                         diffsNodes = [ divs[2], divs[3], divs[4], divs[5] ];
                     }
-
-                    // 요청사항 반영: 현재 탐색 중인 곡을 UI에 실시간 출력
-                    updateStatus(`[${versionName}] 곡 스코어 확인 중: ${title}`);
 
                     const diffNames = ['light', 'normal', 'hyper', 'ex'];
                     let songHasData = false;
@@ -162,22 +157,20 @@
 
                             if (score > 0 || medal !== '') {
                                 dataMap[`${normalizeTitle(title)}_${diffName}`] = { score, medal };
-                                verChartCount++;
                                 songHasData = true;
                             }
                         }
                     });
                     
-                    if (songHasData) verSongCount++;
+                    // 플레이 기록이 존재하는 곡명만 로그에 출력
+                    if (songHasData) {
+                        addLog(`[${versionName}] 기록 확인됨: ${title}`);
+                    }
                 }
 
-                if (items.length < 25) break; // 곡이 25개 미만이면 해당 버전의 마지막 페이지
+                if (items.length < 25) break; 
                 page++;
-                await new Promise(r => setTimeout(r, 400)); // 과부하 방지
-            }
-            
-            if (verSongCount > 0) {
-                addLog(`[${versionName}] Ver.${v} 완료: ${verSongCount}곡 / ${verChartCount}개 패턴 확인`);
+                await new Promise(r => setTimeout(r, 400));
             }
         }
         return dataMap;
@@ -192,12 +185,12 @@
         });
         
         if (!fileRes.ok) {
-            updateStatus("GitHub 연동 실패. 권한이나 경로를 확인하세요.");
+            updateStatus("GitHub 연동 실패. 토큰 권한이나 경로를 확인하세요.");
             if (fileRes.status === 401 || fileRes.status === 403) {
                 localStorage.removeItem('GITHUB_PAT'); 
-                addLog("권한 에러로 인해 저장된 토큰이 초기화되었습니다.");
+                addLog("권한 에러로 인해 토큰이 초기화되었습니다.");
             }
-            setTimeout(() => document.body.removeChild(ui), 6000);
+            setTimeout(() => document.body.removeChild(ui), 5000);
             return;
         }
 
@@ -228,16 +221,17 @@
             data.push(rowObj);
         }
 
-        addLog("기존 CSV 데이터 로드 성공");
+        addLog("기존 CSV 데이터 로드 성공!");
 
-        // 스코어 데이터 수집
+        // 2. 스코어 데이터 수집
         const hcData = await fetchPlayData('popn29');
         const jfData = await fetchPlayData('jamfizz');
 
         updateStatus("데이터 비교 및 병합 중...");
-        addLog("수집된 스코어와 CSV 정보를 병합합니다.");
+        addLog("=== 양측 서버 데이터를 CSV와 병합합니다 ===");
 
         let updateCount = 0;
+        const updatedSongsSet = new Set();
 
         data.forEach(row => {
             const normTitle = normalizeTitle(row.title);
@@ -269,11 +263,13 @@
                 row.medal = bestMedal;
                 row.score = bestScore > 0 ? bestScore : '';
                 row.best_version = bestVer;
+                
                 updateCount++;
+                updatedSongsSet.add(row.title);
             }
         });
 
-        addLog(`총 ${updateCount}개의 채보 정보가 업데이트되었습니다.`);
+        addLog(`총 ${updatedSongsSet.size}개의 곡 (${updateCount}개 채보) 적용 완료`);
         updateStatus("GitHub로 갱신된 파일을 전송 중...");
 
         let newCsvStr = headers.join(',') + '\n';
@@ -290,7 +286,7 @@
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                message: "Update user play scores (Bookmarklet)",
+                message: "Update play data scores via bookmarklet",
                 content: encodedContent,
                 sha: fileSha
             })
@@ -298,18 +294,18 @@
 
         if (putRes.ok) {
             updateStatus("완료! GitHub에 성공적으로 저장되었습니다.");
-            addLog("모든 작업이 성공적으로 종료되었습니다.");
+            addLog("작업이 성공적으로 종료되었습니다.");
         } else {
             const errJson = await putRes.json();
             updateStatus(`저장 실패`);
-            addLog(`API 오류: ${errJson.message}`);
+            addLog(`API 에러: ${errJson.message}`);
         }
 
         setTimeout(() => document.body.removeChild(ui), 8000);
 
     } catch (e) {
         console.error(e);
-        updateStatus("실행 중 오류가 발생했습니다.");
+        updateStatus("에러가 발생했습니다.");
         addLog(e.message);
         setTimeout(() => document.body.removeChild(ui), 8000);
     }
