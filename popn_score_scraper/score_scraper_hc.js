@@ -213,7 +213,7 @@
       localStorage.setItem('GITHUB_PAT', token);
     }
 
-    for (let v = VERSION_MIN; v <= VERSION_MAX; v++) {
+    for (let v = VERSION_MIN; v <= 2; v++) {
       for (let p = 0; ; p++) {
         const doc = await fetchPage(v, p);
         const { rows, rawCount } = parseRows(doc, v);
