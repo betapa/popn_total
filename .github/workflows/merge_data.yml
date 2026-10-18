@@ -26,7 +26,7 @@ jobs:
       - name: 병합 스크립트 실행 (Run Python Script)
         run: |
           # 파이썬 스크립트 파일명을 실제 이름으로 맞춰주세요. (예: merge.py)
-          python popn_score_scraper/merge.py
+          python popn_score_scraper/merge_playdata_single.py
 
       - name: 변경사항 커밋 및 푸시 (Commit and Push)
         run: |
