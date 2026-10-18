@@ -25,7 +25,7 @@ GITHUB_REPO = "popn_total"
 GITHUB_BRANCH = "main"
 
 BASE_DIR = Path(__file__).resolve().parent
-CSV_PATH = BASE_DIR / "popn_playdata.csv" 
+CSV_PATH = BASE_DIR / "popn_playdata_single.csv" 
 IMAGES_DIR = BASE_DIR.parent / "popn_homepage_scraper" / "images"
 IMAGES_REPO_PATH = "popn_homepage_scraper/images"
 MISSING_LOG = BASE_DIR / "missing_images.txt"
