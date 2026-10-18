@@ -19,9 +19,9 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent                       # popn_score_scraper 폴더
 SINGLE_PATH = BASE_DIR.parent / "popn_homepage_scraper" / "popn_music_list_single.csv"
 PLAYDATA_PATH = BASE_DIR / "popn_playdata.csv"
-OUTPUT_PATH = BASE_DIR / "popn_playdata_single.csv"
+OUTPUT_DIR = BASE_DIR.parent / "notion"
+OUTPUT_PATH = OUTPUT_DIR / "popn_playdata_single.csv"
 
-# True 이면 전각/반각, 공백 차이를 무시하고 비교한다. (엄격한 완전 일치를 원하면 False)
 NORMALIZE_UNICODE = True
 
 # single 의 dif_name -> playdata 의 난이도 접두어
@@ -137,10 +137,14 @@ def main():
     # ========================================================
     # [3단계] 저장
     # ========================================================
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+
     with open(OUTPUT_PATH, "w", encoding="utf-8-sig", newline="") as f:
         writer = csv.DictWriter(f, fieldnames=single_fields)
         writer.writeheader()
         writer.writerows(single_rows)
+
+    print(f"저장 완료: {OUTPUT_PATH}")
 
     print(f"single 전체 {len(single_rows)}행 중 매칭 {matched_rows}행 (플레이 기록 있는 행 {filled}개)")
     print(f"playdata 에서 못 찾은 곡: {len(unmatched_songs)}곡")
