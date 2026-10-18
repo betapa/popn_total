@@ -1,4 +1,4 @@
-name: Popn Music Scraper
+name: Popn Music Info Scraper
 
 on:
   schedule:

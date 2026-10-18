@@ -1,4 +1,4 @@
-name: Merge Popn Playdata
+name: JF / HC Data Integration
 
 on:
   push:
