@@ -15,8 +15,9 @@
   const MAX_RETRY = 3;
   const DIFFS = ['Big', 'Light', 'Normal', 'Hyper', 'Ex'];
 
+  // 메달 이미지 파일명 -> 텍스트 변환표
   const MEDAL_MAP = {
-    'meda_none': '',
+    'meda_none': '',  
     'meda_a': '금☆',
     'meda_b': '은☆',
     'meda_c': '은◇',
@@ -31,7 +32,7 @@
   };
 
   // ============================================================
-  // [유틸] 딜레이 / 로그 / 파싱 / 인코딩 보조 함수
+  // [유틸] 딜레이 / 로그 / 파싱 보조 함수
   // ============================================================
   const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
   const randomDelay = () => sleep(DELAY_MIN + Math.random() * (DELAY_MAX - DELAY_MIN));
@@ -45,7 +46,7 @@
     if (!m) return '';
     const key = m[1];
     if (key in MEDAL_MAP) return MEDAL_MAP[key];
-    unknownMedals.add(key);
+    unknownMedals.add(key); // 미등록 메달은 파일명 그대로 기록
     return key;
   }
 
@@ -54,26 +55,15 @@
     return /[",\r\n]/.test(s) ? '"' + s.replace(/"/g, '""') + '"' : s;
   };
 
-  // UTF-8 문자열을 Base64로 인코딩
+  // UTF-8 문자열을 Base64로 인코딩 (GitHub API 요구사항)
   function utf8ToBase64(str) {
     return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function(match, p1) {
       return String.fromCharCode('0x' + p1);
     }));
   }
 
-  // GitHub 토큰 처리
-  let token = localStorage.getItem('GITHUB_PAT');
-  if (!token) {
-    token = prompt("GitHub Personal Access Token (PAT)을 입력하세요:\n(이 브라우저에 저장됩니다)");
-    if (!token) {
-      alert("토큰이 없어 작업을 취소합니다.");
-      return;
-    }
-    localStorage.setItem('GITHUB_PAT', token);
-  }
-
   // ============================================================
-  // [1단계] 페이지 요청
+  // [1단계] 페이지 요청 (재시도 + 로그인 풀림 감지 포함)
   // ============================================================
   async function fetchPage(version, page) {
     const url = `${BASE_PATH}?page=${page}&version=${version}&bemani=0&category=0&keyword=&sort=music&sort_type=up`;
@@ -90,16 +80,16 @@
         
         return doc;
       } catch (e) {
-        if (e.message === 'LOGIN_LOST') throw e;
+        if (e.message === 'LOGIN_LOST') throw e; 
         warn(`요청 실패 (v${version} p${page}, 시도 ${attempt}/${MAX_RETRY}):`, e.message);
         if (attempt === MAX_RETRY) throw e;
-        await sleep(2000 * attempt);
+        await sleep(2000 * attempt); 
       }
     }
   }
 
   // ============================================================
-  // [2단계] 한 페이지의 HTML 파싱 -> 곡 배열 추출
+  // [2단계] 한 페이지의 HTML 파싱 -> 곡 배열
   // ============================================================
   function parseRows(doc, version) {
     const rows = [];
@@ -124,7 +114,7 @@
             const cell = cols[i + 1];
             const medal = medalFromImg(cell.querySelector('img[src*="/medal/meda"]'));
             const txt = (cell.querySelector('p')?.textContent || '').trim();
-            const score = /^\d+$/.test(txt) ? parseInt(txt, 10) : '';
+            const score = /^\d+$/.test(txt) ? parseInt(txt, 10) : ''; 
             row[`${d}_Medal`] = medal;
             row[`${d}_Score`] = score;
           } catch (e) {
@@ -142,9 +132,9 @@
   }
 
   // ============================================================
-  // [3단계] CSV 포맷 변환 및 GitHub 업로드
+  // [3단계] CSV 텍스트 생성 및 GitHub 업로드
   // ============================================================
-  async function uploadToGitHub(allRecords) {
+  async function uploadToGitHub(allRecords, token) {
     log(`CSV 텍스트 생성 중...`);
     const headers = ['Version', 'SongID', 'Title', 'Genre', 'Artist'];
     DIFFS.forEach((d) => headers.push(`${d}_Medal`, `${d}_Score`));
@@ -157,18 +147,32 @@
     log(`GitHub 업로드 준비 중... (총 ${allRecords.length}곡)`);
     const apiUrl = `https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${FILE_PATH}`;
 
-    // 파일의 sha 값 가져오기 (업데이트 시 필수)
     let sha = "";
+    
+    // [🔥 핵심 수정 1] 기존 파일의 SHA 값 가져오기 (CORS 에러 방지)
     try {
       const getRes = await fetch(apiUrl, {
-        headers: { 'Authorization': `token ${token}`, 'Cache-Control': 'no-cache' }
+        method: 'GET',
+        cache: 'no-store', // 헤더에서 Cache-Control을 제거하고 fetch 옵션 사용
+        headers: { 
+          'Authorization': `token ${token}`,
+          'Accept': 'application/vnd.github+json'
+        }
       });
+      
       if (getRes.ok) {
         const getData = await getRes.json();
         sha = getData.sha;
+      } else if (getRes.status === 404) {
+        log("기존 파일이 존재하지 않습니다. 새 파일로 생성합니다.");
+      } else {
+        throw new Error(`HTTP ${getRes.status}`);
       }
     } catch(e) {
-        warn("기존 파일의 SHA 값을 가져오지 못했습니다. 새로 생성합니다.");
+      // [🔥 핵심 수정 2] SHA 조회 실패 시 진행 중단 (422 에러 방지)
+      console.error("기존 파일 SHA 조회 실패:", e);
+      alert(`❌ GitHub 파일 조회 실패!\n에러: ${e.message}\nCORS 또는 토큰 문제일 수 있습니다.`);
+      return; 
     }
 
     const encodedContent = utf8ToBase64('\uFEFF' + csvContent); // 한글 깨짐 방지 BOM 추가
@@ -201,6 +205,14 @@
   // ============================================================
   const all = [];
   try {
+    // 0. 토큰 확인
+    let token = localStorage.getItem('GITHUB_PAT');
+    if (!token) {
+      token = prompt("GitHub Personal Access Token (PAT)을 입력하세요:\n(repo 권한 필요, 이 브라우저에 저장됩니다)");
+      if (!token) return alert("토큰이 없어 취소합니다.");
+      localStorage.setItem('GITHUB_PAT', token);
+    }
+
     for (let v = VERSION_MIN; v <= VERSION_MAX; v++) {
       for (let p = 0; ; p++) {
         const doc = await fetchPage(v, p);
@@ -208,22 +220,26 @@
         all.push(...rows);
         log(`버전 ${v} / 페이지 ${p}: ${rawCount}곡 (누적 ${all.length}곡)`);
         
-        await randomDelay();
-        if (rawCount < PAGE_SIZE) break; // 페이지 종료 조건
+        await randomDelay(); // 서버 부하 및 봇 탐지 방지
+        if (rawCount < PAGE_SIZE) break; 
       }
     }
     log('전체 탐색 완료. 업로드를 시작합니다.');
     
+    // 업로드 함수 호출
+    if (all.length > 0) {
+      await uploadToGitHub(all, token);
+    } else {
+      alert("수집된 데이터가 없습니다.");
+    }
+    
   } catch (e) {
     if (e.message === 'LOGIN_LOST') {
-      alert('로그인이 풀렸습니다. 재로그인 후 다시 실행하세요. 지금까지 수집한 데이터만 저장합니다.');
+      alert('로그인이 풀렸습니다. 재로그인 후 다시 실행하세요.');
     } else {
-      alert(`수집 중 오류 발생: ${e.message}\n지금까지 수집된 데이터만 업로드합니다.`);
+      alert(`수집 중 오류 발생: ${e.message}`);
     }
   } finally {
     if (unknownMedals.size) warn('MEDAL_MAP에 없는 메달 파일명 발견:', [...unknownMedals]);
-    if (all.length > 0) {
-      await uploadToGitHub(all);
-    }
   }
 })();
