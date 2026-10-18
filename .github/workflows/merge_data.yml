@@ -51,7 +51,7 @@ jobs:
           fi
 
       - name: Notion 업로드 스크립트 실행
-        working-directory: ./popn_score_scraper
+        working-directory: ./notion
         env:
           # GitHub Secrets에서 가져와서 환경변수로 파이썬에 전달
           NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
