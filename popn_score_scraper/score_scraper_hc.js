@@ -7,7 +7,7 @@
 
   const BASE_PATH = '/game/popn/popn29/playdata/mu_top.html';
   const VERSION_MIN = 0;
-  const VERSION_MAX = 3; //testing
+  const VERSION_MAX = 29;
   const PAGE_SIZE = 25;
   const DELAY_MIN = 800;
   const DELAY_MAX = 1500;
