@@ -1,74 +1,74 @@
-name: Merge Playdata & Upload to Notion
+  name: Merge Playdata & Upload to Notion
 
-on:
-  workflow_dispatch: # GitHub 홈페이지에서 수동으로 버튼을 눌러 실행할 수 있도록 허용
-  push:
-    paths:
-      # 아래 파일이 업데이트(push)될 때마다 Actions가 자동으로 실행되도록 설정
-      - 'popn_score_scraper/popn_playdata.csv' 
-      - 'popn_score_scraper/*.py'
+  on:
+    workflow_dispatch: # GitHub 홈페이지에서 수동으로 버튼을 눌러 실행할 수 있도록 허용
+    push:
+      paths:
+        # 아래 파일이 업데이트(push)될 때마다 Actions가 자동으로 실행되도록 설정
+        - 'popn_score_scraper/popn_playdata.csv' 
+        - 'popn_score_scraper/*.py'
 
-jobs:
-  merge-and-upload:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write # 생성된 결과물을 깃허브 리포지토리에 푸시하기 위한 권한
+  jobs:
+    merge-and-upload:
+      runs-on: ubuntu-latest
+      permissions:
+        contents: write # 생성된 결과물을 깃허브 리포지토리에 푸시하기 위한 권한
 
-    steps:
-      - name: 저장소 체크아웃 (Checkout Repository)
-        uses: actions/checkout@v4
+      steps:
+        - name: 저장소 체크아웃 (Checkout Repository)
+          uses: actions/checkout@v4
 
-      - name: Python 환경 설정 (Setup Python)
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.10'
+        - name: Python 환경 설정 (Setup Python)
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.10'
 
-      - name: 필요 패키지 설치 (Install Dependencies)
-        run: |
-          python -m pip install --upgrade pip
-          pip install pandas numpy requests
+        - name: 필요 패키지 설치 (Install Dependencies)
+          run: |
+            python -m pip install --upgrade pip
+            pip install pandas numpy requests
 
-      - name: 병합 스크립트 실행 (Run Merge Script)
-        run: |
-          # 파이썬 스크립트 파일명을 실제 이름으로 맞춰주세요.
-          python popn_score_scraper/merge_playdata_single.py
+        - name: 병합 스크립트 실행 (Run Merge Script)
+          run: |
+            # 파이썬 스크립트 파일명을 실제 이름으로 맞춰주세요.
+            python popn_score_scraper/merge_playdata_single.py
 
-      - name: 변경사항 커밋 및 푸시 (Commit and Push CSV)
-        run: |
-          # 봇 계정으로 깃 설정
-          git config --global user.name 'github-actions[bot]'
-          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
-          
-          # 새로 생성되거나 변경된 파일 스테이징
-          git add popn_score_scraper/popn_playdata_single.csv
-          
-          # 변경사항이 존재할 경우에만 커밋 및 푸시 진행
-          if git diff --staged --quiet; then
-            echo "변경된 내용이 없어 커밋을 건너뜁니다."
-          else
-            git commit -m "Auto-merge: Update popn_playdata_single.csv"
-            git push
-          fi
+        - name: 변경사항 커밋 및 푸시 (Commit and Push CSV)
+          run: |
+            # 봇 계정으로 깃 설정
+            git config --global user.name 'github-actions[bot]'
+            git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+            
+            # 새로 생성되거나 변경된 파일 스테이징
+            git add notion/popn_playdata_single.csv
+            
+            # 변경사항이 존재할 경우에만 커밋 및 푸시 진행
+            if git diff --staged --quiet; then
+              echo "변경된 내용이 없어 커밋을 건너뜁니다."
+            else
+              git commit -m "Auto-merge: Update popn_playdata_single.csv"
+              git push
+            fi
 
-      - name: Notion 업로드 스크립트 실행
-        working-directory: ./notion
-        env:
-          # GitHub Secrets에서 가져와서 환경변수로 파이썬에 전달
-          NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
-          NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
-        run: |
-          # Notion API 호출 시 한글 인코딩 문제가 발생하지 않도록 강제 지정
-          export PYTHONIOENCODING=utf8 
-          
-          # 업로드 스크립트 실행
-          python upload_to_notion.py
+        - name: Notion 업로드 스크립트 실행
+          working-directory: ./notion
+          env:
+            # GitHub Secrets에서 가져와서 환경변수로 파이썬에 전달
+            NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
+            NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+          run: |
+            # Notion API 호출 시 한글 인코딩 문제가 발생하지 않도록 강제 지정
+            export PYTHONIOENCODING=utf8 
+            
+            # 업로드 스크립트 실행
+            python upload_to_notion.py
 
-      - name: 누락된 이미지 로그(missing_images.txt) 커밋 (선택사항)
-        run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          git add popn_score_scraper/missing_images.txt
-          
-          # diff 명령어 결과에 따라 변경 사항이 있을 때만 커밋
-          git diff --quiet && git diff --staged --quiet || (git commit -m "Update missing images log" && git push)
+        - name: 누락된 이미지 로그(missing_images.txt) 커밋 (선택사항)
+          run: |
+            git config --global user.name "github-actions[bot]"
+            git config --global user.email "github-actions[bot]@users.noreply.github.com"
+            
+            git add popn_score_scraper/missing_images.txt
+            
+            # diff 명령어 결과에 따라 변경 사항이 있을 때만 커밋
+            git diff --quiet && git diff --staged --quiet || (git commit -m "Update missing images log" && git push)

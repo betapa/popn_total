@@ -11,7 +11,7 @@ permissions:
   contents: write
 
 jobs:
-  merge-csv:
+  merge-csv: 
     runs-on: ubuntu-latest
 
     steps:
