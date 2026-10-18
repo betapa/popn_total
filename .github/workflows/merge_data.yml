@@ -1,0 +1,46 @@
+name: Merge Popn Playdata
+
+on:
+  workflow_dispatch: # GitHub 홈페이지에서 수동으로 버튼을 눌러 실행할 수 있도록 허용
+  push:
+    paths:
+      # 아래 파일이 업데이트(push)될 때마다 Actions가 자동으로 실행되도록 설정
+      - 'popn_score_scraper/popn_playdata.csv' 
+      - 'popn_score_scraper/*.py'
+
+jobs:
+  merge-data:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write # 생성된 결과물을 깃허브 리포지토리에 푸시하기 위한 권한
+
+    steps:
+      - name: 저장소 체크아웃 (Checkout Repository)
+        uses: actions/checkout@v4
+
+      - name: Python 환경 설정 (Setup Python)
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: 병합 스크립트 실행 (Run Python Script)
+        run: |
+          # 파이썬 스크립트 파일명을 실제 이름으로 맞춰주세요. (예: merge.py)
+          python popn_score_scraper/merge.py
+
+      - name: 변경사항 커밋 및 푸시 (Commit and Push)
+        run: |
+          # 봇 계정으로 깃 설정
+          git config --global user.name 'github-actions[bot]'
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          
+          # 새로 생성되거나 변경된 파일 스테이징
+          git add popn_score_scraper/popn_playdata_single.csv
+          
+          # 변경사항이 존재할 경우에만 커밋 및 푸시 진행
+          if git diff --staged --quiet; then
+            echo "변경된 내용이 없어 커밋을 건너뜁니다."
+          else
+            git commit -m "Auto-merge: Update popn_playdata_single.csv"
+            git push
+          fi
