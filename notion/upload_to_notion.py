@@ -25,7 +25,7 @@ GITHUB_REPO = "popn_total"
 GITHUB_BRANCH = "main"
 
 BASE_DIR = Path(__file__).resolve().parent
-CSV_PATH = BASE_DIR / "popn_playdata_single.csv" 
+CSV_PATH = BASE_DIR / "popn_playdata.csv" 
 IMAGES_DIR = BASE_DIR.parent / "popn_homepage_scraper" / "images"
 IMAGES_REPO_PATH = "popn_homepage_scraper/images"
 MISSING_LOG = BASE_DIR / "missing_images.txt"
@@ -86,7 +86,7 @@ def create_database():
             "level": {"number": {"format": "number"}},
             "bpm": {"rich_text": {}},
             "notes": {"number": {"format": "number"}},
-            "dif_tier": {"rich_text": {}},
+            "dif_tier": {"number": {"format": "number"}},
             "medal": sel,
             "score": {"number": {"format": "number"}},
             "best_version": sel,
@@ -216,7 +216,7 @@ def build_properties(r):
         "level": {"number": to_num(r["level"])},
         "bpm": rt(r["bpm"]),
         "notes": {"number": to_num(r["notes"])},
-        "dif_tier": rt(r["dif_tier"]),
+        "dif_tier": {"number": to_num(r.get("dif_tier"))},
         "medal": sel(r["medal"]),
         "score": {"number": to_num(r["score"])},
         "best_version": sel(r["best_version"]),
