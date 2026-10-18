@@ -1,0 +1,44 @@
+name: Merge Popn Playdata
+
+on:
+  push:
+    paths:
+      - 'popn_score_scraper/popn_playdata_hc.csv'
+      - 'popn_score_scraper/popn_playdata_jf.csv'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  merge-csv:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: 레포지토리 체크아웃
+      uses: actions/checkout@v4
+
+    - name: 파이썬 환경 설정
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.10'
+
+    - name: 필요 패키지 설치 (pandas, numpy)
+      run: |
+        python -m pip install --upgrade pip
+        pip install pandas numpy
+
+    - name: CSV 병합 파이썬 스크립트 실행
+      working-directory: ./popn_score_scraper
+      run: python merge_popn_csv.py
+
+    - name: 병합된 CSV 파일 커밋 및 푸시
+      run: |
+        git config --global user.name "github-actions[bot]"
+        git config --global user.email "github-actions[bot]@users.noreply.github.com"
+        
+        # 생성된 popn_playdata.csv 파일을 Git에 추가
+        git add popn_score_scraper/popn_playdata.csv
+        
+        # 파일에 변경 사항이 있을 때만 커밋하고 푸시 (에러 방지 처리)
+        git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-merge popn playdata csv" && git push)
