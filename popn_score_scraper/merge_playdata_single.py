@@ -100,6 +100,10 @@ def main():
     single_fields, single_rows = read_csv(SINGLE_PATH)
     _, play_rows = read_csv(PLAYDATA_PATH)
 
+    for field in ("medal", "score", "best_version"):
+        if field not in single_fields:
+            single_fields.append(field)
+
     index, dup_count = build_playdata_index(play_rows)
     print(f"playdata: {len(play_rows)}행 -> 고유 곡 {len(index)}개 (중복 병합 {dup_count}건)")
 
