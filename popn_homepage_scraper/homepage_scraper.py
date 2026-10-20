@@ -6,6 +6,7 @@ import re
 import time
 import unicodedata
 
+# Cloudflare 우회를 위해 기본 requests 대신 curl_cffi의 requests 사용
 from curl_cffi import requests
 
 # 1. 크롤링할 대상 기본 URL 및 헤더 설정
@@ -150,10 +151,52 @@ def main():
     # Chrome 120 버전의 지문(Fingerprint)으로 완전 위장
     session = requests.Session(impersonate="chrome120")
     
+# --- [환경 구분 및 쿠키 로드 로직 추가] ---
+    if os.environ.get("GITHUB_ACTIONS") == "true":
+        print("[환경 설정] GitHub Actions 환경: 비로그인(Guest) 상태로 공식 사이트를 탐색합니다.")
+    else:
+        print("[환경 설정] 로컬(PC) 환경: 로그인 쿠키 연동을 시도합니다...")
+        
+        cookie_loaded = False
+        
+        # 1순위: cookie.txt 파일에서 직접 읽기 (크롬 보안 업데이트 우회용, 가장 확실함)
+        cookie_path = os.path.join(BASE_DIR, "cookie.txt")
+        if os.path.exists(cookie_path):
+            with open(cookie_path, "r", encoding="utf-8") as f:
+                raw_cookie = f.read().strip()
+                if raw_cookie:
+                    cookie_dict = {}
+                    for item in raw_cookie.split(';'):
+                        if '=' in item:
+                            k, v = item.strip().split('=', 1)
+                            cookie_dict[k] = v
+                    session.cookies.update(cookie_dict)
+                    print(" -> cookie.txt 파일에서 쿠키 수동 연동 성공! (해금 곡 포함 전체 곡 데이터를 수집합니다)")
+                    cookie_loaded = True
+        
+        # 2순위: cookie.txt가 없을 경우 browser_cookie3 시도
+        if not cookie_loaded:
+            try:
+                import browser_cookie3
+                # 모든 브라우저 대신 chrome만 명시적으로 타겟팅하여 권한 충돌 최소화
+                cj = browser_cookie3.chrome(domain_name='eagate.573.jp')
+                cookie_dict = {c.name: c.value for c in cj}
+                if cookie_dict:
+                    session.cookies.update(cookie_dict)
+                    print(" -> 브라우저 자동 쿠키 연동 성공! (해금 곡 포함 전체 곡 데이터를 수집합니다)")
+                else:
+                    print(" -> [주의] eagate.573.jp 로그인 쿠키를 찾지 못했습니다.")
+            except ImportError:
+                print(" -> [주의] cookie.txt 파일이 없고, browser-cookie3 라이브러리도 없습니다.")
+            except Exception as e:
+                print(f" -> [주의] 자동 쿠키 연동 실패: {e}")
+                print(" -> 해결책: 스크립트와 같은 폴더에 'cookie.txt'를 만들고 브라우저의 cookie 값을 직접 복사해 넣으세요.")
+    # ------------------------------------------
+    
     # 1. 위키 데이터 선행 수집
     wiki_data = fetch_wiki_data(session)
 
-    print(f"[{BASE_DIR}] 위치에 공식 홈페이지 정보 수집 및 저장을 시작합니다...\n")
+    print(f"\n[{BASE_DIR}] 위치에 공식 홈페이지 정보 수집 및 저장을 시작합니다...\n")
 
     # 2. 공식 홈페이지 버전 0부터 29까지 탐색 루프
     for version in range(30):
@@ -169,7 +212,11 @@ def main():
                 print(f"페이지 로드 실패 (Status: {response.status_code}): {url}")
                 break
                 
-            soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'lxml')
+            # lxml 파서 사용 강제 (HTML 구조 깨짐 보완)
+            try:
+                soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'lxml')
+            except Exception:
+                soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'html.parser')
             
             ul_tables = soup.find_all('ul', class_='mu_list_table')
             target_ul = None
