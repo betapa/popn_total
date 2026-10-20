@@ -6,7 +6,6 @@ import re
 import time
 import unicodedata
 
-# Cloudflare 우회를 위해 기본 requests 대신 curl_cffi의 requests 사용
 from curl_cffi import requests
 
 # 1. 크롤링할 대상 기본 URL 및 헤더 설정
@@ -83,7 +82,7 @@ def fetch_wiki_data(session):
                         bpm = cols[-4].text.strip()
                         notes = cols[-2].text.strip()
                         tier_raw = cols[-1].text.strip()
-                        
+                    
                         diff_val = ""
                         diff_match = re.search(r'\((EX|H|N|E)\)$', genre_diff_text, re.IGNORECASE)
                         if diff_match:
@@ -91,7 +90,7 @@ def fetch_wiki_data(session):
                             if d == 'EX': diff_val = 'ex'
                             elif d == 'H': diff_val = 'hyper'
                             elif d == 'N': diff_val = 'normal'
-                            elif d == 'E': diff_val = 'light'
+                            elif d == 'E': diff_val = 'light'  
                         
                         dif_tier = ""
                         tier_match = re.search(r'\(([-+]?\d+\.?\d*)', tier_raw)
@@ -170,7 +169,7 @@ def main():
                 print(f"페이지 로드 실패 (Status: {response.status_code}): {url}")
                 break
                 
-            soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'html.parser')
+            soup = BeautifulSoup(response.content.decode('utf-8', 'ignore'), 'lxml')
             
             ul_tables = soup.find_all('ul', class_='mu_list_table')
             target_ul = None
