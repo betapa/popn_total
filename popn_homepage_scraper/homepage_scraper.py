@@ -163,7 +163,6 @@ def main():
         
         while True:
             url = f"https://p.eagate.573.jp/game/popn/popn29/music/list.html?page={page}&version={version}&lv=0&bemani=0&category=0&keyword=&sort=music&sort_type=up"
-            print(f"▶ 탐색 중: Version {version} ({current_version_name}), Page {page}")
             
             response = session.get(url, headers=HEADERS)
             
@@ -181,14 +180,21 @@ def main():
                     break
                     
             if not target_ul:
+                print(f"▶ 탐색 중: Version {version} ({current_version_name}), Page {page} Songs 0")
                 print("곡 리스트를 찾을 수 없습니다. 다음 버전으로 넘어갑니다.")
                 break
                 
             list_items = target_ul.find_all('li', recursive=False)
             
+            # 곡 수를 먼저 계산
             song_count = len(list_items) // 3
+            
+            # 요청하신 포맷으로 출력
+            print(f"▶ 탐색 중: Version {version} ({current_version_name}), Page {page} Songs {song_count}")
+            
+            # 곡이 없으면 다음 버전으로 이동 (조기 종료 방지를 위한 메인 탈출 조건)
             if song_count == 0:
-                print(f"곡이 존재하지 않습니다. 버전 {version} 탐색 종료.\n")
+                print(f"→ 해당 버전의 마지막 페이지에 도달했습니다. (Version {version} 완료)\n")
                 break
             
             # 3. 공식 데이터 파싱
@@ -259,13 +265,9 @@ def main():
                 except Exception as e:
                     print(f"데이터 파싱 에러 발생: {e}")
                     continue
-            
-            if song_count < 25:
-                print(f"→ 해당 버전의 마지막 페이지입니다. (Version {version} 완료)\n")
-                break
                 
             page += 1
-            time.sleep(0.5) 
+            time.sleep(0.5)
 
     # 4. 전체 데이터를 CSV 파일로 저장
     csv_headers = ["Version_Num", "Version_Name", "Genre", "Title", "Artist", "Light", "Normal", "Hyper", "EX"]
