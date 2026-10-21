@@ -61,7 +61,7 @@
             export PYTHONIOENCODING=utf8 
             
             # 업로드 스크립트 실행
-            python upload_to_notion.py
+            python upload_to_notion_test.py
 
         - name: 누락된 이미지 로그(missing_images.txt) 커밋 (선택사항)
           run: |
