@@ -1,5 +1,6 @@
 import os
 import csv
+from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, quote
 import re
@@ -32,6 +33,57 @@ VERSION_NAMES = [
     "pop'n music 20 fantasia", "pop'n music Sunny Park", "pop'n music 라피스트리아", "pop'n music éclale", "pop'n music 토끼와 고양이와 소년의 꿈",
     "pop'n music peace", "pop'n music 해명 리들스", "pop'n music UniLab", "pop'n music Jam&Fizz", "pop'n music High☆Cheers!!"
 ]
+
+# 4. 변경 감지 설정 (곡 메타데이터 업데이트 날짜)
+KST = timezone(timedelta(hours=9))
+NOW_TS = datetime.now(KST).isoformat(timespec="seconds")   # 예: 2026-10-21T14:30:00+09:00
+
+# 곡 키(version_num, title, genre, artist, dif_name)가 같을 때, 아래 값이 달라지면 song_updated_at 갱신
+SONG_COMPARE_FIELDS = ["version_name", "level", "bpm", "notes", "dif_tier"]
+# 위키 수집 실패(프록시 차단 등) 시 이전 값을 유지할 필드
+WIKI_FIELDS = ["bpm", "notes", "dif_tier"]
+
+
+def single_key(r):
+    return (str(r["version_num"]), r["title"], r["genre"], r["artist"], r["dif_name"])
+
+
+def load_previous_single():
+    """이전 실행에서 저장된 single CSV 를 {키: 행} 으로 로드 (없으면 빈 사전)"""
+    prev = {}
+    if not os.path.exists(CSV_SINGLE_FILENAME):
+        return prev
+    try:
+        with open(CSV_SINGLE_FILENAME, "r", encoding="utf-8-sig", newline="") as f:
+            for r in csv.DictReader(f):
+                try:
+                    prev[single_key(r)] = r
+                except KeyError:
+                    continue
+    except Exception as e:
+        print(f"[주의] 이전 single CSV 를 읽지 못했습니다. 전체를 신규로 처리합니다: {e}")
+    return prev
+
+
+def stamp_song(rec, prev_map):
+    """신규/변경 곡이면 song_updated_at = 현재, 변경 없으면 이전 값을 유지"""
+    old = prev_map.get(single_key(rec))
+    if old is None:
+        rec["song_updated_at"] = NOW_TS          # 신규 곡
+        return rec
+
+    # 위키 값이 이번에 비어 있고 이전에 있었다면 이전 값 유지 (일시적 수집 실패로 인한 허위 변경 방지)
+    for k in WIKI_FIELDS:
+        if str(rec.get(k, "")) == "" and (old.get(k) or "") != "":
+            rec[k] = old[k]
+
+    changed = any(str(rec.get(k, "")).strip() != (old.get(k) or "").strip() for k in SONG_COMPARE_FIELDS)
+    if changed or not old.get("song_updated_at"):
+        rec["song_updated_at"] = NOW_TS
+    else:
+        rec["song_updated_at"] = old["song_updated_at"]
+    return rec
+
 
 def clean_filename(filename):
     """파일명에 사용할 수 없는 특수문자 제거"""
@@ -147,6 +199,10 @@ def download_image(session, img_url, version_num, file_name):
 def main():
     music_data_list = []
     music_data_single_list = []
+
+    # 이전 실행 결과 (변경 감지용)
+    prev_single = load_previous_single()
+    print(f"[변경 감지] 이전 single 데이터 {len(prev_single)}행 로드")
     
     # Chrome 120 버전의 지문(Fingerprint)으로 완전 위장
     session = requests.Session(impersonate="chrome120")
@@ -295,7 +351,7 @@ def main():
                         if level != "-": 
                             w_data = wiki_data.get((norm_t, dif_name), {})
                             
-                            music_data_single_list.append({
+                            rec = {
                                 "version_num": version,
                                 "version_name": current_version_name,
                                 "genre": genre,
@@ -306,7 +362,9 @@ def main():
                                 "bpm": w_data.get("bpm", ""),
                                 "notes": w_data.get("notes", ""),
                                 "dif_tier": w_data.get("dif_tier", "")
-                            })
+                            }
+                            # 신규/변경 곡이면 현재 시각, 아니면 이전 song_updated_at 유지
+                            music_data_single_list.append(stamp_song(rec, prev_single))
                             
                 except Exception as e:
                     print(f"데이터 파싱 에러 발생: {e}")
@@ -323,12 +381,16 @@ def main():
         for data in music_data_list:
             writer.writerow(data)
             
-    single_headers = ["version_num", "version_name", "genre", "title", "artist", "dif_name", "level", "bpm", "notes", "dif_tier"]
+    single_headers = ["version_num", "version_name", "genre", "title", "artist", "dif_name", "level", "bpm", "notes", "dif_tier", "song_updated_at"]
     with open(CSV_SINGLE_FILENAME, mode='w', encoding='utf-8-sig', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=single_headers)
         writer.writeheader()
         for data in music_data_single_list:
             writer.writerow(data)
+
+    new_cnt = sum(1 for d in music_data_single_list if single_key(d) not in prev_single)
+    upd_cnt = sum(1 for d in music_data_single_list if d["song_updated_at"] == NOW_TS) - new_cnt
+    print(f"\n[변경 감지] 신규 {new_cnt}행 / 메타데이터 변경 {upd_cnt}행 / 전체 {len(music_data_single_list)}행")
             
     print(f"\n모든 작업이 완료되었습니다.")
     print(f"이미지 저장 경로: {IMAGES_DIR}")
