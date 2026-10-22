@@ -13,6 +13,11 @@ popn_playdata_single.csv 를 Notion DB 로 업로드한다. (변경분만 처리
       빈 값으로 덮어쓰지 않는다. (CSV 생성 오류로 인한 기록 소실 방지, --allow-blank 로 해제)
     * 페이지 생성 요청이 네트워크 오류로 불확실할 때는 DB 를 다시 조회해 중복 생성을 막는다.
 
+[이미지 매핑]
+    * 일반 곡(version_num 0~29)  -> images/<version_num>/<곡명>.png
+    * 기타 곡(version_num=-1 / version_name="기타") -> images/etc/<곡명>.png
+      (homepage_scraper.py 가 어느 버전에도 속하지 않는 곡의 이미지를 etc 폴더에 저장함)
+
 [동작]
     * Notion 에 없는 행                     -> 페이지 생성
     * 값이 다른 행                          -> 달라진 속성만 갱신
@@ -50,6 +55,11 @@ CSV_PATH = BASE_DIR / "popn_playdata_single.csv"
 IMAGES_DIR = BASE_DIR.parent / "popn_homepage_scraper" / "images"
 IMAGES_REPO_PATH = "popn_homepage_scraper/images"
 MISSING_LOG = BASE_DIR / "missing_images.txt"
+
+# 어느 버전에도 속하지 않는 곡 (homepage_scraper.py 의 설정과 동일하게 유지)
+ETC_VERSION_NUM = -1
+ETC_VERSION_NAME = "기타"
+ETC_IMAGE_FOLDER = "etc"
 
 TOKEN = os.environ.get("NOTION_TOKEN")
 DB_ID = os.environ.get("NOTION_DATABASE_ID")
@@ -276,38 +286,63 @@ def find_page_id(key):
 
 
 # ============================================================
-# [4단계] 이미지 매칭 (버전 폴더 내에서 제목과 일치하는 파일 찾기)
+# [4단계] 이미지 매칭 (버전 폴더 / etc 폴더 내에서 제목과 일치하는 파일 찾기)
 # ============================================================
 def norm_name(s):
     s = unicodedata.normalize("NFKC", s or "").lower()
     return re.sub(r"[\W_]+", "", s)   # 공백/기호 제거 (파일명에 못 쓰는 문자 차이 흡수)
 
 
+def is_etc_song(version_num, version_name=""):
+    """어느 버전에도 속하지 않는 곡인지 (version_num=-1 또는 version_name='기타')"""
+    if to_num(version_num) == ETC_VERSION_NUM:
+        return True
+    return sel_name(version_name) == ETC_VERSION_NAME
+
+
+def image_folders(version_num, version_name=""):
+    """
+    이미지를 찾을 폴더 이름 후보 (우선순위 순).
+    - 기타 곡: images/etc (혹시 모를 images/-1 도 보조로 확인)
+    - 일반 곡: images/<version_num>  ('3.0' 같은 표기도 '3' 으로 정리)
+    """
+    if is_etc_song(version_num, version_name):
+        return [ETC_IMAGE_FOLDER, str(ETC_VERSION_NUM)]
+    num = to_num(version_num)
+    if num is not None and float(num).is_integer():
+        return [str(int(num))]
+    return [str(version_num or "").strip()]
+
+
 _image_index = {}
 
 
-def image_index(version_num):
-    """버전 폴더의 {정규화된 파일명: 경로} 사전 (폴더별 1회만 생성)"""
-    if version_num not in _image_index:
+def image_index(folder_name):
+    """폴더의 {정규화된 파일명: 경로} 사전 (폴더별 1회만 생성)"""
+    if folder_name not in _image_index:
         idx = {}
-        folder = IMAGES_DIR / str(version_num)
+        folder = IMAGES_DIR / folder_name
         if folder.is_dir():
             for f in folder.iterdir():
                 if f.suffix.lower() in IMAGE_EXTS:
                     idx.setdefault(norm_name(f.stem), f)
-        _image_index[version_num] = idx
-    return _image_index[version_num]
+        _image_index[folder_name] = idx
+    return _image_index[folder_name]
 
 
-def find_image(version_num, title):
-    folder = IMAGES_DIR / str(version_num)
-    # 1) 정확히 일치하는 파일명 우선
-    for ext in IMAGE_EXTS:
-        p = folder / f"{title}{ext}"
-        if p.exists():
-            return p
-    # 2) 정규화 비교
-    return image_index(version_num).get(norm_name(title))
+def find_image(version_num, title, version_name=""):
+    for folder_name in image_folders(version_num, version_name):
+        folder = IMAGES_DIR / folder_name
+        # 1) 정확히 일치하는 파일명 우선
+        for ext in IMAGE_EXTS:
+            p = folder / f"{title}{ext}"
+            if p.exists():
+                return p
+        # 2) 정규화 비교
+        found = image_index(folder_name).get(norm_name(title))
+        if found is not None:
+            return found
+    return None
 
 
 # ============================================================
@@ -427,12 +462,13 @@ def main():
         ex = existing.get(key)
         has_cover = bool(ex and ex["has_cover"])
 
-        # 커버가 없는 페이지(또는 신규)만 이미지 탐색
+        # 커버가 없는 페이지(또는 신규)만 이미지 탐색 (기타 곡은 images/etc 에서 탐색)
         cover_img = None
         if COVER_MODE != "none" and not has_cover:
-            cover_img = find_image(r.get("version_num", ""), want["title"])
+            cover_img = find_image(r.get("version_num", ""), want["title"], r.get("version_name", ""))
             if cover_img is None:
-                missing.add(f'{r.get("version_num")}\t{want["title"]}')
+                folder_label = image_folders(r.get("version_num", ""), r.get("version_name", ""))[0]
+                missing.add(f'{folder_label}\t{want["title"]}')
 
         if ex is None:
             status, fields, prot = "신규 생성", list(FIELDS), []
