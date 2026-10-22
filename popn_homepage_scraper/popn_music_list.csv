@@ -70,7 +70,7 @@
 0,pop'n 가정용,スライ,Tokyo Traffic Report,ナメカワキミヲとザ･ハイターズ,8,18,31,42
 0,pop'n 가정용,メランコリー,Twilight Gloom,ASparagus,-,21,32,34
 0,pop'n 가정용,リナシタ,uen,少年ラジオ,-,31,42,49
-0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,8,14,22,37
+0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,8,14,22,-
 0,pop'n 가정용,テクノ'80,Water Melon Woman,NAKATEK,-,14,18,41
 0,pop'n 가정용,ファンクフィーバー,World Spider Web,(Wly) & The hampatensions,16,25,39,46
 0,pop'n 가정용,スペースポップ,μ9,PAXA,-,29,38,46
@@ -1796,149 +1796,71 @@
 27,pop'n music UniLab,レイドバックジャーニー,レイドバックジャーニー,キミのね,5,22,33,39
 27,pop'n music UniLab,恋愛パクチー,恋愛パクチー,キミのね,3,20,28,40
 27,pop'n music UniLab,ヒップロック8,狼弦暴威,Des-ROW・組スペシアル,17,32,42,48
-28,pop'n music Jam&Fizz,ボンバーテクノ,Amazing Bomberman,TESSEI TOJO,9,27,41,45
-28,pop'n music Jam&Fizz,エモーショナルJ-ポップ,ANEMONE,"BEMANI Sound Team ""HuΣeR × Yvya"" feat.紫村 花澄",8,24,34,41
-28,pop'n music Jam&Fizz,コスモボヤージュ,astral_dismantle,ARForest feat.nayuta,11,28,40,47
-28,pop'n music Jam&Fizz,エデン,AVEL,"BEMANI Sound Team ""Power Of Nature""",18,34,43,49
-28,pop'n music Jam&Fizz,ラウドロック,BLAKE,A.T.park,10,27,40,46
 28,pop'n music Jam&Fizz,エヴォリューションディスコ,Bomb be love,sei☆shin feat.ken,12,27,37,44
 28,pop'n music Jam&Fizz,ビッグバンドミュージカル,BROADWAY QUEENS,T-HEY & TANEKO,10,26,38,45
-28,pop'n music Jam&Fizz,ハイパンク(UPPER),cobalt(UPPER),Des-ROW・組スペシアル,20,35,41,47
-28,pop'n music Jam&Fizz,ブレイクコア,Cookie Bouquets,L.E.D. vs TOMOSUKE fw.crimm,12,28,38,47
 28,pop'n music Jam&Fizz,ボンバーラップ,CRAZY ARTS,FAKE TYPE.,7,25,37,44
-28,pop'n music Jam&Fizz,ケルティックトランスステップ,Dawn Saga,Nhato,15,32,42,48
-28,pop'n music Jam&Fizz,彗星ブギ,DOKIDOKI☆シューティングスター,豚乙女,13,32,41,46
-28,pop'n music Jam&Fizz,ＮＵスタイルロカビリー(UPPER),Electronic or Treat!(UPPER),PON,13,32,41,47
-28,pop'n music Jam&Fizz,トランスコア BAND,Flower-Band ver.-,B.E.L,17,31,41,48
-28,pop'n music Jam&Fizz,J-ダンスポップ BAND,Follow Tomorrow -fleufleu Edition-,fleufleu,9,26,38,44
 28,pop'n music Jam&Fizz,シャイニーゴスペル,Heavenly Good Morning!,アマギセーラ,12,27,39,46
-28,pop'n music Jam&Fizz,アラビアンハードダンス,High & Low,Shouya Namai,14,30,41,48
-28,pop'n music Jam&Fizz,ジャックポット,Hold the Pickles!!,山本真央樹,14,30,42,48
 28,pop'n music Jam&Fizz,ハピネスモータウン,How Many Eyes On You?,青野りえ+mizuno,4,24,37,42
 28,pop'n music Jam&Fizz,コスモテクノ,Hypernova,Serph,6,23,36,41
-28,pop'n music Jam&Fizz,ミラクルダンスポップ,It's my Miracle,Another Infinity feat. Mayumi Morinaga,9,26,37,43
 28,pop'n music Jam&Fizz,フローティングフュージョン,Levitation Minneapolis,北川翔也,11,28,41,47
-28,pop'n music Jam&Fizz,リトルロック(UPPER),Little Rock Overture(UPPER),惑星計画,18,29,37,46
-28,pop'n music Jam&Fizz,激辛コア,MAX KARAI,Hommarju,16,32,44,49
-28,pop'n music Jam&Fizz,ラブリーブチアゲポップ BAND,MAX LOVE - 鐘の音が止む前に -,Mar.na,8,26,35,43
-28,pop'n music Jam&Fizz,サイケデリックトランス,Moving on,AJURIKA feat.矢吹真央,13,27,39,44
 28,pop'n music Jam&Fizz,カドルコア,murmur twins (hotchpotch pop ver.),covered by 音乃瀬奏(ReGLOSS),6,24,38,46
-28,pop'n music Jam&Fizz,トランス,No Border,"BEMANI Sound Team ""dj TAKA"" feat.Sana",17,33,43,49
-28,pop'n music Jam&Fizz,デジタルサイバーロック,ONYX,SOUND HOLIC Vs. ZYTOKINE feat. Nana Takahashi,12,26,38,48
-28,pop'n music Jam&Fizz,トランス BAND,pandora-追憶の彼方へ-,ピンクターボ,7,23,33,44
-28,pop'n music Jam&Fizz,ポルカ2020,POLꞰAMAИIA,かめりあ feat. ななひら,15,29,42,48
-28,pop'n music Jam&Fizz,ベジグレッシブ,Primitive Whimsical Chopped Salad,red glasses feat.池尻家,16,30,43,48
 28,pop'n music Jam&Fizz,モダンカントリー,Que Sera Sera,大谷舞 feat.つむぎしゃち（from キミのね）,9,27,39,45
-28,pop'n music Jam&Fizz,チッピンステップ,Rushiest Rush,かめりあ,11,29,40,46
-28,pop'n music Jam&Fizz,ホリデーラウンジ,Saturday's Reward,"BEMANI Sound Team ""劇団レコード"" feat.秋成",10,26,38,43
 28,pop'n music Jam&Fizz,ダンスポップ,Shooting Star,ReGLOSS,2,17,34,43
-28,pop'n music Jam&Fizz,バトルプログレッシブ,Step forward,桜庭　統,17,31,43,49
 28,pop'n music Jam&Fizz,エテリアル,storia,"BEMANI Sound Team ""HuΣeR"" × Cororo feat. 大瀬良あい",10,27,41,46
-28,pop'n music Jam&Fizz,エレクトロサーフロック,Surfing Area51,情次２号＆ジン,11,27,42,46
 28,pop'n music Jam&Fizz,ガールズスピードコア,The Die is cast.,T4K feat.ういにゃす,13,29,42,47
-28,pop'n music Jam&Fizz,ノア,THX 4,"BEMANI Sound Team ""Power Of Nature""",19,34,44,50
 28,pop'n music Jam&Fizz,ファンキーブレイクス,Tripping Jumping,Aikapin Prod. by uno & NiActivity,12,27,40,46
-28,pop'n music Jam&Fizz,トゥインクルポップ BAND,Twinkle Wonderland -Sparkle Wonderland-,good-cool,9,25,37,45
-28,pop'n music Jam&Fizz,リリカルベース,Viden,onoken,11,28,39,45
-28,pop'n music Jam&Fizz,カーホップベース,Yum Yum OYACHU,"BEMANI Sound Team ""PON"" feat.NU-KO",16,33,43,48
-28,pop'n music Jam&Fizz,ミッドナイトスウィング,Yuni's Nocturnal Days,かめりあ,10,26,41,46
 28,pop'n music Jam&Fizz,アイスクリームマジック,アイスクリームマジック,雪乃イト,9,22,36,45
 28,pop'n music Jam&Fizz,あおばの足音,あおばの足音,駄菓子O型,6,22,33,42
 28,pop'n music Jam&Fizz,アニマソング,朱と碧のランページ,covered by 儒烏風亭らでん(ReGLOSS),5,29,42,47
-28,pop'n music Jam&Fizz,フォレストファンク,嵐の唄,削除,17,33,44,49
-28,pop'n music Jam&Fizz,ピコピコ電波ソング,あるビー！ feat.ころねぽち,ヒゲドライバー,11,29,40,46
-28,pop'n music Jam&Fizz,ブレスドワルツ,アルファ・スカイ,みーに feat. しろさきあや,13,30,40,47
 28,pop'n music Jam&Fizz,いーあるふぁんくらぶ(UPPER),いーあるふぁんくらぶ(UPPER),みきとP,10,22,34,45
 28,pop'n music Jam&Fizz,一触即発☆禅ガール(UPPER),一触即発☆禅ガール(UPPER),れるりり,14,33,43,47
 28,pop'n music Jam&Fizz,ウォン・テッド,ウォン・テッド,キミのね,7,23,36,43
 28,pop'n music Jam&Fizz,エクスプロウル,エクスプロウル,晴いちばん,12,28,40,47
-28,pop'n music Jam&Fizz,キャラバン,エトランジェ,藤野マナミ & うさおりーぬ,7,21,34,43
-28,pop'n music Jam&Fizz,ミュージカルファンタジー,円環のヴァルキュリア -lopulla tragedia-,ARM×狐夢想 feat. anporin,14,30,42,48
 28,pop'n music Jam&Fizz,おくすり飲んで寝よう,おくすり飲んで寝よう,もちうつね,5,19,34,41
 28,pop'n music Jam&Fizz,覚悟せよ！エンタンメ～ン ～より身の切り売り自暴自棄版～,覚悟せよ！エンタンメ～ン ～より身の切り売り自暴自棄版～,マキシウキョウ,8,23,34,44
 28,pop'n music Jam&Fizz,電波,カジノファイヤーことみちゃん,covered by 一条莉々華(ReGLOSS),9,24,36,46
-28,pop'n music Jam&Fizz,胸キュン☆マレット(UPPER),キセキはじまり☆(UPPER),達見 恵 featured by 佐野宏晃,14,32,39,46
 28,pop'n music Jam&Fizz,ギャ・ギャ・ギャ・ギャラクシー！,ギャ・ギャ・ギャ・ギャラクシー！,つきみぐー、,7,19,38,43
-28,pop'n music Jam&Fizz,ファンタジア,昏き甲鉄のヴェルガ,arcane feat.rionos,8,25,38,44
-28,pop'n music Jam&Fizz,昭和レトロ,黒紅掬い,猫叉Master feat.霜月はるか,8,23,34,41
 28,pop'n music Jam&Fizz,シャンティ,シャンティ,wotaku,4,17,32,40
-28,pop'n music Jam&Fizz,カートゥーンクッキング,すすめ！キッチンカー,OSTER project feat. Hinatanso,10,26,38,46
-28,pop'n music Jam&Fizz,バイナリーpf(UPPER),零と弌の鍵の唄(UPPER),red glasses feat.秋成,12,27,42,48
 28,pop'n music Jam&Fizz,千本桜(UPPER),千本桜(UPPER),♪♪♪♪♪,13,25,39,47
 28,pop'n music Jam&Fizz,バスターメタル,装填昇天エクソシスト,My Complex of Academy,10,28,40,46
-28,pop'n music Jam&Fizz,ヨフカシプロジェクト2,そして惨劇は灰色に踊る,ヨフカシプロジェクト,8,25,36,42
 28,pop'n music Jam&Fizz,J-ハウス,時が戻れば...,阿部靖広 feat.ゆめめ,8,26,36,43
-28,pop'n music Jam&Fizz,ベースボールヒロインREMIX,轟け！恋のビーンボール！！ (STARDOM Remix),"RoughSketch Vs. BEMANI Sound Team ""L.E.D.-G""",10,27,40,46
 28,pop'n music Jam&Fizz,アンティークワルツ,囚われの魔女人形,m@sumi feat. q'yul,7,24,38,44
 28,pop'n music Jam&Fizz,曇天(UPPER),曇天(UPPER),♪♪♪♪♪,14,34,37,46
-28,pop'n music Jam&Fizz,おしゃまスウィング(UPPER),なまいきプリンセス(UPPER),Dormir,15,31,42,48
-28,pop'n music Jam&Fizz,アゲモノハードバップ,ハートのフリット,red glasses feat.ゆきまめ,11,30,42,47
 28,pop'n music Jam&Fizz,白龍 （Struggle）,白龍 （Struggle）,Somari,6,22,35,42
-28,pop'n music Jam&Fizz,フォーエバーフレンズ(UPPER),走れメロンパン(UPPER),日向美ビタースイーツ♪,14,26,34,45
 28,pop'n music Jam&Fizz,ハルカナアルカナ,ハルカナアルカナ,キミのね,7,19,37,42
 28,pop'n music Jam&Fizz,ビノミ,ビノミ,MARETU,5,18,32,43
 28,pop'n music Jam&Fizz,悲報！ワイ！ニート！,悲報！ワイ！ニート！,Shu,9,25,39,46
-28,pop'n music Jam&Fizz,カレッジポップ(UPPER),ペパーミントは私の敵(UPPER),常盤ゆう,12,29,39,45
-28,pop'n music Jam&Fizz,フードファイト,ホットドッグドカぐいレース!!!!,cosMo＠暴走P,15,33,43,49
-28,pop'n music Jam&Fizz,ヨフカシプロジェクト1,まっぷたツートンソウル,ヨフカシプロジェクト,9,26,39,46
-28,pop'n music Jam&Fizz,ポップコーンパーティー2,ミラクル☆喫茶,Tomoyuki Uchida,15,30,42,48
 28,pop'n music Jam&Fizz,メズマライザー,メズマライザー,サツキ feat.初音ミク・重音テト,6,23,32,45
 28,pop'n music Jam&Fizz,らいふいずびゅーてぃふぉー,らいふいずびゅーてぃふぉー,そりっどびーつ,5,24,34,42
 28,pop'n music Jam&Fizz,ラグトレイン,ラグトレイン,稲葉曇,6,20,33,40
-28,pop'n music Jam&Fizz,バルカニックロック,乱膳の舞姫,"BEMANI Sound Team ""Akhuta Works"" feat. mami",10,28,40,45
 28,pop'n music Jam&Fizz,レイニーワルツ,リメンバーリメンバー,covered by 轟はじめ(ReGLOSS),4,23,32,44
-28,pop'n music Jam&Fizz,クリティカルケルト,竜を狩る者,夜影ネコチ,17,34,43,49
 28,pop'n music Jam&Fizz,シンセウェーブポップ,ロマンシングエスケープ,ここなつ2.0,6,19,35,41
 28,pop'n music Jam&Fizz,ワカンナイト☆フィーバー！？,ワカンナイト☆フィーバー！？,キノシタ feat.音街ウナ・鏡音リン,9,26,38,46
-29,pop'n music High☆Cheers!!,バンギャー,A Certified Banger Moment,めめめ,11,29,40,47
-29,pop'n music High☆Cheers!!,DTMスピードラン,Any%,めめめ,11,28,41,47
-29,pop'n music High☆Cheers!!,セクレタムマジカ(UPPER),Arcanum Arcanorum(UPPER),アマギセーラ,12,29,40,46
 29,pop'n music High☆Cheers!!,パニックポップ,BABY P,Plus-tech Squeeze Box,8,25,35,42
-29,pop'n music High☆Cheers!!,FMジャジーテック,BitRacer,red glasses vs Ujico*,16,34,42,48
 29,pop'n music High☆Cheers!!,ガルタナネオ,BITTER-ENDER,タケベエイスケ feat.終ワ子,7,27,38,45
 29,pop'n music High☆Cheers!!,Bling-Bang-Bang-Born,Bling-Bang-Bang-Born,Covered by uno(IOSYS) feat. Fra,10,21,35,42
 29,pop'n music High☆Cheers!!,BOW AND ARROW,BOW AND ARROW,米津玄師,5,18,34,41
-29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,3,17,31,39
-29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,4,20,34,40
+29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,3,17,-,-
+29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,4,20,-,-
 29,pop'n music High☆Cheers!!,バスマティ,Candy love,阿部靖広 feat.Shiori,10,23,38,42
 29,pop'n music High☆Cheers!!,ユーロビート,Daisuke,Y&Co.,6,29,41,46
 29,pop'n music High☆Cheers!!,丼ベース,Deep tenDon Reflex,"BEMANI Sound Team ""Coyaan""",13,31,41,47
-29,pop'n music High☆Cheers!!,レヴェラチューン(UPPER),Fate No.23(UPPER),PON feat.秋成,14,32,45,49
-29,pop'n music High☆Cheers!!,アンサラー,Fragarach,ARForest vs. Zekk,16,31,43,48
-29,pop'n music High☆Cheers!!,ウィザウチュナイ-シエテ-,FUJIMORI -祭- FESTIVAL 2026,VENUS,10,26,41,46
-29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,4,18,30,41
-29,pop'n music High☆Cheers!!,ハイパーデジメタル,FUZIN RIZIN,SOUND HOLIC feat. Nana Takahashi & 709sec.,12,31,41,48
-29,pop'n music High☆Cheers!!,リムピッド(UPPER),Hibiki(UPPER),ARForest feat.nayuta,14,32,43,47
-29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,4,21,33,42
-29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,11,28,37,45
+29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,4,18,-,-
+29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,4,21,-,-
+29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,11,28,-,-
 29,pop'n music High☆Cheers!!,KAWAII FESTIVAL,KAWAII FESTIVAL,ハローキティ,5,13,25,33
 29,pop'n music High☆Cheers!!,KING,KING,Remixed by SOUND HOLIC feat. はるの,9,20,35,44
 29,pop'n music High☆Cheers!!,レサジー,meme,袖野あらわ feat.終末うにこ,6,22,37,43
 29,pop'n music High☆Cheers!!,アマノガワレイヴ,MILKY HIGHWAY,PON feat.NU-KO,14,31,40,46
-29,pop'n music High☆Cheers!!,ハードダンス,Monkey Business,kors k,11,27,40,47
-29,pop'n music High☆Cheers!!,グリッチダブステップ,Necroxis Girl,"BEMANI Sound Team ""HuΣeR""",15,32,40,47
-29,pop'n music High☆Cheers!!,ハッピーフューチャーベース,Neverland,ARM (IOSYS) feat. Nicole Curry,8,24,37,44
-29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,5,21,32,42
-29,pop'n music High☆Cheers!!,セレスタル,Oort,Yvya,18,35,43,49
-29,pop'n music High☆Cheers!!,ガチャメタル,OVERDUE DEADEND,T4K,16,31,42,48
-29,pop'n music High☆Cheers!!,サイン(UPPER),place of the sky(UPPER),CROSSED FINGERS,9,25,36,43
+29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,5,21,-,-
 29,pop'n music High☆Cheers!!,トリップポップ,poppin' journey,オトノマート（小池理子×chocck）,9,24,36,43
-29,pop'n music High☆Cheers!!,プログレッシブトライバル,Saturn,Mr.Saturn,12,34,42,47
-29,pop'n music High☆Cheers!!,デジタル J-ポップ,Secret Rouge,ハレトキドキ,12,26,38,45
-29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,9,25,37,46
-29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),5,23,34,41
+29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,9,25,-,-
+29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),5,23,-,-
 29,pop'n music High☆Cheers!!,"Silent Flame,Never Fade","Silent Flame,Never Fade",不知火フレア,6,19,35,44
-29,pop'n music High☆Cheers!!,ハムパラドックス,Smintheus,TAN1CHU,15,32,42,48
-29,pop'n music High☆Cheers!!,ドリーミードラムン(UPPER),Sprite Digital(UPPER),Serph,10,28,39,47
-29,pop'n music High☆Cheers!!,スイートウィスパー,Sugar Holic Candy Magic,かゆき+うぐ,10,25,36,45
 29,pop'n music High☆Cheers!!,ときめきハウス,Take It! Make It!,dj TAKA feat.ゆめめ,7,25,39,45
-29,pop'n music High☆Cheers!!,エンパシー,This love,sei☆shin ft.江崎友梨 from アイドルは下剋上,8,25,38,45
-29,pop'n music High☆Cheers!!,MPB,Tizona d'El Cid,TOMOSUKE,11,30,39,46
-29,pop'n music High☆Cheers!!,トゥインクルデュオ(UPPER),TWINKLING(UPPER),猫叉Master feat.ミミニャミ,14,27,33,42
-29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,13,28,41,47
-29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,10,26,41,47
+29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,13,28,-,-
+29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,10,26,-,-
 29,pop'n music High☆Cheers!!,Wanderlust,Wanderlust,キミのね,6,14,31,42
-29,pop'n music High☆Cheers!!,ウィザウチュナイ-クアトロ-R,Wow Wow VENUS 2026,VENUS,9,27,39,45
 29,pop'n music High☆Cheers!!,ピアニシモ,靉靆の小景,red glasses,5,21,35,43
 29,pop'n music High☆Cheers!!,アイドル,アイドル,"Covered by BEMANI Sound Team ""HuΣeR × wac × Yvya"" feat. 佐伯伊織",6,20,37,44
 29,pop'n music High☆Cheers!!,イガク,イガク,原口沙輔 feat.重音テト,5,17,32,41
@@ -1958,50 +1880,36 @@
 29,pop'n music High☆Cheers!!,ギミギミエンターテイメント,ギミギミエンターテイメント,hololive IDOL PROJECT,4,18,36,43
 29,pop'n music High☆Cheers!!,キミのこと、だいだいすきだもん☆,キミのこと、だいだいすきだもん☆,シナモロール,5,11,19,31
 29,pop'n music High☆Cheers!!,ラブリーモータウン２,キミのそばに,KE!JU feat. ねんね,8,25,34,42
-29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,11,27,40,46
+29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,11,27,-,-
 29,pop'n music High☆Cheers!!,トワ,さらさ,"BEMANI Sound Team ""PON""",13,28,39,46
-29,pop'n music High☆Cheers!!,ダークネス4(UPPER),終末の序曲～オワリノハジマリ～(UPPER),フレディ波多江とエレハモニカ,13,26,35,46
 29,pop'n music High☆Cheers!!,少女レイ,少女レイ,みきとP,5,18,33,42
-29,pop'n music High☆Cheers!!,人妖絵巻1(UPPER),人妖絵巻其の一「狐」～ 紅楼ノ夢 ～(UPPER),群青キネマ feat.YAMATO,11,26,38,46
-29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,8,27,35,44
-29,pop'n music High☆Cheers!!,Ａ．Ｉ．デイトポップ(UPPER),隅田川夏恋歌(UPPER),seiya-murai feat.ALT,14,26,41,45
-29,pop'n music High☆Cheers!!,トラウマパンク,大釈迦,筋肉少女帯,10,26,34,48
+29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,8,27,-,-
 29,pop'n music High☆Cheers!!,ダイダイダイダイダイキライ,ダイダイダイダイダイキライ,雨良 Amala,7,18,36,43
 29,pop'n music High☆Cheers!!,太陽系デスコ,太陽系デスコ,ナユタン星人,7,18,36,44
-29,pop'n music High☆Cheers!!,ジャッジメントシンフォニックスピードコア,断罪のミメシス,KE!JU,14,36,43,49
-29,pop'n music High☆Cheers!!,ウチュウラブコメディ,地球防衛乙女パンナコッター,Vocal by はるの,11,26,38,44
-29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,16,31,42,48
-29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,12,31,40,47
+29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,16,31,-,-
+29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,12,31,-,-
 29,pop'n music High☆Cheers!!,テトリス,テトリス,柊マグネタイト feat.重音テト,4,12,34,44
-29,pop'n music High☆Cheers!!,TGIFフィーバー,トーキョーサマーナイト（華金Remix）,あまみ×ひなみ,10,26,39,46
-29,pop'n music High☆Cheers!!,あさきのコラボロック(UPPER),透明はまだらに世界を告げて(UPPER),あさき×剣,11,31,42,47
-29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,9,24,34,43
-29,pop'n music High☆Cheers!!,オモイデチップチューン(UPPER),夏色のセーブデータ(UPPER),"BEMANI Sound Team ""KE!JU""",13,30,40,46
-29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,11,24,37,45
-29,pop'n music High☆Cheers!!,空想ファンタジーシリーズ,眠りの国のステラ,"BEMANI Sound Team ""DJ TOTTO""",14,31,40,47
+29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,9,24,-,-
+29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,11,24,-,-
 29,pop'n music High☆Cheers!!,倍倍FIGHT!,倍倍FIGHT!,CANDY TUNE,8,17,35,44
 29,pop'n music High☆Cheers!!,はいよろこんで,はいよろこんで,こっちのけんと,2,14,27,38
 29,pop'n music High☆Cheers!!,ラストアーツ,刃図羅,猫叉Master vs HuΣeR,13,30,41,47
 29,pop'n music High☆Cheers!!,初音ミクの消失,初音ミクの消失,cosMo@暴走P,13,30,43,48
 29,pop'n music High☆Cheers!!,ハッピーラッキーチャッピー,ハッピーラッキーチャッピー,ano,3,11,32,39
-29,pop'n music High☆Cheers!!,解明ヒロイン(UPPER),ハニートリック！！(UPPER),sei☆shin feat.森本菜月,13,30,43,47
 29,pop'n music High☆Cheers!!,パプリカ,パプリカ,♪♪♪♪♪,1,10,27,37
 29,pop'n music High☆Cheers!!,ひとりごつ～バンドVer.～,ひとりごつ～バンドVer.～,ハチワレ（CV:田中誠人）,2,10,25,39
-29,pop'n music High☆Cheers!!,ハピコア,ビビッド ☆+*。キラキライム,Machico,12,27,40,46
 29,pop'n music High☆Cheers!!,ビビデバ,ビビデバ,星街すいせい,4,16,32,41
 29,pop'n music High☆Cheers!!,フォニイ,フォニイ,mami,6,19,33,43
-29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,7,23,36,42
+29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,7,23,-,-
 29,pop'n music High☆Cheers!!,プリンとマフィンのポムポムビート☆,プリンとマフィンのポムポムビート☆,ポムポムプリン,6,14,20,32
 29,pop'n music High☆Cheers!!,SNSミクスチャー,ブロックしよ♡,My Complex of Academy,12,26,37,45
-29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,9,25,36,43
+29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,9,25,-,-
 29,pop'n music High☆Cheers!!,マツケンサンバII,マツケンサンバII,♪♪♪♪♪,3,16,31,38
 29,pop'n music High☆Cheers!!,名探偵コナン,「名探偵コナン」 メイン・テーマ,♪♪♪♪♪,7,19,33,38
 29,pop'n music High☆Cheers!!,モニタリング,モニタリング,DECO*27,9,21,35,43
-29,pop'n music High☆Cheers!!,ステッチ(UPPER),モヘア(UPPER),seiya-murai feat.藤野マナミ,10,25,35,44
 29,pop'n music High☆Cheers!!,ロシアンシンフォニー,雪のラヴニーナ,劇団レコード,10,27,39,45
 29,pop'n music High☆Cheers!!,夢色ワンダー,夢色ワンダー,hololive IDOL PROJECT,8,24,37,45
-29,pop'n music High☆Cheers!!,ドラムンコアダスト2(UPPER),ラピストリアの約束(UPPER),positive MAD-crew,12,31,42,48
-29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,9,25,36,46
+29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,9,25,-,-
 29,pop'n music High☆Cheers!!,わたしの一番かわいいところ,わたしの一番かわいいところ,FRUITS ZIPPER,4,14,27,38
 -1,기타,ハイパーＪポップ３,1/6billionth,ＴЁЯＲＡ,-,24,41,47
 -1,기타,ヒップホップ,7000 Questions,アルファ,-,23,35,-
