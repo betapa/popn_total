@@ -9,10 +9,22 @@
   const VERSION_MIN = 0;
   const VERSION_MAX = 29;
   const PAGE_SIZE = 25;
+  const MAX_PAGES = 500;          // 무한 루프 방지용 상한
   const DELAY_MIN = 800;
   const DELAY_MAX = 1500;
   const MAX_RETRY = 3;
   const DIFFS = ['Big', 'Light', 'Normal', 'Hyper', 'Ex'];
+
+  // ============================================================
+  // [설정] 어느 버전(0~29)에도 속하지 않는 곡 수집
+  //  - 전체 목록(version=-1)을 풀 스캔한 뒤, 0~29 에서 수집되지 않은 곡만 Version=-1 로 추가
+  //  - 전체 탐색용 경로는 플레이데이터 페이지(mu_top.html)를 사용한다.
+  //    (music/list.html 은 곡 목록 전용 페이지라 메달/스코어가 없음)
+  // ============================================================
+  const FULL_SCAN_ENABLED = true;
+  const FULL_SCAN_PATH = BASE_PATH;
+  const FULL_SCAN_VERSION_PARAM = -1;   // 요청 URL 의 version 값
+  const OTHER_VERSION = -1;             // CSV 의 Version 컬럼에 기록할 값 (-1 또는 99)
 
   const MEDAL_MAP = {
     'meda_none': '',
@@ -78,8 +90,11 @@
     }));
   }
 
-  async function fetchPage(version, page) {
-    const url = `${BASE_PATH}?page=${page}&version=${version}&bemani=0&category=0&keyword=&sort=music&sort_type=up`;
+  // 곡 식별 키 (SongID 우선, 없으면 제목|장르|아티스트)
+  const rowKey = (r) => r.SongID || [r.Title, r.Genre, r.Artist].join('|');
+
+  async function fetchPage(path, version, page) {
+    const url = `${path}?page=${page}&version=${version}&bemani=0&category=0&keyword=&sort=music&sort_type=up`;
     for (let attempt = 1; attempt <= MAX_RETRY; attempt++) {
       try {
         const res = await fetch(url, { credentials: 'include' });
@@ -101,7 +116,7 @@
     }
   }
 
-  function parseRows(doc, version) {
+  function parseRows(doc, versionTag) {
     const rows = [];
     const items = doc.querySelectorAll('ul.mu_list_table > li:not(.st_th)');
     items.forEach((li, idx) => {
@@ -117,7 +132,7 @@
         let songId = '';
         try { songId = new URL(a.getAttribute('href'), location.origin).searchParams.get('no') || ''; } catch (_) {}
 
-        const row = { Version: version, SongID: songId, Title: title, Genre: genre, Artist: artist };
+        const row = { Version: versionTag, SongID: songId, Title: title, Genre: genre, Artist: artist };
 
         DIFFS.forEach((d, i) => {
           try {
@@ -128,17 +143,59 @@
             row[`${d}_Medal`] = medal;
             row[`${d}_Score`] = score;
           } catch (e) {
-            warn(`난이도 파싱 오류 (v${version}, ${title}, ${d}):`, e.message);
+            warn(`난이도 파싱 오류 (v${versionTag}, ${title}, ${d}):`, e.message);
             row[`${d}_Medal`] = '';
             row[`${d}_Score`] = '';
           }
         });
         rows.push(row);
       } catch (e) {
-        warn(`곡 파싱 오류 (v${version}, 행 ${idx}) -> 건너뜀:`, e.message);
+        warn(`곡 파싱 오류 (v${versionTag}, 행 ${idx}) -> 건너뜀:`, e.message);
       }
     });
     return { rows, rawCount: items.length };
+  }
+
+  function readMaxPage(doc) {
+    const pageSelect = doc.querySelector('select#s_page');
+    if (!pageSelect) return null;   // 페이지 수를 알 수 없음 -> 곡 수(PAGE_SIZE)로 종료 판단
+    const nums = Array.from(pageSelect.querySelectorAll('option'))
+      .map((o) => parseInt(o.value, 10))
+      .filter((n) => !isNaN(n));
+    return nums.length ? Math.max(...nums) : null;
+  }
+
+  // 한 목록(버전 또는 전체)의 모든 페이지를 순회
+  async function scanList(path, versionParam, versionTag, label) {
+    const out = [];
+    const seen = new Set();
+    let maxPage = null;
+
+    for (let p = 0; p < MAX_PAGES; p++) {
+      updateStatus(`[popn29] ${label} (${p + 1}p) 탐색 중...`);
+      const doc = await fetchPage(path, versionParam, p);
+      if (p === 0) maxPage = readMaxPage(doc);
+
+      const { rows, rawCount } = parseRows(doc, versionTag);
+      const fresh = rows.filter((r) => {
+        const k = rowKey(r);
+        if (seen.has(k)) return false;
+        seen.add(k);
+        return true;
+      });
+      out.push(...fresh);
+
+      if (rows.length > 0) addLog(`${label} / ${p}p: ${rawCount}곡 처리됨`);
+
+      await randomDelay();
+      if (rawCount < PAGE_SIZE) break;
+      if (maxPage !== null && p >= maxPage) break;
+      if (rawCount > 0 && fresh.length === 0) {
+        addLog(`${label}: 이미 수집한 곡만 반복되어 종료합니다.`);
+        break;
+      }
+    }
+    return out;
   }
 
   async function uploadToGitHub(allRecords, token) {
@@ -233,33 +290,37 @@
       localStorage.setItem('GITHUB_PAT', token);
     }
 
+    // [1단계] 버전별(0~29) 수집
+    const known = new Set();
     for (let v = VERSION_MIN; v <= VERSION_MAX; v++) {
-      let maxPage = 0;
-      for (let p = 0; ; p++) {
-        updateStatus(`[popn29] Ver.${v} (${p + 1}p) 탐색 중...`);
-        const doc = await fetchPage(v, p);
-        
-        if (p === 0) {
-            const pageSelect = doc.querySelector('select#s_page');
-            if (pageSelect) {
-                const options = pageSelect.querySelectorAll('option');
-                if (options.length > 0) {
-                    maxPage = Math.max(...Array.from(options).map(o => parseInt(o.value, 10)));
-                }
-            }
-        }
+      const rows = await scanList(BASE_PATH, v, v, `Ver.${v}`);
+      rows.forEach((r) => known.add(rowKey(r)));
+      all.push(...rows);
+    }
+    addLog(`버전별 수집 완료: ${all.length}곡`);
 
-        const { rows, rawCount } = parseRows(doc, v);
-        all.push(...rows);
-        
-        if (rows.length > 0) {
-            addLog(`Ver ${v} / ${p}p: ${rawCount}곡 처리됨`);
+    // [2단계] 전체 풀 스캔 -> 어느 버전에도 속하지 않는 곡만 추가
+    if (FULL_SCAN_ENABLED) {
+      try {
+        const full = await scanList(FULL_SCAN_PATH, FULL_SCAN_VERSION_PARAM, OTHER_VERSION, '전체(버전 미분류 탐색)');
+        if (full.length === 0) {
+          throw new Error('전체 탐색 결과가 비어 있습니다. (version=-1 미지원 또는 페이지 구조 불일치)');
         }
-        
-        await randomDelay();
-        if (rawCount < PAGE_SIZE || p >= maxPage) break;
+        const others = full.filter((r) => !known.has(rowKey(r)));
+        addLog(`전체 ${full.length}곡 중 버전 미분류 ${others.length}곡 발견`);
+        others.forEach((r) => addLog(`  기타: ${r.Title} (ID ${r.SongID})`));
+        all.push(...others);
+      } catch (e) {
+        if (e.message === 'LOGIN_LOST') throw e;
+        warn('전체 탐색 실패:', e);
+        addLog(`전체 탐색 실패: ${e.message}`);
+        // 실패한 채로 업로드하면 이전에 저장된 '기타' 곡이 CSV 에서 사라질 수 있으므로 사용자에게 확인
+        if (!confirm(`전체 탐색에 실패했습니다.\n${e.message}\n\n버전 미분류 곡 없이 현재까지 수집한 ${all.length}곡만 업로드할까요?\n(취소하면 업로드하지 않고 종료합니다)`)) {
+          throw new Error('전체 탐색 실패로 사용자가 업로드를 취소했습니다.');
+        }
       }
     }
+
     addLog('전체 탐색 완료. 업로드를 시작합니다.');
     
     if (all.length > 0) {

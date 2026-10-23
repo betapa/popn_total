@@ -12,9 +12,21 @@
   const VERSION_MIN = 1;  // jamfizz는 1부터 시작
   const VERSION_MAX = 28; // jamfizz의 마지막 버전은 28
   const PAGE_SIZE = 25;
+  const MAX_PAGES = 500;  // 무한 루프 방지용 상한
   const DELAY_MIN = 800;
   const DELAY_MAX = 1500;
   const MAX_RETRY = 3;
+
+  // CS 버전 (어느 버전에도 속하지 않아 category=2 로만 조회됨) -> CSV 의 Version 은 0
+  const CS_ENABLED = true;
+  const CS_CATEGORY = 2;
+  const CS_VERSION_PARAM = 0;   // 요청 URL 의 version 값
+  const CS_VERSION_TAG = 0;     // CSV 의 Version 컬럼 값
+
+  // 전체 풀 스캔 (version=0, category=0) 후, 위 수집에서 빠진 곡만 추가 -> CSV 의 Version 은 -1
+  const FULL_SCAN_ENABLED = true;
+  const FULL_SCAN_VERSION_PARAM = 0;
+  const OTHER_VERSION_TAG = -1; // -1 또는 99
   
   // JF 특화 난이도 선택자 (Easy 존재)
   const DIFFS = [
@@ -94,6 +106,9 @@
     }));
   }
 
+  // 곡 식별 키 (SongID 우선, 없으면 제목|장르|아티스트)
+  const rowKey = (r) => r.SongID || [r.Title, r.Genre, r.Artist].join('|');
+
   // GitHub 토큰 체크 및 저장
   let token = localStorage.getItem('GITHUB_PAT');
   if (!token) {
@@ -107,10 +122,10 @@
   }
 
   // ============================================================
-  // [1단계] 페이지 요청 함수
+  // [1단계] 페이지 요청 함수 (category 지정 가능)
   // ============================================================
-  async function fetchPage(version, page) {
-    const url = `${BASE_PATH}?page=${page}&version=${version}&category=0&keyword=&sort=none&sort_type=none&_t=${Date.now()}`;
+  async function fetchPage(version, category, page) {
+    const url = `${BASE_PATH}?page=${page}&version=${version}&category=${category}&keyword=&sort=none&sort_type=none&_t=${Date.now()}`;
     for (let attempt = 1; attempt <= MAX_RETRY; attempt++) {
       try {
         const res = await fetch(url, { credentials: 'include' });
@@ -125,15 +140,103 @@
         return doc;
       } catch (e) {
         if (e.message === 'LOGIN_LOST') throw e;
-        warn(`요청 실패 (v${version} p${page}, 시도 ${attempt}/${MAX_RETRY}):`, e.message);
+        warn(`요청 실패 (v${version} c${category} p${page}, 시도 ${attempt}/${MAX_RETRY}):`, e.message);
         if (attempt === MAX_RETRY) throw e;
         await sleep(2000 * attempt);
       }
     }
   }
 
+  function readMaxPage(doc) {
+    const pageSelect = doc.querySelector('select#s_page');
+    if (!pageSelect) return null;   // 페이지 수를 알 수 없음 -> 곡 수(PAGE_SIZE)로 종료 판단
+    const nums = Array.from(pageSelect.querySelectorAll('option'))
+      .map((o) => parseInt(o.value, 10))
+      .filter((n) => !isNaN(n));
+    return nums.length ? Math.max(...nums) : null;
+  }
+
   // ============================================================
-  // [2단계] CSV 생성 및 GitHub 업로드 함수
+  // [2단계] 한 목록(버전 / CS / 전체)의 모든 페이지를 순회
+  //   versionParam, category : 요청 URL 값
+  //   versionTag             : CSV 의 Version 컬럼에 기록할 값
+  // ============================================================
+  async function scanList(versionParam, category, versionTag, label) {
+    const out = [];
+    const seen = new Set();
+    let maxPage = null;
+    let scoreCount = 0;
+
+    for (let p = 0; p < MAX_PAGES; p++) {
+      const doc = await fetchPage(versionParam, category, p);
+      if (p === 0) maxPage = readMaxPage(doc);
+
+      // 헤더(.st_th, .th_music) 등을 제외하고 실제 곡이 담긴 행만 추출
+      const items = [...doc.querySelectorAll('ul.mu_list_table > li')].filter((li) => li.querySelector('.col_music'));
+      let freshCount = 0;
+
+      for (const li of items) {
+        const music = li.querySelector('.col_music');
+        const a = music.querySelector('a');
+        const infoDivs = music.querySelectorAll('div');
+        
+        const title = a ? a.textContent.trim() : '';
+        const genre = infoDivs[0] ? infoDivs[0].textContent.trim() : '';
+        const artist = infoDivs[1] ? infoDivs[1].textContent.trim() : '';
+        let songId = '';
+        try { songId = new URL(a.getAttribute('href'), location.origin).searchParams.get('no') || ''; } catch (_) {}
+
+        const row = { Version: versionTag, SongID: songId, Title: title, Genre: genre, Artist: artist };
+        const key = rowKey(row);
+        if (seen.has(key)) continue;
+        seen.add(key);
+        freshCount++;
+
+        // 실시간 상태 업데이트
+        updateStatus(`[jamfizz] ${label} (${p + 1}${maxPage !== null ? '/' + (maxPage + 1) : ''}p)\n▶ 탐색 중: ${title}`);
+
+        let hasScore = false;
+        DIFFS.forEach((d) => {
+          try {
+            const cell = li.querySelector(d.sel);
+            if (!cell) throw new Error('셀 없음: ' + d.sel);
+            
+            const medal = medalFromImg(cell.querySelector('img[src*="/medal/meda"]'));
+            const txt = cell.textContent.trim();
+            const score = /^\d+$/.test(txt) ? parseInt(txt, 10) : ''; 
+            
+            row[`${d.name}_Medal`] = medal;
+            row[`${d.name}_Score`] = score;
+            
+            if (score > 0 || medal) hasScore = true;
+          } catch (e) {
+            warn(`난이도 파싱 오류 (${label}, ${title}, ${d.name}):`, e.message);
+            row[`${d.name}_Medal`] = '';
+            row[`${d.name}_Score`] = '';
+          }
+        });
+
+        out.push(row);
+        if (hasScore) scoreCount++;
+      }
+
+      addLog(`${label} / ${p + 1}p: ${items.length}곡 처리됨`);
+      await randomDelay();
+
+      // 한 페이지 곡 수가 25개 미만이거나 현재 페이지가 최대 페이지에 도달하면 루프 종료
+      if (items.length < PAGE_SIZE) break;
+      if (maxPage !== null && p >= maxPage) break;
+      if (items.length > 0 && freshCount === 0) {
+        addLog(`${label}: 이미 수집한 곡만 반복되어 종료합니다.`);
+        break;
+      }
+    }
+    addLog(`${label} 완료: 총 ${out.length}곡 (점수 발견 ${scoreCount}곡)`);
+    return out;
+  }
+
+  // ============================================================
+  // [3단계] CSV 생성 및 GitHub 업로드 함수
   // ============================================================
   async function uploadToGitHub(allRecords, token) {
     updateStatus(`CSV 텍스트 생성 중...`);
@@ -212,80 +315,60 @@
     setTimeout(() => document.body.removeChild(ui), 5000);
   }
 
+  // 추가 수집 단계(CS/전체) 실패 시: 사용자가 동의해야만 해당 곡 없이 업로드를 계속한다.
+  // (그대로 올리면 이전에 저장된 CS/기타 곡이 CSV 에서 사라질 수 있음)
+  function confirmContinue(stepName, e, count) {
+    warn(`${stepName} 실패:`, e);
+    addLog(`${stepName} 실패: ${e.message}`);
+    if (!confirm(`${stepName}에 실패했습니다.\n${e.message}\n\n해당 곡 없이 현재까지 수집한 ${count}곡만 업로드할까요?\n(취소하면 업로드하지 않고 종료합니다)`)) {
+      throw new Error(`${stepName} 실패로 사용자가 업로드를 취소했습니다.`);
+    }
+  }
+
   // ============================================================
   // [메인] 탐색 실행 루프
   // ============================================================
   const all = [];
   try {
+    // [A] 버전별(1~28) 수집
+    const known = new Set();
     for (let v = VERSION_MIN; v <= VERSION_MAX; v++) {
-      let maxPage = 0;
-      let verSongCount = 0;
+      const rows = await scanList(v, 0, v, `Ver.${v}`);
+      rows.forEach((r) => known.add(rowKey(r)));
+      all.push(...rows);
+    }
+    addLog(`버전별 수집 완료: ${all.length}곡`);
 
-      for (let p = 0; ; p++) {
-        const doc = await fetchPage(v, p);
-        
-        // 첫 페이지에서 전체 페이지 수 파악
-        if (p === 0) {
-            const pageSelect = doc.querySelector('select#s_page');
-            if (pageSelect) {
-                const options = pageSelect.querySelectorAll('option');
-                if (options.length > 0) {
-                    maxPage = Math.max(...Array.from(options).map(o => parseInt(o.value, 10)));
-                }
-            }
-        }
-
-        // 헤더(.st_th, .th_music) 등을 제외하고 실제 곡이 담긴 행만 추출
-        const items = [...doc.querySelectorAll('ul.mu_list_table > li')].filter((li) => li.querySelector('.col_music'));
-        
-        for (const li of items) {
-            const music = li.querySelector('.col_music');
-            const a = music.querySelector('a');
-            const infoDivs = music.querySelectorAll('div');
-            
-            const title = a ? a.textContent.trim() : '';
-            const genre = infoDivs[0] ? infoDivs[0].textContent.trim() : '';
-            const artist = infoDivs[1] ? infoDivs[1].textContent.trim() : '';
-            let songId = '';
-            try { songId = new URL(a.getAttribute('href'), location.origin).searchParams.get('no') || ''; } catch (_) {}
-
-            // 실시간 상태 업데이트
-            updateStatus(`[jamfizz] Ver.${v} (${p + 1}/${maxPage + 1}p)\n▶ 탐색 중: ${title}`);
-
-            const row = { Version: v, SongID: songId, Title: title, Genre: genre, Artist: artist };
-            let hasScore = false;
-
-            DIFFS.forEach((d) => {
-              try {
-                const cell = li.querySelector(d.sel);
-                if (!cell) throw new Error('셀 없음: ' + d.sel);
-                
-                const medal = medalFromImg(cell.querySelector('img[src*="/medal/meda"]'));
-                const txt = cell.textContent.trim();
-                const score = /^\d+$/.test(txt) ? parseInt(txt, 10) : ''; 
-                
-                row[`${d.name}_Medal`] = medal;
-                row[`${d.name}_Score`] = score;
-                
-                if (score > 0 || medal) hasScore = true;
-              } catch (e) {
-                warn(`난이도 파싱 오류 (v${v}, ${title}, ${d.name}):`, e.message);
-                row[`${d.name}_Medal`] = '';
-                row[`${d.name}_Score`] = '';
-              }
-            });
-
-            all.push(row);
-            if (hasScore) verSongCount++;
-        }
-
-        addLog(`Ver ${v} / ${p + 1}p: ${items.length}곡 처리됨`);
-        await randomDelay();
-        
-        // 한 페이지 곡 수가 25개 미만이거나 현재 페이지가 최대 페이지에 도달하면 루프 종료
-        if (items.length < PAGE_SIZE || p >= maxPage) break;
+    // [B] CS 버전 (category=2) -> Version 0
+    if (CS_ENABLED) {
+      try {
+        const cs = await scanList(CS_VERSION_PARAM, CS_CATEGORY, CS_VERSION_TAG, 'CS(Ver.0)');
+        // 다른 버전에서 이미 수집된 곡은 제외 (SongID 중복 방지 -> 병합 시 행 중복 방지)
+        const csNew = cs.filter((r) => !known.has(rowKey(r)));
+        addLog(`CS ${cs.length}곡 중 신규 ${csNew.length}곡 추가 (중복 ${cs.length - csNew.length}곡 제외)`);
+        csNew.forEach((r) => known.add(rowKey(r)));
+        all.push(...csNew);
+      } catch (e) {
+        if (e.message === 'LOGIN_LOST') throw e;
+        confirmContinue('CS 버전 탐색', e, all.length);
       }
-      addLog(`[jamfizz] Ver.${v} 완료: 총 ${verSongCount}곡의 점수 발견`);
+    }
+
+    // [C] 전체 풀 스캔 -> 위에서 수집되지 않은 곡만 Version -1 로 추가
+    if (FULL_SCAN_ENABLED) {
+      try {
+        const full = await scanList(FULL_SCAN_VERSION_PARAM, 0, OTHER_VERSION_TAG, '전체(버전 미분류 탐색)');
+        if (full.length === 0) {
+          throw new Error('전체 탐색 결과가 비어 있습니다. (페이지 구조 불일치 가능)');
+        }
+        const others = full.filter((r) => !known.has(rowKey(r)));
+        addLog(`전체 ${full.length}곡 중 버전 미분류 ${others.length}곡 발견`);
+        others.forEach((r) => addLog(`  기타: ${r.Title} (ID ${r.SongID})`));
+        all.push(...others);
+      } catch (e) {
+        if (e.message === 'LOGIN_LOST') throw e;
+        confirmContinue('전체 탐색', e, all.length);
+      }
     }
     
     addLog('전체 탐색 완료. 업로드를 시작합니다.');
