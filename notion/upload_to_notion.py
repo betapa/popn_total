@@ -82,6 +82,8 @@ FIELDS = ("title",) + TEXT_FIELDS + SELECT_FIELDS + NUMBER_FIELDS
 # 빈 값으로 덮어쓰지 않도록 보호할 속성
 PROTECT_FIELDS = ("bpm", "notes", "dif_tier", "medal", "score", "best_version")
 
+MIN_IMAGE_SIZE = 1024
+
 # ============================================================
 # [API 호출 공통] 재시도 + 429 대기
 # ============================================================
@@ -316,7 +318,6 @@ def image_folders(version_num, version_name=""):
 
 _image_index = {}
 
-
 def image_index(folder_name):
     """폴더의 {정규화된 파일명: 경로} 사전 (폴더별 1회만 생성)"""
     if folder_name not in _image_index:
@@ -324,11 +325,11 @@ def image_index(folder_name):
         folder = IMAGES_DIR / folder_name
         if folder.is_dir():
             for f in folder.iterdir():
-                if f.suffix.lower() in IMAGE_EXTS:
+                # [수정됨] 확장자가 일치하면서, 파일 크기가 MIN_IMAGE_SIZE보다 큰 파일만 인덱스에 추가
+                if f.suffix.lower() in IMAGE_EXTS and f.stat().st_size > MIN_IMAGE_SIZE:
                     idx.setdefault(norm_name(f.stem), f)
         _image_index[folder_name] = idx
     return _image_index[folder_name]
-
 
 def find_image(version_num, title, version_name=""):
     for folder_name in image_folders(version_num, version_name):
@@ -336,14 +337,14 @@ def find_image(version_num, title, version_name=""):
         # 1) 정확히 일치하는 파일명 우선
         for ext in IMAGE_EXTS:
             p = folder / f"{title}{ext}"
-            if p.exists():
+            # [수정됨] 파일이 존재할 뿐만 아니라 크기가 정상(MIN_IMAGE_SIZE 초과)일 때만 반환
+            if p.exists() and p.stat().st_size > MIN_IMAGE_SIZE:
                 return p
         # 2) 정규화 비교
         found = image_index(folder_name).get(norm_name(title))
         if found is not None:
             return found
     return None
-
 
 # ============================================================
 # [5단계] 커버 생성 (GitHub URL 또는 Notion 파일 업로드)
