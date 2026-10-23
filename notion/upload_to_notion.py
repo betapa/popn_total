@@ -464,12 +464,8 @@ def main():
 
         # 커버가 없는 페이지(또는 신규)만 이미지 탐색 (기타 곡은 images/etc 에서 탐색)
         cover_img = None
-        if COVER_MODE != "none":
+        if COVER_MODE != "none" and not has_cover:
             cover_img = find_image(r.get("version_num", ""), want["title"], r.get("version_name", ""))
-            if cover_img is None and not has_cover:
-                # 아예 커버도 없고 로컬 이미지도 없는 경우만 missing 로그에 남김
-                folder_label = image_folders(r.get("version_num", ""), r.get("version_name", ""))[0]
-                missing.add(f'{folder_label}\t{want["title"]}')
             if cover_img is None:
                 folder_label = image_folders(r.get("version_num", ""), r.get("version_name", ""))[0]
                 missing.add(f'{folder_label}\t{want["title"]}')
@@ -479,10 +475,9 @@ def main():
         else:
             fields, prot = diff_fields(want, ex["values"])
             if fields:
-                status = "페이지 및 커버 갱신"
+                status = "페이지 갱신"
             elif cover_img is not None:
-                # 속성 변경(fields)이 없어도 cover_img가 있다면 커버를 덮어쓰도록 강제
-                status = "커버 강제 덮어쓰기"
+                status = "커버만 추가"
             else:
                 status = None
         if prot:
