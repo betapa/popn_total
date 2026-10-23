@@ -53,15 +53,12 @@
         - name: Notion 업로드 스크립트 실행
           working-directory: ./notion
           env:
-            # GitHub Secrets에서 가져와서 환경변수로 파이썬에 전달
             NOTION_TOKEN: ${{ secrets.NOTION_TOKEN }}
             NOTION_DATABASE_ID: ${{ secrets.NOTION_DATABASE_ID }}
+            PYTHONIOENCODING: utf-8
+            PYTHONUNBUFFERED: "1"
           run: |
-            # Notion API 호출 시 한글 인코딩 문제가 발생하지 않도록 강제 지정
-            export PYTHONIOENCODING=utf8 
-            
-            # 업로드 스크립트 실행
-            python upload_to_notion.py
+            python -u upload_to_notion.py
 
         - name: 누락된 이미지 로그(missing_images.txt) 커밋 (선택사항)
           run: |
