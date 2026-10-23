@@ -1,10 +1,6 @@
 name: Popn Music Info Scraper
 
 on:
-  schedule:
-    # 한국 시간(KST) 매주 금요일 00시 00분은 UTC 시간으로 목요일 15시 00분입니다.
-    # 분 시간 일 월 요일 (0=일요일, 4=목요일)
-    - cron: '0 15 * * 4'
   workflow_dispatch: # 웹에서 수동으로 실행할 수 있는 버튼 활성화
 
 permissions:
