@@ -1,6 +1,8 @@
 import os
 import csv
 import subprocess
+import difflib
+from collections import defaultdict
 from datetime import datetime, timezone, timedelta
 from bs4 import BeautifulSoup
 from urllib.parse import urljoin, quote
@@ -54,6 +56,16 @@ UPPER_MARK = "Ⓤ"
 UPPER_RE = re.compile(r'[\(\[（［]\s*upper\s*[\)\]）］]', re.IGNORECASE)
 UPPER_SUFFIX = "|upper"
 
+# 위키 장르 칸 끝의 난이도 표기: 예) "스카렛3(EX)", "デステクノ(H)"
+WIKI_DIFF_SUFFIX_RE = re.compile(r'\s*\((EX|H|N|E)\)\s*$', re.IGNORECASE)
+
+# 표기 차이(글자 자체가 다른 경우) 보조 매칭 설정
+#  - 장르가 정규화 후 "완전히 같을 때만" 후보가 된다. (JADAMGA / ZADAMGA 처럼 장르가 다르면 절대 합치지 않음)
+#  - 위키에는 아티스트 정보가 없으므로 장르가 동일한지만으로 후보를 좁힌 뒤 곡명 유사도를 확인한다.
+FUZZY_MIN_RATIO = 0.6          # 곡명 유사도 최소값
+FUZZY_MIN_CONTAIN_LEN = 3      # 한쪽 곡명이 다른 쪽에 포함될 때 인정하는 최소 글자 수
+FUZZY_TIE_MARGIN = 0.05        # 1,2위 후보 점수 차이가 이보다 작으면 모호한 것으로 보고 합치지 않음
+
 
 def single_key(r):
     return (str(r["version_num"]), r["title"], r["genre"], r["artist"], r["dif_name"])
@@ -97,6 +109,20 @@ def clean_filename(filename):
     return re.sub(r'[\\/*?:"<>|]', "", filename).strip()
 
 
+def strip_symbols(s):
+    """
+    NFKC 정규화 + 소문자화 후, 글자(L)/숫자(N)/결합문자(M)만 남기고 나머지는 모두 제거한다.
+    따옴표(' ’ " “ ”), 물결표(~ 〜 ～), 괄호(전각/반각), 중점(・), 하이픈, 공백, 눈에 보이지 않는 제어문자(U+202C 등),
+    ♡ ⚡ ● ‖ × = 같은 기호는 전부 사라지므로 표기 차이로 인한 불일치가 없어진다.
+    기호만으로 이루어진 이름은 전부 지워지지 않도록 공백만 제거한 형태로 대신한다.
+    """
+    s = unicodedata.normalize('NFKC', s).lower()
+    kept = "".join(ch for ch in s if unicodedata.category(ch)[0] in "LNM")
+    if kept:
+        return kept
+    return re.sub(r'\s+', '', s)
+
+
 def normalize_title(title):
     """
     공식 사이트와 위키의 곡명을 같은 형태로 맞춘다.
@@ -104,6 +130,7 @@ def normalize_title(title):
       본문에서 제거한 뒤 동일한 접미사(|upper)를 붙인다.
     - 주의: 'Ⓤ' 는 NFKC 정규화를 거치면 일반 'U' 로 바뀌므로
       반드시 정규화 전에 먼저 처리해야 한다.
+    - 그 외 모든 기호/공백/전각·반각 차이는 strip_symbols 에서 제거한다.
     """
     is_upper = UPPER_MARK in title
     s = title.replace(UPPER_MARK, " ")
@@ -114,8 +141,25 @@ def normalize_title(title):
         is_upper = True
         s = UPPER_RE.sub(" ", s)
 
-    s = re.sub(r'[\s\~\-\.\,\!\?\'\"☆♡♪]', '', s)
+    s = strip_symbols(s)
     return s + (UPPER_SUFFIX if is_upper else "")
+
+
+def normalize_genre(genre):
+    """
+    장르명 비교용 정규화. 공식 사이트의 '(UPPER)' 와 위키의 'Ⓤ' 표기는 제거하고
+    공백·기호·전각/반각 차이를 없앤다. 숫자는 남기므로 '카우보이' 와 '카우보이2' 는 서로 다른 장르로 취급된다.
+    """
+    g = genre.replace(UPPER_MARK, " ")
+    g = unicodedata.normalize('NFKC', g).lower()
+    g = UPPER_RE.sub(" ", g)
+    return strip_symbols(g)
+
+
+def wiki_genre_key(genre_diff_text):
+    """위키의 '장르(난이도)' 칸에서 난이도 표기를 떼어내고 비교용 장르 키를 만든다."""
+    diff_source = genre_diff_text.replace(UPPER_MARK, "").strip()
+    return normalize_genre(WIKI_DIFF_SUFFIX_RE.sub("", diff_source))
 
 
 def fetch_wiki_data(session):
@@ -192,6 +236,7 @@ def fetch_wiki_data(session):
                         "notes": notes,
                         "dif_tier": dif_tier,
                         "norm_title": norm_title,
+                        "norm_genre": wiki_genre_key(genre_diff_text),   # 표기차이 보조 매칭용 (wiki.csv 에는 저장되지 않음)
                         "matched": False,
                     }
 
@@ -217,9 +262,75 @@ def fetch_wiki_data(session):
     return wiki_data, wiki_entries
 
 
-def lookup_wiki(wiki_data, norm_title, dif_name):
-    """위키 정보를 찾고, 찾은 행은 matched 로 표시한다."""
+def title_similarity(norm_a, norm_b):
+    """정규화된 두 곡명의 유사도(0~1). 한쪽이 다른 쪽에 포함되면(예: 'Pink Rose' / 'Pink Rose(from ...)') 높게 본다."""
+    a = norm_a[:-len(UPPER_SUFFIX)] if norm_a.endswith(UPPER_SUFFIX) else norm_a
+    b = norm_b[:-len(UPPER_SUFFIX)] if norm_b.endswith(UPPER_SUFFIX) else norm_b
+    if not a or not b:
+        return 0.0
+    ratio = difflib.SequenceMatcher(None, a, b).ratio()
+    short, long_ = (a, b) if len(a) <= len(b) else (b, a)
+    if len(short) >= FUZZY_MIN_CONTAIN_LEN and short in long_:
+        ratio = max(ratio, 0.9)
+    return ratio
+
+
+def link_wiki_aliases(wiki_data, wiki_entries, official_songs):
+    """
+    특수문자 정규화로도 연결되지 않은 위키 곡(예: 'redrew lots' / 'redraw lots')을
+    공식 곡에 연결한다. 조건은 다음과 같다.
+      1) 공식 곡 중 곡명(정규화)이 같은 곡이 없는 위키 행만 대상으로 한다.
+      2) 장르(정규화)가 공식 곡과 완전히 같아야 한다. 한 글자라도 다르면 후보에서 제외한다.
+         (예: JADAMGA = ゴシックナイトメア2 / ZADAMGA = ゴシックナイトメア → 합치지 않음)
+      3) UPPER 여부가 같아야 한다.
+      4) 곡명 유사도가 기준 이상이고, 1위 후보가 뚜렷해야 한다.
+    연결되면 wiki_data 에 공식 곡의 정규화 제목으로 별칭 키를 추가하므로 이후 lookup_wiki 가 그대로 동작한다.
+    """
+    official_titles = set()
+    by_genre = defaultdict(set)   # (정규화 장르, UPPER 여부) -> {정규화 곡명}
+    for s in official_songs:
+        nt = normalize_title(s["title"])
+        official_titles.add(nt)
+        by_genre[(normalize_genre(s["genre"]), nt.endswith(UPPER_SUFFIX))].add(nt)
+
+    linked = 0
+    skipped = []
+    for e in wiki_entries:
+        if e["norm_title"] in official_titles or not e["dif_name"]:
+            continue
+        genre_key = e.get("norm_genre", "")
+        if not genre_key:
+            continue
+
+        candidates = by_genre.get((genre_key, e["upper"] == "Y"), set())
+        scored = sorted(((title_similarity(e["norm_title"], c), c) for c in candidates), reverse=True)
+        scored = [x for x in scored if x[0] >= FUZZY_MIN_RATIO]
+        if not scored:
+            continue
+
+        if len(scored) > 1 and scored[0][0] - scored[1][0] < FUZZY_TIE_MARGIN:
+            skipped.append(e["title"])
+            continue
+
+        best = scored[0][1]
+        wiki_data.setdefault((best, e["dif_name"]), []).append(e)
+        e["alias_of"] = best
+        linked += 1
+        print(f"   [표기차이 연결] wiki '{e['title']}' ({e['dif_name']}) → 공식 정규화 제목 '{best}' (유사도 {scored[0][0]:.2f})")
+
+    for t in skipped:
+        print(f"   [표기차이 보류] '{t}' : 같은 장르에서 후보가 모호하여 연결하지 않았습니다.")
+    print(f"[표기차이 보조 매칭] {linked}개 위키 행을 공식 곡에 추가 연결했습니다.")
+
+
+def lookup_wiki(wiki_data, norm_title, dif_name, genre_key=None):
+    """
+    위키 정보를 찾고, 찾은 행은 matched 로 표시한다.
+    genre_key 가 주어지면(정규화 제목이 같은 서로 다른 곡이 있는 경우) 장르가 같은 위키 행만 사용한다.
+    """
     entries = wiki_data.get((norm_title, dif_name))
+    if entries and genre_key is not None:
+        entries = [e for e in entries if e.get("norm_genre") == genre_key]
     if not entries:
         return {}
     for e in entries:
@@ -350,6 +461,33 @@ def scrape_version(session, version, label, on_song):
         time.sleep(0.5)
 
 
+def build_single_records(official_entries, wiki_data, prev_single):
+    """수집이 모두 끝난 공식 곡 목록을 난이도별 레코드로 변환하면서 위키 정보를 붙인다."""
+    # 정규화하면 곡명이 같아지는 서로 다른 곡(예: 'memories' / 'memories...')은 장르까지 같아야 위키 정보를 붙인다.
+    genres_by_title = defaultdict(set)
+    for song, _, _ in official_entries:
+        genres_by_title[normalize_title(song["title"])].add(normalize_genre(song["genre"]))
+
+    records = []
+    for song, version_num, version_name in official_entries:
+        norm_t = normalize_title(song["title"])
+        genre_key = normalize_genre(song["genre"]) if len(genres_by_title[norm_t]) > 1 else None
+        for dif_name in ("light", "normal", "hyper", "ex"):
+            level = song[dif_name]
+            if level == "-":
+                continue
+            w_data = lookup_wiki(wiki_data, norm_t, dif_name, genre_key)
+            rec = {
+                "version_num": version_num, "version_name": version_name,
+                "genre": song["genre"], "title": song["title"], "artist": song["artist"],
+                "dif_name": dif_name, "level": level,
+                "bpm": w_data.get("bpm", ""), "notes": w_data.get("notes", ""),
+                "dif_tier": w_data.get("dif_tier", "")
+            }
+            records.append(stamp_song(rec, prev_single))
+    return records
+
+
 def push_to_github():
     print("\n[GitHub 업로드] 변경된 파일들을 GitHub에 푸시합니다...")
     try:
@@ -374,7 +512,7 @@ def push_to_github():
 
 def main():
     music_data_list = []
-    music_data_single_list = []
+    official_entries = []   # (song, version_num, version_name) : 위키 매칭은 전체 수집이 끝난 뒤에 수행
 
     prev_single = load_previous_single()
     print(f"[변경 감지] 이전 single 데이터 {len(prev_single)}행 로드")
@@ -420,33 +558,17 @@ def main():
     seen_songs = set()
 
     def register_song(song, version_num, version_name):
-        """곡 한 개를 두 개의 CSV 리스트(통합/난이도별)에 등록한다."""
-        genre, title, artist = song["genre"], song["title"], song["artist"]
-
+        """곡 한 개를 통합 CSV 리스트에 등록하고, 난이도별 레코드는 나중에 만들 수 있도록 보관한다."""
         if song["img_url"]:
-            download_image(session, song["img_url"], version_num, title)
+            download_image(session, song["img_url"], version_num, song["title"])
 
         music_data_list.append({
             "Version_Num": version_num, "Version_Name": version_name,
-            "Genre": genre, "Title": title, "Artist": artist,
+            "Genre": song["genre"], "Title": song["title"], "Artist": song["artist"],
             "Light": song["light"], "Normal": song["normal"],
             "Hyper": song["hyper"], "EX": song["ex"]
         })
-
-        norm_t = normalize_title(title)
-        for dif_name in ("light", "normal", "hyper", "ex"):
-            level = song[dif_name]
-            if level == "-":
-                continue
-            w_data = lookup_wiki(wiki_data, norm_t, dif_name)
-            rec = {
-                "version_num": version_num, "version_name": version_name,
-                "genre": genre, "title": title, "artist": artist,
-                "dif_name": dif_name, "level": level,
-                "bpm": w_data.get("bpm", ""), "notes": w_data.get("notes", ""),
-                "dif_tier": w_data.get("dif_tier", "")
-            }
-            music_data_single_list.append(stamp_song(rec, prev_single))
+        official_entries.append((song, version_num, version_name))
 
     # 2. 공식 홈페이지 파싱 (버전 0~29)
     for version in range(30):
@@ -475,7 +597,14 @@ def main():
     scrape_version(session, -1, "전체 목록", on_etc_song)
     print(f"[기타 곡 탐색 결과] 어느 버전에도 속하지 않는 곡 {etc_count}곡을 '{ETC_VERSION_NAME}' 로 추가했습니다.\n")
 
-    # 4. 파일 저장
+    # 4. 위키 정보 연결
+    #    (1) 정규화 제목이 같은 곡은 lookup_wiki 에서 바로 연결된다. (특수문자 차이는 normalize_title 이 흡수)
+    #    (2) 글자 자체가 다른 곡은 장르가 완전히 같을 때만 보조 매칭으로 연결한다.
+    print("[Wiki 연결] 표기 차이가 있는 곡을 장르 기준으로 보조 매칭합니다...")
+    link_wiki_aliases(wiki_data, wiki_entries, [e[0] for e in official_entries])
+    music_data_single_list = build_single_records(official_entries, wiki_data, prev_single)
+
+    # 5. 파일 저장
     csv_headers = ["Version_Num", "Version_Name", "Genre", "Title", "Artist", "Light", "Normal", "Hyper", "EX"]
     with open(CSV_FILENAME, mode='w', encoding='utf-8-sig', newline='') as f:
         writer = csv.DictWriter(f, fieldnames=csv_headers)
@@ -488,12 +617,12 @@ def main():
         writer.writeheader()
         writer.writerows(music_data_single_list)
 
-    # 5. 매칭되지 못한 위키 정보 저장 (모든 곡 수집이 끝난 뒤에 판정)
+    # 6. 매칭되지 못한 위키 정보 저장 (모든 곡 수집이 끝난 뒤에 판정)
     save_wiki_unmatched(wiki_entries)
 
     print("\n모든 데이터 저장 완료.")
 
-    # 6. GitHub 자동 업로드
+    # 7. GitHub 자동 업로드
     push_to_github()
 
 
