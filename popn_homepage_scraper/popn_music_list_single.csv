@@ -193,6 +193,7 @@
 0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,light,8,,,,2026-10-21T19:46:34+09:00
 0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,normal,14,,,,2026-10-21T19:46:34+09:00
 0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,hyper,22,,,,2026-10-21T19:46:34+09:00
+0,pop'n 가정용,シンパシー,Usual Days,EGOISTIC LEMONTEA,ex,37,,,,2026-10-23T09:11:06+09:00
 0,pop'n 가정용,テクノ'80,Water Melon Woman,NAKATEK,normal,14,,,,2026-10-21T19:46:34+09:00
 0,pop'n 가정용,テクノ'80,Water Melon Woman,NAKATEK,hyper,18,,,,2026-10-21T19:46:34+09:00
 0,pop'n 가정용,テクノ'80,Water Melon Woman,NAKATEK,ex,41,115,878,+0.242,2026-10-21T19:46:34+09:00
@@ -6236,6 +6237,26 @@
 27,pop'n music UniLab,ヒップロック8,狼弦暴威,Des-ROW・組スペシアル,normal,32,,,,2026-10-21T19:46:34+09:00
 27,pop'n music UniLab,ヒップロック8,狼弦暴威,Des-ROW・組スペシアル,hyper,42,179,1024,+0.609,2026-10-21T19:46:34+09:00
 27,pop'n music UniLab,ヒップロック8,狼弦暴威,Des-ROW・組スペシアル,ex,48,179,1503,+0.221,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ボンバーテクノ,Amazing Bomberman,TESSEI TOJO,light,9,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ボンバーテクノ,Amazing Bomberman,TESSEI TOJO,normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ボンバーテクノ,Amazing Bomberman,TESSEI TOJO,hyper,41,175,803,0.0,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ボンバーテクノ,Amazing Bomberman,TESSEI TOJO,ex,45,175,1086,+0.309,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エモーショナルJ-ポップ,ANEMONE,"BEMANI Sound Team ""HuΣeR × Yvya"" feat.紫村 花澄",light,8,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エモーショナルJ-ポップ,ANEMONE,"BEMANI Sound Team ""HuΣeR × Yvya"" feat.紫村 花澄",normal,24,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エモーショナルJ-ポップ,ANEMONE,"BEMANI Sound Team ""HuΣeR × Yvya"" feat.紫村 花澄",hyper,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エモーショナルJ-ポップ,ANEMONE,"BEMANI Sound Team ""HuΣeR × Yvya"" feat.紫村 花澄",ex,41,174,902,-0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,コスモボヤージュ,astral_dismantle,ARForest feat.nayuta,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,コスモボヤージュ,astral_dismantle,ARForest feat.nayuta,normal,28,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,コスモボヤージュ,astral_dismantle,ARForest feat.nayuta,hyper,40,202,923,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,コスモボヤージュ,astral_dismantle,ARForest feat.nayuta,ex,47,202,1287,+0.324,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エデン,AVEL,"BEMANI Sound Team ""Power Of Nature""",light,18,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エデン,AVEL,"BEMANI Sound Team ""Power Of Nature""",normal,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エデン,AVEL,"BEMANI Sound Team ""Power Of Nature""",hyper,43,158,1037,+0.440,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エデン,AVEL,"BEMANI Sound Team ""Power Of Nature""",ex,49,158,1570,+1.032,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラウドロック,BLAKE,A.T.park,light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラウドロック,BLAKE,A.T.park,normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラウドロック,BLAKE,A.T.park,hyper,40,200,1014,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラウドロック,BLAKE,A.T.park,ex,46,200,1441,-0.036,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,エヴォリューションディスコ,Bomb be love,sei☆shin feat.ken,light,12,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エヴォリューションディスコ,Bomb be love,sei☆shin feat.ken,normal,27,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エヴォリューションディスコ,Bomb be love,sei☆shin feat.ken,hyper,37,,,,2026-10-21T19:46:34+09:00
@@ -6244,14 +6265,50 @@
 28,pop'n music Jam&Fizz,ビッグバンドミュージカル,BROADWAY QUEENS,T-HEY & TANEKO,normal,26,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ビッグバンドミュージカル,BROADWAY QUEENS,T-HEY & TANEKO,hyper,38,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ビッグバンドミュージカル,BROADWAY QUEENS,T-HEY & TANEKO,ex,45,115,1114,+0.667,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ハイパンク(UPPER),cobalt(UPPER),Des-ROW・組スペシアル,light,20,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ハイパンク(UPPER),cobalt(UPPER),Des-ROW・組スペシアル,normal,35,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ハイパンク(UPPER),cobalt(UPPER),Des-ROW・組スペシアル,hyper,41,145～175,1005,0.0,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ハイパンク(UPPER),cobalt(UPPER),Des-ROW・組スペシアル,ex,47,145～175,1268,+0.480,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレイクコア,Cookie Bouquets,L.E.D. vs TOMOSUKE fw.crimm,light,12,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレイクコア,Cookie Bouquets,L.E.D. vs TOMOSUKE fw.crimm,normal,28,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレイクコア,Cookie Bouquets,L.E.D. vs TOMOSUKE fw.crimm,hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレイクコア,Cookie Bouquets,L.E.D. vs TOMOSUKE fw.crimm,ex,47,205,1462,-0.365,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ボンバーラップ,CRAZY ARTS,FAKE TYPE.,light,7,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ボンバーラップ,CRAZY ARTS,FAKE TYPE.,normal,25,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ボンバーラップ,CRAZY ARTS,FAKE TYPE.,hyper,37,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ボンバーラップ,CRAZY ARTS,FAKE TYPE.,ex,44,132,961,-0.560,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ケルティックトランスステップ,Dawn Saga,Nhato,light,15,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ケルティックトランスステップ,Dawn Saga,Nhato,normal,32,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ケルティックトランスステップ,Dawn Saga,Nhato,hyper,42,185,909,+0.100,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ケルティックトランスステップ,Dawn Saga,Nhato,ex,48,185,1369,+0.246,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,彗星ブギ,DOKIDOKI☆シューティングスター,豚乙女,light,13,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,彗星ブギ,DOKIDOKI☆シューティングスター,豚乙女,normal,32,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,彗星ブギ,DOKIDOKI☆シューティングスター,豚乙女,hyper,41,192,885,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,彗星ブギ,DOKIDOKI☆シューティングスター,豚乙女,ex,46,192,1181,+0.011,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ＮＵスタイルロカビリー(UPPER),Electronic or Treat!(UPPER),PON,light,13,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ＮＵスタイルロカビリー(UPPER),Electronic or Treat!(UPPER),PON,normal,32,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ＮＵスタイルロカビリー(UPPER),Electronic or Treat!(UPPER),PON,hyper,41,190,815,-1.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ＮＵスタイルロカビリー(UPPER),Electronic or Treat!(UPPER),PON,ex,47,190,1306,+0.400,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランスコア BAND,Flower-Band ver.-,B.E.L,light,17,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランスコア BAND,Flower-Band ver.-,B.E.L,normal,31,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランスコア BAND,Flower-Band ver.-,B.E.L,hyper,41,173,902,-0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランスコア BAND,Flower-Band ver.-,B.E.L,ex,48,173,1443,-0.376,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,J-ダンスポップ BAND,Follow Tomorrow -fleufleu Edition-,fleufleu,light,9,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,J-ダンスポップ BAND,Follow Tomorrow -fleufleu Edition-,fleufleu,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,J-ダンスポップ BAND,Follow Tomorrow -fleufleu Edition-,fleufleu,hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,J-ダンスポップ BAND,Follow Tomorrow -fleufleu Edition-,fleufleu,ex,44,190,1083,+0.126,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,シャイニーゴスペル,Heavenly Good Morning!,アマギセーラ,light,12,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャイニーゴスペル,Heavenly Good Morning!,アマギセーラ,normal,27,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャイニーゴスペル,Heavenly Good Morning!,アマギセーラ,hyper,39,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャイニーゴスペル,Heavenly Good Morning!,アマギセーラ,ex,46,132,1156,-0.389,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,アラビアンハードダンス,High & Low,Shouya Namai,light,14,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アラビアンハードダンス,High & Low,Shouya Namai,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アラビアンハードダンス,High & Low,Shouya Namai,hyper,41,210,954,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アラビアンハードダンス,High & Low,Shouya Namai,ex,48,210,1426,+0.127,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ジャックポット,Hold the Pickles!!,山本真央樹,light,14,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ジャックポット,Hold the Pickles!!,山本真央樹,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ジャックポット,Hold the Pickles!!,山本真央樹,hyper,42,220～242,1012,+0.492,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ジャックポット,Hold the Pickles!!,山本真央樹,ex,48,220～242,1504,+0.119,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ハピネスモータウン,How Many Eyes On You?,青野りえ+mizuno,light,4,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ハピネスモータウン,How Many Eyes On You?,青野りえ+mizuno,normal,24,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ハピネスモータウン,How Many Eyes On You?,青野りえ+mizuno,hyper,37,,,,2026-10-21T19:46:34+09:00
@@ -6260,34 +6317,110 @@
 28,pop'n music Jam&Fizz,コスモテクノ,Hypernova,Serph,normal,23,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,コスモテクノ,Hypernova,Serph,hyper,36,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,コスモテクノ,Hypernova,Serph,ex,41,160,994,-0.5,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ミラクルダンスポップ,It's my Miracle,Another Infinity feat. Mayumi Morinaga,light,9,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミラクルダンスポップ,It's my Miracle,Another Infinity feat. Mayumi Morinaga,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミラクルダンスポップ,It's my Miracle,Another Infinity feat. Mayumi Morinaga,hyper,37,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミラクルダンスポップ,It's my Miracle,Another Infinity feat. Mayumi Morinaga,ex,43,175,1035,-0.140,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,フローティングフュージョン,Levitation Minneapolis,北川翔也,light,11,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,フローティングフュージョン,Levitation Minneapolis,北川翔也,normal,28,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,フローティングフュージョン,Levitation Minneapolis,北川翔也,hyper,41,145,1021,+1.0,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,フローティングフュージョン,Levitation Minneapolis,北川翔也,ex,47,145,1437,-0.183,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,リトルロック(UPPER),Little Rock Overture(UPPER),惑星計画,light,18,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リトルロック(UPPER),Little Rock Overture(UPPER),惑星計画,normal,29,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リトルロック(UPPER),Little Rock Overture(UPPER),惑星計画,hyper,37,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リトルロック(UPPER),Little Rock Overture(UPPER),惑星計画,ex,46,175,1390,+0.571,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,激辛コア,MAX KARAI,Hommarju,light,16,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,激辛コア,MAX KARAI,Hommarju,normal,32,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,激辛コア,MAX KARAI,Hommarju,hyper,44,195～285,1095,+0.580,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,激辛コア,MAX KARAI,Hommarju,ex,49,195～285,1542,-0.109,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラブリーブチアゲポップ BAND,MAX LOVE - 鐘の音が止む前に -,Mar.na,light,8,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラブリーブチアゲポップ BAND,MAX LOVE - 鐘の音が止む前に -,Mar.na,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラブリーブチアゲポップ BAND,MAX LOVE - 鐘の音が止む前に -,Mar.na,hyper,35,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ラブリーブチアゲポップ BAND,MAX LOVE - 鐘の音が止む前に -,Mar.na,ex,43,170,1091,+0.343,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,サイケデリックトランス,Moving on,AJURIKA feat.矢吹真央,light,13,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,サイケデリックトランス,Moving on,AJURIKA feat.矢吹真央,normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,サイケデリックトランス,Moving on,AJURIKA feat.矢吹真央,hyper,39,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,サイケデリックトランス,Moving on,AJURIKA feat.矢吹真央,ex,44,153,1076,+0.480,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,カドルコア,murmur twins (hotchpotch pop ver.),covered by 音乃瀬奏(ReGLOSS),light,6,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,カドルコア,murmur twins (hotchpotch pop ver.),covered by 音乃瀬奏(ReGLOSS),normal,24,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,カドルコア,murmur twins (hotchpotch pop ver.),covered by 音乃瀬奏(ReGLOSS),hyper,38,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,カドルコア,murmur twins (hotchpotch pop ver.),covered by 音乃瀬奏(ReGLOSS),ex,46,174,1224,+0.140,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,トランス,No Border,"BEMANI Sound Team ""dj TAKA"" feat.Sana",light,17,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス,No Border,"BEMANI Sound Team ""dj TAKA"" feat.Sana",normal,33,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス,No Border,"BEMANI Sound Team ""dj TAKA"" feat.Sana",hyper,43,150,1035,+0.260,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス,No Border,"BEMANI Sound Team ""dj TAKA"" feat.Sana",ex,49,150,1633,+0.315,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,デジタルサイバーロック,ONYX,SOUND HOLIC Vs. ZYTOKINE feat. Nana Takahashi,light,12,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,デジタルサイバーロック,ONYX,SOUND HOLIC Vs. ZYTOKINE feat. Nana Takahashi,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,デジタルサイバーロック,ONYX,SOUND HOLIC Vs. ZYTOKINE feat. Nana Takahashi,hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,デジタルサイバーロック,ONYX,SOUND HOLIC Vs. ZYTOKINE feat. Nana Takahashi,ex,48,200,1500,-0.157,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス BAND,pandora-追憶の彼方へ-,ピンクターボ,light,7,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス BAND,pandora-追憶の彼方へ-,ピンクターボ,normal,23,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス BAND,pandora-追憶の彼方へ-,ピンクターボ,hyper,33,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トランス BAND,pandora-追憶の彼方へ-,ピンクターボ,ex,44,170,1075,+0.178,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポルカ2020,POLꞰAMAИIA,かめりあ feat. ななひら,light,15,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポルカ2020,POLꞰAMAИIA,かめりあ feat. ななひら,normal,29,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポルカ2020,POLꞰAMAИIA,かめりあ feat. ななひら,hyper,42,160,919,-0.120,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポルカ2020,POLꞰAMAИIA,かめりあ feat. ななひら,ex,48,160,1496,-0.146,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベジグレッシブ,Primitive Whimsical Chopped Salad,red glasses feat.池尻家,light,16,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベジグレッシブ,Primitive Whimsical Chopped Salad,red glasses feat.池尻家,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベジグレッシブ,Primitive Whimsical Chopped Salad,red glasses feat.池尻家,hyper,43,206,1023,-0.329,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベジグレッシブ,Primitive Whimsical Chopped Salad,red glasses feat.池尻家,ex,48,206,1475,-0.036,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,モダンカントリー,Que Sera Sera,大谷舞 feat.つむぎしゃち（from キミのね）,light,9,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,モダンカントリー,Que Sera Sera,大谷舞 feat.つむぎしゃち（from キミのね）,normal,27,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,モダンカントリー,Que Sera Sera,大谷舞 feat.つむぎしゃち（from キミのね）,hyper,39,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,モダンカントリー,Que Sera Sera,大谷舞 feat.つむぎしゃち（from キミのね）,ex,45,138,1042,+0.140,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,チッピンステップ,Rushiest Rush,かめりあ,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,チッピンステップ,Rushiest Rush,かめりあ,normal,29,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,チッピンステップ,Rushiest Rush,かめりあ,hyper,40,112～145,829,0.0,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,チッピンステップ,Rushiest Rush,かめりあ,ex,46,112～145,1083,-0.094,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ホリデーラウンジ,Saturday's Reward,"BEMANI Sound Team ""劇団レコード"" feat.秋成",light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ホリデーラウンジ,Saturday's Reward,"BEMANI Sound Team ""劇団レコード"" feat.秋成",normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ホリデーラウンジ,Saturday's Reward,"BEMANI Sound Team ""劇団レコード"" feat.秋成",hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ホリデーラウンジ,Saturday's Reward,"BEMANI Sound Team ""劇団レコード"" feat.秋成",ex,43,165,1042,-0.500,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ダンスポップ,Shooting Star,ReGLOSS,light,2,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ダンスポップ,Shooting Star,ReGLOSS,normal,17,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ダンスポップ,Shooting Star,ReGLOSS,hyper,34,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ダンスポップ,Shooting Star,ReGLOSS,ex,43,170,1062,-0.473,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,バトルプログレッシブ,Step forward,桜庭　統,light,17,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バトルプログレッシブ,Step forward,桜庭　統,normal,31,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バトルプログレッシブ,Step forward,桜庭　統,hyper,43,145,1107,-0.094,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バトルプログレッシブ,Step forward,桜庭　統,ex,49,145,1533,-0.192,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,エテリアル,storia,"BEMANI Sound Team ""HuΣeR"" × Cororo feat. 大瀬良あい",light,10,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エテリアル,storia,"BEMANI Sound Team ""HuΣeR"" × Cororo feat. 大瀬良あい",normal,27,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エテリアル,storia,"BEMANI Sound Team ""HuΣeR"" × Cororo feat. 大瀬良あい",hyper,41,205,860,+1.0,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エテリアル,storia,"BEMANI Sound Team ""HuΣeR"" × Cororo feat. 大瀬良あい",ex,46,205,1285,+0.117,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,エレクトロサーフロック,Surfing Area51,情次２号＆ジン,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エレクトロサーフロック,Surfing Area51,情次２号＆ジン,normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エレクトロサーフロック,Surfing Area51,情次２号＆ジン,hyper,42,175,989,-0.154,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,エレクトロサーフロック,Surfing Area51,情次２号＆ジン,ex,46,175,1255,-0.267,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ガールズスピードコア,The Die is cast.,T4K feat.ういにゃす,light,13,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ガールズスピードコア,The Die is cast.,T4K feat.ういにゃす,normal,29,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ガールズスピードコア,The Die is cast.,T4K feat.ういにゃす,hyper,42,210,1024,+0.250,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ガールズスピードコア,The Die is cast.,T4K feat.ういにゃす,ex,47,210,1380,-0.400,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ノア,THX 4,"BEMANI Sound Team ""Power Of Nature""",light,19,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ノア,THX 4,"BEMANI Sound Team ""Power Of Nature""",normal,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ノア,THX 4,"BEMANI Sound Team ""Power Of Nature""",hyper,44,150,1140,+0.225,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ノア,THX 4,"BEMANI Sound Team ""Power Of Nature""",ex,50,150,1912,+0.722,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ファンキーブレイクス,Tripping Jumping,Aikapin Prod. by uno & NiActivity,light,12,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ファンキーブレイクス,Tripping Jumping,Aikapin Prod. by uno & NiActivity,normal,27,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ファンキーブレイクス,Tripping Jumping,Aikapin Prod. by uno & NiActivity,hyper,40,156,927,+0.5,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ファンキーブレイクス,Tripping Jumping,Aikapin Prod. by uno & NiActivity,ex,46,156,1197,+0.000,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,トゥインクルポップ BAND,Twinkle Wonderland -Sparkle Wonderland-,good-cool,light,9,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トゥインクルポップ BAND,Twinkle Wonderland -Sparkle Wonderland-,good-cool,normal,25,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トゥインクルポップ BAND,Twinkle Wonderland -Sparkle Wonderland-,good-cool,hyper,37,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,トゥインクルポップ BAND,Twinkle Wonderland -Sparkle Wonderland-,good-cool,ex,45,188,1153,+0.325,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リリカルベース,Viden,onoken,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リリカルベース,Viden,onoken,normal,28,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リリカルベース,Viden,onoken,hyper,39,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,リリカルベース,Viden,onoken,ex,45,174,1154,+0.022,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カーホップベース,Yum Yum OYACHU,"BEMANI Sound Team ""PON"" feat.NU-KO",light,16,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カーホップベース,Yum Yum OYACHU,"BEMANI Sound Team ""PON"" feat.NU-KO",normal,33,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カーホップベース,Yum Yum OYACHU,"BEMANI Sound Team ""PON"" feat.NU-KO",hyper,43,192,1032,-0.030,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カーホップベース,Yum Yum OYACHU,"BEMANI Sound Team ""PON"" feat.NU-KO",ex,48,24～192,1403,+0.576,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミッドナイトスウィング,Yuni's Nocturnal Days,かめりあ,light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミッドナイトスウィング,Yuni's Nocturnal Days,かめりあ,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミッドナイトスウィング,Yuni's Nocturnal Days,かめりあ,hyper,41,153,811,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミッドナイトスウィング,Yuni's Nocturnal Days,かめりあ,ex,46,153,1176,-0.011,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,アイスクリームマジック,アイスクリームマジック,雪乃イト,light,9,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,アイスクリームマジック,アイスクリームマジック,雪乃イト,normal,22,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,アイスクリームマジック,アイスクリームマジック,雪乃イト,hyper,36,,,,2026-10-21T19:46:34+09:00
@@ -6300,6 +6433,18 @@
 28,pop'n music Jam&Fizz,アニマソング,朱と碧のランページ,covered by 儒烏風亭らでん(ReGLOSS),normal,29,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,アニマソング,朱と碧のランページ,covered by 儒烏風亭らでん(ReGLOSS),hyper,42,178,889,-0.5,2026-10-22T21:44:08+09:00
 28,pop'n music Jam&Fizz,アニマソング,朱と碧のランページ,covered by 儒烏風亭らでん(ReGLOSS),ex,47,178,1324,-0.485,2026-10-22T21:44:08+09:00
+28,pop'n music Jam&Fizz,フォレストファンク,嵐の唄,削除,light,17,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォレストファンク,嵐の唄,削除,normal,33,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォレストファンク,嵐の唄,削除,hyper,44,174,1010,+0.855,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォレストファンク,嵐の唄,削除,ex,49,174,1531,+1.114,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ピコピコ電波ソング,あるビー！ feat.ころねぽち,ヒゲドライバー,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ピコピコ電波ソング,あるビー！ feat.ころねぽち,ヒゲドライバー,normal,29,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ピコピコ電波ソング,あるビー！ feat.ころねぽち,ヒゲドライバー,hyper,40,236,930,-0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ピコピコ電波ソング,あるビー！ feat.ころねぽち,ヒゲドライバー,ex,46,236,1329,-0.051,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレスドワルツ,アルファ・スカイ,みーに feat. しろさきあや,light,13,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレスドワルツ,アルファ・スカイ,みーに feat. しろさきあや,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレスドワルツ,アルファ・スカイ,みーに feat. しろさきあや,hyper,40,140,952,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ブレスドワルツ,アルファ・スカイ,みーに feat. しろさきあや,ex,47,140,1267,+0.039,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,いーあるふぁんくらぶ(UPPER),いーあるふぁんくらぶ(UPPER),みきとP,light,10,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,いーあるふぁんくらぶ(UPPER),いーあるふぁんくらぶ(UPPER),みきとP,normal,22,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,いーあるふぁんくらぶ(UPPER),いーあるふぁんくらぶ(UPPER),みきとP,hyper,34,,,,2026-10-21T19:46:34+09:00
@@ -6316,6 +6461,14 @@
 28,pop'n music Jam&Fizz,エクスプロウル,エクスプロウル,晴いちばん,normal,28,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エクスプロウル,エクスプロウル,晴いちばん,hyper,40,164,973,+0.5,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,エクスプロウル,エクスプロウル,晴いちばん,ex,47,164,1439,+0.587,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,キャラバン,エトランジェ,藤野マナミ & うさおりーぬ,light,7,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,キャラバン,エトランジェ,藤野マナミ & うさおりーぬ,normal,21,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,キャラバン,エトランジェ,藤野マナミ & うさおりーぬ,hyper,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,キャラバン,エトランジェ,藤野マナミ & うさおりーぬ,ex,43,92,1014,-0.182,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミュージカルファンタジー,円環のヴァルキュリア -lopulla tragedia-,ARM×狐夢想 feat. anporin,light,14,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミュージカルファンタジー,円環のヴァルキュリア -lopulla tragedia-,ARM×狐夢想 feat. anporin,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミュージカルファンタジー,円環のヴァルキュリア -lopulla tragedia-,ARM×狐夢想 feat. anporin,hyper,42,200,899,-0.123,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ミュージカルファンタジー,円環のヴァルキュリア -lopulla tragedia-,ARM×狐夢想 feat. anporin,ex,48,200,1439,+0.995,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,おくすり飲んで寝よう,おくすり飲んで寝よう,もちうつね,light,5,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,おくすり飲んで寝よう,おくすり飲んで寝よう,もちうつね,normal,19,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,おくすり飲んで寝よう,おくすり飲んで寝よう,もちうつね,hyper,34,,,,2026-10-21T19:46:34+09:00
@@ -6328,14 +6481,34 @@
 28,pop'n music Jam&Fizz,電波,カジノファイヤーことみちゃん,covered by 一条莉々華(ReGLOSS),normal,24,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,電波,カジノファイヤーことみちゃん,covered by 一条莉々華(ReGLOSS),hyper,36,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,電波,カジノファイヤーことみちゃん,covered by 一条莉々華(ReGLOSS),ex,46,230,1175,+0.656,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,胸キュン☆マレット(UPPER),キセキはじまり☆(UPPER),達見 恵 featured by 佐野宏晃,light,14,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,胸キュン☆マレット(UPPER),キセキはじまり☆(UPPER),達見 恵 featured by 佐野宏晃,normal,32,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,胸キュン☆マレット(UPPER),キセキはじまり☆(UPPER),達見 恵 featured by 佐野宏晃,hyper,39,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,胸キュン☆マレット(UPPER),キセキはじまり☆(UPPER),達見 恵 featured by 佐野宏晃,ex,46,168,1232,+0.105,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ギャ・ギャ・ギャ・ギャラクシー！,ギャ・ギャ・ギャ・ギャラクシー！,つきみぐー、,light,7,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ギャ・ギャ・ギャ・ギャラクシー！,ギャ・ギャ・ギャ・ギャラクシー！,つきみぐー、,normal,19,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ギャ・ギャ・ギャ・ギャラクシー！,ギャ・ギャ・ギャ・ギャラクシー！,つきみぐー、,hyper,38,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ギャ・ギャ・ギャ・ギャラクシー！,ギャ・ギャ・ギャ・ギャラクシー！,つきみぐー、,ex,43,140,1095,+0.232,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ファンタジア,昏き甲鉄のヴェルガ,arcane feat.rionos,light,8,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ファンタジア,昏き甲鉄のヴェルガ,arcane feat.rionos,normal,25,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ファンタジア,昏き甲鉄のヴェルガ,arcane feat.rionos,hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ファンタジア,昏き甲鉄のヴェルガ,arcane feat.rionos,ex,44,174,1186,-0.150,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,昭和レトロ,黒紅掬い,猫叉Master feat.霜月はるか,light,8,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,昭和レトロ,黒紅掬い,猫叉Master feat.霜月はるか,normal,23,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,昭和レトロ,黒紅掬い,猫叉Master feat.霜月はるか,hyper,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,昭和レトロ,黒紅掬い,猫叉Master feat.霜月はるか,ex,41,104,950,0.0,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,シャンティ,シャンティ,wotaku,light,4,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャンティ,シャンティ,wotaku,normal,17,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャンティ,シャンティ,wotaku,hyper,32,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シャンティ,シャンティ,wotaku,ex,40,144,696,-0.5,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,カートゥーンクッキング,すすめ！キッチンカー,OSTER project feat. Hinatanso,light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カートゥーンクッキング,すすめ！キッチンカー,OSTER project feat. Hinatanso,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カートゥーンクッキング,すすめ！キッチンカー,OSTER project feat. Hinatanso,hyper,38,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カートゥーンクッキング,すすめ！キッチンカー,OSTER project feat. Hinatanso,ex,46,172,1234,-0.368,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バイナリーpf(UPPER),零と弌の鍵の唄(UPPER),red glasses feat.秋成,light,12,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バイナリーpf(UPPER),零と弌の鍵の唄(UPPER),red glasses feat.秋成,normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バイナリーpf(UPPER),零と弌の鍵の唄(UPPER),red glasses feat.秋成,hyper,42,178,990,+0.480,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バイナリーpf(UPPER),零と弌の鍵の唄(UPPER),red glasses feat.秋成,ex,48,178,1536,+0.412,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,千本桜(UPPER),千本桜(UPPER),♪♪♪♪♪,light,13,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,千本桜(UPPER),千本桜(UPPER),♪♪♪♪♪,normal,25,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,千本桜(UPPER),千本桜(UPPER),♪♪♪♪♪,hyper,39,,,,2026-10-21T19:46:34+09:00
@@ -6344,10 +6517,18 @@
 28,pop'n music Jam&Fizz,バスターメタル,装填昇天エクソシスト,My Complex of Academy,normal,28,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,バスターメタル,装填昇天エクソシスト,My Complex of Academy,hyper,40,178,829,0.0,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,バスターメタル,装填昇天エクソシスト,My Complex of Academy,ex,46,178,1216,+0.009,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト2,そして惨劇は灰色に踊る,ヨフカシプロジェクト,light,8,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト2,そして惨劇は灰色に踊る,ヨフカシプロジェクト,normal,25,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト2,そして惨劇は灰色に踊る,ヨフカシプロジェクト,hyper,36,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト2,そして惨劇は灰色に踊る,ヨフカシプロジェクト,ex,42,132,803,+0.375,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,J-ハウス,時が戻れば...,阿部靖広 feat.ゆめめ,light,8,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,J-ハウス,時が戻れば...,阿部靖広 feat.ゆめめ,normal,26,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,J-ハウス,時が戻れば...,阿部靖広 feat.ゆめめ,hyper,36,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,J-ハウス,時が戻れば...,阿部靖広 feat.ゆめめ,ex,43,125,996,+0.600,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,ベースボールヒロインREMIX,轟け！恋のビーンボール！！ (STARDOM Remix),"RoughSketch Vs. BEMANI Sound Team ""L.E.D.-G""",light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベースボールヒロインREMIX,轟け！恋のビーンボール！！ (STARDOM Remix),"RoughSketch Vs. BEMANI Sound Team ""L.E.D.-G""",normal,27,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベースボールヒロインREMIX,轟け！恋のビーンボール！！ (STARDOM Remix),"RoughSketch Vs. BEMANI Sound Team ""L.E.D.-G""",hyper,40,145,739,0.0,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ベースボールヒロインREMIX,轟け！恋のビーンボール！！ (STARDOM Remix),"RoughSketch Vs. BEMANI Sound Team ""L.E.D.-G""",ex,46,145,1240,+0.720,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,アンティークワルツ,囚われの魔女人形,m@sumi feat. q'yul,light,7,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,アンティークワルツ,囚われの魔女人形,m@sumi feat. q'yul,normal,24,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,アンティークワルツ,囚われの魔女人形,m@sumi feat. q'yul,hyper,38,,,,2026-10-21T19:46:34+09:00
@@ -6356,10 +6537,22 @@
 28,pop'n music Jam&Fizz,曇天(UPPER),曇天(UPPER),♪♪♪♪♪,normal,34,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,曇天(UPPER),曇天(UPPER),♪♪♪♪♪,hyper,37,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,曇天(UPPER),曇天(UPPER),♪♪♪♪♪,ex,46,189,1109,+0.133,2026-10-22T21:44:08+09:00
+28,pop'n music Jam&Fizz,おしゃまスウィング(UPPER),なまいきプリンセス(UPPER),Dormir,light,15,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,おしゃまスウィング(UPPER),なまいきプリンセス(UPPER),Dormir,normal,31,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,おしゃまスウィング(UPPER),なまいきプリンセス(UPPER),Dormir,hyper,42,125,992,+0.050,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,おしゃまスウィング(UPPER),なまいきプリンセス(UPPER),Dormir,ex,48,125,1536,-0.350,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アゲモノハードバップ,ハートのフリット,red glasses feat.ゆきまめ,light,11,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アゲモノハードバップ,ハートのフリット,red glasses feat.ゆきまめ,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アゲモノハードバップ,ハートのフリット,red glasses feat.ゆきまめ,hyper,42,198,1008,+0.320,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,アゲモノハードバップ,ハートのフリット,red glasses feat.ゆきまめ,ex,47,198,1392,+0.027,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,白龍 （Struggle）,白龍 （Struggle）,Somari,light,6,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,白龍 （Struggle）,白龍 （Struggle）,Somari,normal,22,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,白龍 （Struggle）,白龍 （Struggle）,Somari,hyper,35,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,白龍 （Struggle）,白龍 （Struggle）,Somari,ex,42,120～165,953,-0.118,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,フォーエバーフレンズ(UPPER),走れメロンパン(UPPER),日向美ビタースイーツ♪,light,14,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォーエバーフレンズ(UPPER),走れメロンパン(UPPER),日向美ビタースイーツ♪,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォーエバーフレンズ(UPPER),走れメロンパン(UPPER),日向美ビタースイーツ♪,hyper,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フォーエバーフレンズ(UPPER),走れメロンパン(UPPER),日向美ビタースイーツ♪,ex,45,170,1122,-0.606,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,ハルカナアルカナ,ハルカナアルカナ,キミのね,light,7,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ハルカナアルカナ,ハルカナアルカナ,キミのね,normal,19,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ハルカナアルカナ,ハルカナアルカナ,キミのね,hyper,37,,,,2026-10-21T19:46:34+09:00
@@ -6372,6 +6565,22 @@
 28,pop'n music Jam&Fizz,悲報！ワイ！ニート！,悲報！ワイ！ニート！,Shu,normal,25,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,悲報！ワイ！ニート！,悲報！ワイ！ニート！,Shu,hyper,39,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,悲報！ワイ！ニート！,悲報！ワイ！ニート！,Shu,ex,46,165,1282,+0.089,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,カレッジポップ(UPPER),ペパーミントは私の敵(UPPER),常盤ゆう,light,12,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カレッジポップ(UPPER),ペパーミントは私の敵(UPPER),常盤ゆう,normal,29,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カレッジポップ(UPPER),ペパーミントは私の敵(UPPER),常盤ゆう,hyper,39,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,カレッジポップ(UPPER),ペパーミントは私の敵(UPPER),常盤ゆう,ex,45,162～170,1127,-0.324,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フードファイト,ホットドッグドカぐいレース!!!!,cosMo＠暴走P,light,15,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フードファイト,ホットドッグドカぐいレース!!!!,cosMo＠暴走P,normal,33,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フードファイト,ホットドッグドカぐいレース!!!!,cosMo＠暴走P,hyper,43,35～210,1023,+0.259,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,フードファイト,ホットドッグドカぐいレース!!!!,cosMo＠暴走P,ex,49,35～210,1535,+0.278,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト1,まっぷたツートンソウル,ヨフカシプロジェクト,light,9,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト1,まっぷたツートンソウル,ヨフカシプロジェクト,normal,26,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト1,まっぷたツートンソウル,ヨフカシプロジェクト,hyper,39,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ヨフカシプロジェクト1,まっぷたツートンソウル,ヨフカシプロジェクト,ex,46,160,1036,+0.242,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポップコーンパーティー2,ミラクル☆喫茶,Tomoyuki Uchida,light,15,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポップコーンパーティー2,ミラクル☆喫茶,Tomoyuki Uchida,normal,30,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポップコーンパーティー2,ミラクル☆喫茶,Tomoyuki Uchida,hyper,42,280,913,+1.000,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,ポップコーンパーティー2,ミラクル☆喫茶,Tomoyuki Uchida,ex,48,280,1416,+0.843,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,メズマライザー,メズマライザー,サツキ feat.初音ミク・重音テト,light,6,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,メズマライザー,メズマライザー,サツキ feat.初音ミク・重音テト,normal,23,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,メズマライザー,メズマライザー,サツキ feat.初音ミク・重音テト,hyper,32,,,,2026-10-21T19:46:34+09:00
@@ -6384,10 +6593,18 @@
 28,pop'n music Jam&Fizz,ラグトレイン,ラグトレイン,稲葉曇,normal,20,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ラグトレイン,ラグトレイン,稲葉曇,hyper,33,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ラグトレイン,ラグトレイン,稲葉曇,ex,40,147,967,-0.5,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,バルカニックロック,乱膳の舞姫,"BEMANI Sound Team ""Akhuta Works"" feat. mami",light,10,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バルカニックロック,乱膳の舞姫,"BEMANI Sound Team ""Akhuta Works"" feat. mami",normal,28,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バルカニックロック,乱膳の舞姫,"BEMANI Sound Team ""Akhuta Works"" feat. mami",hyper,40,171,893,+0.5,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,バルカニックロック,乱膳の舞姫,"BEMANI Sound Team ""Akhuta Works"" feat. mami",ex,45,171,1208,+0.141,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,レイニーワルツ,リメンバーリメンバー,covered by 轟はじめ(ReGLOSS),light,4,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,レイニーワルツ,リメンバーリメンバー,covered by 轟はじめ(ReGLOSS),normal,23,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,レイニーワルツ,リメンバーリメンバー,covered by 轟はじめ(ReGLOSS),hyper,32,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,レイニーワルツ,リメンバーリメンバー,covered by 轟はじめ(ReGLOSS),ex,44,182,1024,-0.139,2026-10-21T19:46:34+09:00
+28,pop'n music Jam&Fizz,クリティカルケルト,竜を狩る者,夜影ネコチ,light,17,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,クリティカルケルト,竜を狩る者,夜影ネコチ,normal,34,,,,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,クリティカルケルト,竜を狩る者,夜影ネコチ,hyper,43,194,1007,+0.306,2026-10-23T09:11:06+09:00
+28,pop'n music Jam&Fizz,クリティカルケルト,竜を狩る者,夜影ネコチ,ex,49,194,1529,-0.542,2026-10-23T09:11:06+09:00
 28,pop'n music Jam&Fizz,シンセウェーブポップ,ロマンシングエスケープ,ここなつ2.0,light,6,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シンセウェーブポップ,ロマンシングエスケープ,ここなつ2.0,normal,19,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,シンセウェーブポップ,ロマンシングエスケープ,ここなつ2.0,hyper,35,,,,2026-10-21T19:46:34+09:00
@@ -6396,10 +6613,26 @@
 28,pop'n music Jam&Fizz,ワカンナイト☆フィーバー！？,ワカンナイト☆フィーバー！？,キノシタ feat.音街ウナ・鏡音リン,normal,26,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ワカンナイト☆フィーバー！？,ワカンナイト☆フィーバー！？,キノシタ feat.音街ウナ・鏡音リン,hyper,38,,,,2026-10-21T19:46:34+09:00
 28,pop'n music Jam&Fizz,ワカンナイト☆フィーバー！？,ワカンナイト☆フィーバー！？,キノシタ feat.音街ウナ・鏡音リン,ex,46,189,1275,-0.829,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,バンギャー,A Certified Banger Moment,めめめ,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,バンギャー,A Certified Banger Moment,めめめ,normal,29,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,バンギャー,A Certified Banger Moment,めめめ,hyper,40,150～200,710,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,バンギャー,A Certified Banger Moment,めめめ,ex,47,150～200,1015,+0.784,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,DTMスピードラン,Any%,めめめ,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,DTMスピードラン,Any%,めめめ,normal,28,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,DTMスピードラン,Any%,めめめ,hyper,41,157～177,867,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,DTMスピードラン,Any%,めめめ,ex,47,157～177,1353,+0.055,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セクレタムマジカ(UPPER),Arcanum Arcanorum(UPPER),アマギセーラ,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セクレタムマジカ(UPPER),Arcanum Arcanorum(UPPER),アマギセーラ,normal,29,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セクレタムマジカ(UPPER),Arcanum Arcanorum(UPPER),アマギセーラ,hyper,40,158,900,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セクレタムマジカ(UPPER),Arcanum Arcanorum(UPPER),アマギセーラ,ex,46,158,1273,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,パニックポップ,BABY P,Plus-tech Squeeze Box,light,8,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,パニックポップ,BABY P,Plus-tech Squeeze Box,normal,25,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,パニックポップ,BABY P,Plus-tech Squeeze Box,hyper,35,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,パニックポップ,BABY P,Plus-tech Squeeze Box,ex,42,136,961,+0.400,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,FMジャジーテック,BitRacer,red glasses vs Ujico*,light,16,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,FMジャジーテック,BitRacer,red glasses vs Ujico*,normal,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,FMジャジーテック,BitRacer,red glasses vs Ujico*,hyper,42,132～158,864,+0.533,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,FMジャジーテック,BitRacer,red glasses vs Ujico*,ex,48,132～158,1535,+1.055,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ガルタナネオ,BITTER-ENDER,タケベエイスケ feat.終ワ子,light,7,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ガルタナネオ,BITTER-ENDER,タケベエイスケ feat.終ワ子,normal,27,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ガルタナネオ,BITTER-ENDER,タケベエイスケ feat.終ワ子,hyper,38,,,,2026-10-21T19:46:34+09:00
@@ -6414,8 +6647,12 @@
 29,pop'n music High☆Cheers!!,BOW AND ARROW,BOW AND ARROW,米津玄師,ex,41,180,824,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,light,3,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,normal,17,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,hyper,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,BRAND NEW STARS!!,BRAND NEW STARS!!,Switch,ex,39,,,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,light,4,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,normal,20,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,hyper,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,BRIGHTEST STARS!!,BRIGHTEST STARS!!,Knights,ex,40,144,1022,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,バスマティ,Candy love,阿部靖広 feat.Shiori,light,10,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,バスマティ,Candy love,阿部靖広 feat.Shiori,normal,23,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,バスマティ,Candy love,阿部靖広 feat.Shiori,hyper,38,,,,2026-10-21T19:46:34+09:00
@@ -6428,12 +6665,38 @@
 29,pop'n music High☆Cheers!!,丼ベース,Deep tenDon Reflex,"BEMANI Sound Team ""Coyaan""",normal,31,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,丼ベース,Deep tenDon Reflex,"BEMANI Sound Team ""Coyaan""",hyper,41,180,934,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,丼ベース,Deep tenDon Reflex,"BEMANI Sound Team ""Coyaan""",ex,47,180,1363,+0.423,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,レヴェラチューン(UPPER),Fate No.23(UPPER),PON feat.秋成,light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,レヴェラチューン(UPPER),Fate No.23(UPPER),PON feat.秋成,normal,32,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,レヴェラチューン(UPPER),Fate No.23(UPPER),PON feat.秋成,hyper,45,195,1053,+0.352,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,レヴェラチューン(UPPER),Fate No.23(UPPER),PON feat.秋成,ex,49,195,1553,+0.380,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,アンサラー,Fragarach,ARForest vs. Zekk,light,16,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,アンサラー,Fragarach,ARForest vs. Zekk,normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,アンサラー,Fragarach,ARForest vs. Zekk,hyper,43,190,1011,+0.329,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,アンサラー,Fragarach,ARForest vs. Zekk,ex,48,190,1461,+0.511,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-シエテ-,FUJIMORI -祭- FESTIVAL 2026,VENUS,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-シエテ-,FUJIMORI -祭- FESTIVAL 2026,VENUS,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-シエテ-,FUJIMORI -祭- FESTIVAL 2026,VENUS,hyper,41,158,916,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-シエテ-,FUJIMORI -祭- FESTIVAL 2026,VENUS,ex,46,158,1262,+0.000,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,light,4,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,normal,18,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,hyper,30,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,FUSIONIC STARS!!,FUSIONIC STARS!!,Valkyrie,ex,41,200,1025,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハイパーデジメタル,FUZIN RIZIN,SOUND HOLIC feat. Nana Takahashi & 709sec.,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハイパーデジメタル,FUZIN RIZIN,SOUND HOLIC feat. Nana Takahashi & 709sec.,normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハイパーデジメタル,FUZIN RIZIN,SOUND HOLIC feat. Nana Takahashi & 709sec.,hyper,41,190,999,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハイパーデジメタル,FUZIN RIZIN,SOUND HOLIC feat. Nana Takahashi & 709sec.,ex,48,190,1533,+0.094,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,リムピッド(UPPER),Hibiki(UPPER),ARForest feat.nayuta,light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,リムピッド(UPPER),Hibiki(UPPER),ARForest feat.nayuta,normal,32,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,リムピッド(UPPER),Hibiki(UPPER),ARForest feat.nayuta,hyper,43,195,1000,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,リムピッド(UPPER),Hibiki(UPPER),ARForest feat.nayuta,ex,47,195,1474,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,light,4,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,normal,21,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,hyper,33,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ソフトロックＬＯＮＧ,Homesick Pt.2&3,covered by 不知火フレア,ex,42,178,1098,-0.077,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,light,11,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,normal,28,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,hyper,37,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,オービタリック K-スタイル,HYPER LUV,Rev Girls and Boy feat. U1-ASAMi,ex,45,155,1068,+0.080,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,KAWAII FESTIVAL,KAWAII FESTIVAL,ハローキティ,light,5,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,KAWAII FESTIVAL,KAWAII FESTIVAL,ハローキティ,normal,13,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,KAWAII FESTIVAL,KAWAII FESTIVAL,ハローキティ,hyper,25,,,,2026-10-21T19:46:34+09:00
@@ -6450,32 +6713,102 @@
 29,pop'n music High☆Cheers!!,アマノガワレイヴ,MILKY HIGHWAY,PON feat.NU-KO,normal,31,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,アマノガワレイヴ,MILKY HIGHWAY,PON feat.NU-KO,hyper,40,190,878,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,アマノガワレイヴ,MILKY HIGHWAY,PON feat.NU-KO,ex,46,190,1264,+0.863,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ハードダンス,Monkey Business,kors k,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハードダンス,Monkey Business,kors k,normal,27,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハードダンス,Monkey Business,kors k,hyper,40,80～160,816,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハードダンス,Monkey Business,kors k,ex,47,80～160,1295,+0.745,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,グリッチダブステップ,Necroxis Girl,"BEMANI Sound Team ""HuΣeR""",light,15,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,グリッチダブステップ,Necroxis Girl,"BEMANI Sound Team ""HuΣeR""",normal,32,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,グリッチダブステップ,Necroxis Girl,"BEMANI Sound Team ""HuΣeR""",hyper,40,150,908,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,グリッチダブステップ,Necroxis Girl,"BEMANI Sound Team ""HuΣeR""",ex,47,150,1309,+0.179,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハッピーフューチャーベース,Neverland,ARM (IOSYS) feat. Nicole Curry,light,8,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハッピーフューチャーベース,Neverland,ARM (IOSYS) feat. Nicole Curry,normal,24,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハッピーフューチャーベース,Neverland,ARM (IOSYS) feat. Nicole Curry,hyper,37,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハッピーフューチャーベース,Neverland,ARM (IOSYS) feat. Nicole Curry,ex,44,160,1034,-0.092,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,light,5,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,normal,21,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,hyper,32,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,One with One,One with One,Ra*bits,ex,42,148,1170,-0.373,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セレスタル,Oort,Yvya,light,18,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セレスタル,Oort,Yvya,normal,35,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セレスタル,Oort,Yvya,hyper,43,196,1040,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,セレスタル,Oort,Yvya,ex,49,196,1603,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ガチャメタル,OVERDUE DEADEND,T4K,light,16,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ガチャメタル,OVERDUE DEADEND,T4K,normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ガチャメタル,OVERDUE DEADEND,T4K,hyper,42,120～220,917,-0.160,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ガチャメタル,OVERDUE DEADEND,T4K,ex,48,120～220,1386,-0.686,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,サイン(UPPER),place of the sky(UPPER),CROSSED FINGERS,light,9,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,サイン(UPPER),place of the sky(UPPER),CROSSED FINGERS,normal,25,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,サイン(UPPER),place of the sky(UPPER),CROSSED FINGERS,hyper,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,サイン(UPPER),place of the sky(UPPER),CROSSED FINGERS,ex,43,115,1074,+0.171,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,トリップポップ,poppin' journey,オトノマート（小池理子×chocck）,light,9,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トリップポップ,poppin' journey,オトノマート（小池理子×chocck）,normal,24,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トリップポップ,poppin' journey,オトノマート（小池理子×chocck）,hyper,36,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トリップポップ,poppin' journey,オトノマート（小池理子×chocck）,ex,43,75～174,1019,+0.891,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,プログレッシブトライバル,Saturn,Mr.Saturn,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,プログレッシブトライバル,Saturn,Mr.Saturn,normal,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,プログレッシブトライバル,Saturn,Mr.Saturn,hyper,42,155,996,+0.650,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,プログレッシブトライバル,Saturn,Mr.Saturn,ex,47,155,1330,+0.238,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,デジタル J-ポップ,Secret Rouge,ハレトキドキ,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,デジタル J-ポップ,Secret Rouge,ハレトキドキ,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,デジタル J-ポップ,Secret Rouge,ハレトキドキ,hyper,38,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,デジタル J-ポップ,Secret Rouge,ハレトキドキ,ex,45,139,1194,-0.207,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,light,9,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,normal,25,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,hyper,37,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,リプルトーン,SeLaS,m@sumi,ex,46,124,1107,+0.275,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),light,5,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),normal,23,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),hyper,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,プロジェクトジルコン,Signs and Wonders,ネオン(CV:藤川茜)、芽兎めう(CV:五十嵐裕美),ex,41,98,856,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,"Silent Flame,Never Fade","Silent Flame,Never Fade",不知火フレア,light,6,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,"Silent Flame,Never Fade","Silent Flame,Never Fade",不知火フレア,normal,19,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,"Silent Flame,Never Fade","Silent Flame,Never Fade",不知火フレア,hyper,35,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,"Silent Flame,Never Fade","Silent Flame,Never Fade",不知火フレア,ex,44,145,1154,+0.650,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ハムパラドックス,Smintheus,TAN1CHU,light,15,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハムパラドックス,Smintheus,TAN1CHU,normal,32,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハムパラドックス,Smintheus,TAN1CHU,hyper,42,228～250,1014,+0.462,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハムパラドックス,Smintheus,TAN1CHU,ex,48,228～250,1530,+0.522,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドリーミードラムン(UPPER),Sprite Digital(UPPER),Serph,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドリーミードラムン(UPPER),Sprite Digital(UPPER),Serph,normal,28,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドリーミードラムン(UPPER),Sprite Digital(UPPER),Serph,hyper,39,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドリーミードラムン(UPPER),Sprite Digital(UPPER),Serph,ex,47,170,1213,-0.363,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,スイートウィスパー,Sugar Holic Candy Magic,かゆき+うぐ,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,スイートウィスパー,Sugar Holic Candy Magic,かゆき+うぐ,normal,25,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,スイートウィスパー,Sugar Holic Candy Magic,かゆき+うぐ,hyper,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,スイートウィスパー,Sugar Holic Candy Magic,かゆき+うぐ,ex,45,152,1185,-0.400,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ときめきハウス,Take It! Make It!,dj TAKA feat.ゆめめ,light,7,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ときめきハウス,Take It! Make It!,dj TAKA feat.ゆめめ,normal,25,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ときめきハウス,Take It! Make It!,dj TAKA feat.ゆめめ,hyper,39,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ときめきハウス,Take It! Make It!,dj TAKA feat.ゆめめ,ex,45,135,1093,+0.554,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,エンパシー,This love,sei☆shin ft.江崎友梨 from アイドルは下剋上,light,8,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,エンパシー,This love,sei☆shin ft.江崎友梨 from アイドルは下剋上,normal,25,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,エンパシー,This love,sei☆shin ft.江崎友梨 from アイドルは下剋上,hyper,38,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,エンパシー,This love,sei☆shin ft.江崎友梨 from アイドルは下剋上,ex,45,92～138,1082,+0.415,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,MPB,Tizona d'El Cid,TOMOSUKE,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,MPB,Tizona d'El Cid,TOMOSUKE,normal,30,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,MPB,Tizona d'El Cid,TOMOSUKE,hyper,39,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,MPB,Tizona d'El Cid,TOMOSUKE,ex,46,264,1185,+0.235,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トゥインクルデュオ(UPPER),TWINKLING(UPPER),猫叉Master feat.ミミニャミ,light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トゥインクルデュオ(UPPER),TWINKLING(UPPER),猫叉Master feat.ミミニャミ,normal,27,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トゥインクルデュオ(UPPER),TWINKLING(UPPER),猫叉Master feat.ミミニャミ,hyper,33,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トゥインクルデュオ(UPPER),TWINKLING(UPPER),猫叉Master feat.ミミニャミ,ex,42,152,1090,+0.418,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,light,13,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,normal,28,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,hyper,41,270,864,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウインドシャッフル,ÜBER BLANKENESE,SOUND HOLIC,ex,47,270,1359,+0.447,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,light,10,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,normal,26,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,hyper,41,198,929,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,エピックノヴァ,Vi∀,不知火フレア Prod.by PON,ex,47,198,1317,+0.740,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,Wanderlust,Wanderlust,キミのね,light,6,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,Wanderlust,Wanderlust,キミのね,normal,14,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,Wanderlust,Wanderlust,キミのね,hyper,31,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,Wanderlust,Wanderlust,キミのね,ex,42,144,855,-0.257,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-クアトロ-R,Wow Wow VENUS 2026,VENUS,light,9,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-クアトロ-R,Wow Wow VENUS 2026,VENUS,normal,27,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-クアトロ-R,Wow Wow VENUS 2026,VENUS,hyper,39,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウィザウチュナイ-クアトロ-R,Wow Wow VENUS 2026,VENUS,ex,45,157,1205,+0.122,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ピアニシモ,靉靆の小景,red glasses,light,5,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ピアニシモ,靉靆の小景,red glasses,normal,21,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ピアニシモ,靉靆の小景,red glasses,hyper,35,,,,2026-10-21T19:46:34+09:00
@@ -6554,16 +6887,36 @@
 29,pop'n music High☆Cheers!!,ラブリーモータウン２,キミのそばに,KE!JU feat. ねんね,ex,42,220,1044,+1.048,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,light,11,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,normal,27,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,hyper,40,201,956,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,コロコロック,心転々,PHQUASE feat.紫崎 雪,ex,46,201,1305,-0.364,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,トワ,さらさ,"BEMANI Sound Team ""PON""",light,13,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トワ,さらさ,"BEMANI Sound Team ""PON""",normal,28,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トワ,さらさ,"BEMANI Sound Team ""PON""",hyper,39,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,トワ,さらさ,"BEMANI Sound Team ""PON""",ex,46,168,1235,-0.043,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ダークネス4(UPPER),終末の序曲～オワリノハジマリ～(UPPER),フレディ波多江とエレハモニカ,light,13,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ダークネス4(UPPER),終末の序曲～オワリノハジマリ～(UPPER),フレディ波多江とエレハモニカ,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ダークネス4(UPPER),終末の序曲～オワリノハジマリ～(UPPER),フレディ波多江とエレハモニカ,hyper,35,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ダークネス4(UPPER),終末の序曲～オワリノハジマリ～(UPPER),フレディ波多江とエレハモニカ,ex,46,,,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,少女レイ,少女レイ,みきとP,light,5,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,少女レイ,少女レイ,みきとP,normal,18,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,少女レイ,少女レイ,みきとP,hyper,33,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,少女レイ,少女レイ,みきとP,ex,42,150,748,+0.309,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,人妖絵巻1(UPPER),人妖絵巻其の一「狐」～ 紅楼ノ夢 ～(UPPER),群青キネマ feat.YAMATO,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,人妖絵巻1(UPPER),人妖絵巻其の一「狐」～ 紅楼ノ夢 ～(UPPER),群青キネマ feat.YAMATO,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,人妖絵巻1(UPPER),人妖絵巻其の一「狐」～ 紅楼ノ夢 ～(UPPER),群青キネマ feat.YAMATO,hyper,38,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,人妖絵巻1(UPPER),人妖絵巻其の一「狐」～ 紅楼ノ夢 ～(UPPER),群青キネマ feat.YAMATO,ex,46,190,1298,-0.178,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,light,8,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,normal,27,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,hyper,35,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,怪談スウィング,スペクター・チェイサー,音戯探偵ひなビタ♫,ex,44,132,1060,+0.329,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,Ａ．Ｉ．デイトポップ(UPPER),隅田川夏恋歌(UPPER),seiya-murai feat.ALT,light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,Ａ．Ｉ．デイトポップ(UPPER),隅田川夏恋歌(UPPER),seiya-murai feat.ALT,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,Ａ．Ｉ．デイトポップ(UPPER),隅田川夏恋歌(UPPER),seiya-murai feat.ALT,hyper,41,180,926,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,Ａ．Ｉ．デイトポップ(UPPER),隅田川夏恋歌(UPPER),seiya-murai feat.ALT,ex,45,180,1149,-0.026,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トラウマパンク,大釈迦,筋肉少女帯,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トラウマパンク,大釈迦,筋肉少女帯,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トラウマパンク,大釈迦,筋肉少女帯,hyper,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,トラウマパンク,大釈迦,筋肉少女帯,ex,48,171,1533,-0.455,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ダイダイダイダイダイキライ,ダイダイダイダイダイキライ,雨良 Amala,light,7,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ダイダイダイダイダイキライ,ダイダイダイダイダイキライ,雨良 Amala,normal,18,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ダイダイダイダイダイキライ,ダイダイダイダイダイキライ,雨良 Amala,hyper,36,,,,2026-10-21T19:46:34+09:00
@@ -6572,18 +6925,50 @@
 29,pop'n music High☆Cheers!!,太陽系デスコ,太陽系デスコ,ナユタン星人,normal,18,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,太陽系デスコ,太陽系デスコ,ナユタン星人,hyper,36,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,太陽系デスコ,太陽系デスコ,ナユタン星人,ex,44,150,1077,-0.429,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ジャッジメントシンフォニックスピードコア,断罪のミメシス,KE!JU,light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ジャッジメントシンフォニックスピードコア,断罪のミメシス,KE!JU,normal,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ジャッジメントシンフォニックスピードコア,断罪のミメシス,KE!JU,hyper,43,250,1023,+0.369,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ジャッジメントシンフォニックスピードコア,断罪のミメシス,KE!JU,ex,49,250,1619,+0.213,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウチュウラブコメディ,地球防衛乙女パンナコッター,Vocal by はるの,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウチュウラブコメディ,地球防衛乙女パンナコッター,Vocal by はるの,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウチュウラブコメディ,地球防衛乙女パンナコッター,Vocal by はるの,hyper,38,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ウチュウラブコメディ,地球防衛乙女パンナコッター,Vocal by はるの,ex,44,156,1000,-0.243,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,light,16,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,normal,31,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,hyper,42,190,935,+0.022,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,デンパズルビート,ちくたく²ちく²ぱ,音戯探偵ひなビタ♫,ex,48,190,1493,+0.222,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,light,12,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,normal,31,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,hyper,40,138,925,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,演説２,告げてみことや かのもとに,あさき,ex,47,138,1341,+0.664,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,テトリス,テトリス,柊マグネタイト feat.重音テト,light,4,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,テトリス,テトリス,柊マグネタイト feat.重音テト,normal,12,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,テトリス,テトリス,柊マグネタイト feat.重音テト,hyper,34,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,テトリス,テトリス,柊マグネタイト feat.重音テト,ex,44,170,1262,-0.057,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,TGIFフィーバー,トーキョーサマーナイト（華金Remix）,あまみ×ひなみ,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,TGIFフィーバー,トーキョーサマーナイト（華金Remix）,あまみ×ひなみ,normal,26,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,TGIFフィーバー,トーキョーサマーナイト（華金Remix）,あまみ×ひなみ,hyper,39,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,TGIFフィーバー,トーキョーサマーナイト（華金Remix）,あまみ×ひなみ,ex,46,163,1180,-0.100,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,あさきのコラボロック(UPPER),透明はまだらに世界を告げて(UPPER),あさき×剣,light,11,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,あさきのコラボロック(UPPER),透明はまだらに世界を告げて(UPPER),あさき×剣,normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,あさきのコラボロック(UPPER),透明はまだらに世界を告げて(UPPER),あさき×剣,hyper,42,210,1011,+0.347,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,あさきのコラボロック(UPPER),透明はまだらに世界を告げて(UPPER),あさき×剣,ex,47,210,1356,+0.836,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,light,9,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,normal,24,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,hyper,34,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ニューギャルディスコ,謎解き☆クイーン！,音戯探偵ひなビタ♫,ex,43,128,1048,+0.379,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,オモイデチップチューン(UPPER),夏色のセーブデータ(UPPER),"BEMANI Sound Team ""KE!JU""",light,13,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,オモイデチップチューン(UPPER),夏色のセーブデータ(UPPER),"BEMANI Sound Team ""KE!JU""",normal,30,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,オモイデチップチューン(UPPER),夏色のセーブデータ(UPPER),"BEMANI Sound Team ""KE!JU""",hyper,40,145,948,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,オモイデチップチューン(UPPER),夏色のセーブデータ(UPPER),"BEMANI Sound Team ""KE!JU""",ex,46,145,1309,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,light,11,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,normal,24,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,hyper,37,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,スウィートリドルポップ,なんてシュペール,音戯探偵ひなビタ♫,ex,45,195,1155,+0.200,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,空想ファンタジーシリーズ,眠りの国のステラ,"BEMANI Sound Team ""DJ TOTTO""",light,14,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,空想ファンタジーシリーズ,眠りの国のステラ,"BEMANI Sound Team ""DJ TOTTO""",normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,空想ファンタジーシリーズ,眠りの国のステラ,"BEMANI Sound Team ""DJ TOTTO""",hyper,40,193,942,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,空想ファンタジーシリーズ,眠りの国のステラ,"BEMANI Sound Team ""DJ TOTTO""",ex,47,193,1383,-0.204,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,倍倍FIGHT!,倍倍FIGHT!,CANDY TUNE,light,8,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,倍倍FIGHT!,倍倍FIGHT!,CANDY TUNE,normal,17,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,倍倍FIGHT!,倍倍FIGHT!,CANDY TUNE,hyper,35,,,,2026-10-21T19:46:34+09:00
@@ -6604,6 +6989,10 @@
 29,pop'n music High☆Cheers!!,ハッピーラッキーチャッピー,ハッピーラッキーチャッピー,ano,normal,11,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ハッピーラッキーチャッピー,ハッピーラッキーチャッピー,ano,hyper,32,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ハッピーラッキーチャッピー,ハッピーラッキーチャッピー,ano,ex,39,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,解明ヒロイン(UPPER),ハニートリック！！(UPPER),sei☆shin feat.森本菜月,light,13,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,解明ヒロイン(UPPER),ハニートリック！！(UPPER),sei☆shin feat.森本菜月,normal,30,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,解明ヒロイン(UPPER),ハニートリック！！(UPPER),sei☆shin feat.森本菜月,hyper,43,160～190,967,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,解明ヒロイン(UPPER),ハニートリック！！(UPPER),sei☆shin feat.森本菜月,ex,47,160～190,1324,,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,パプリカ,パプリカ,♪♪♪♪♪,light,1,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,パプリカ,パプリカ,♪♪♪♪♪,normal,10,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,パプリカ,パプリカ,♪♪♪♪♪,hyper,27,,,,2026-10-21T19:46:34+09:00
@@ -6612,6 +7001,10 @@
 29,pop'n music High☆Cheers!!,ひとりごつ～バンドVer.～,ひとりごつ～バンドVer.～,ハチワレ（CV:田中誠人）,normal,10,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ひとりごつ～バンドVer.～,ひとりごつ～バンドVer.～,ハチワレ（CV:田中誠人）,hyper,25,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ひとりごつ～バンドVer.～,ひとりごつ～バンドVer.～,ハチワレ（CV:田中誠人）,ex,39,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ハピコア,ビビッド ☆+*。キラキライム,Machico,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハピコア,ビビッド ☆+*。キラキライム,Machico,normal,27,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハピコア,ビビッド ☆+*。キラキライム,Machico,hyper,40,191,938,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ハピコア,ビビッド ☆+*。キラキライム,Machico,ex,46,191,1464,+0.536,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ビビデバ,ビビデバ,星街すいせい,light,4,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ビビデバ,ビビデバ,星街すいせい,normal,16,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ビビデバ,ビビデバ,星街すいせい,hyper,32,,,,2026-10-21T19:46:34+09:00
@@ -6622,6 +7015,8 @@
 29,pop'n music High☆Cheers!!,フォニイ,フォニイ,mami,ex,43,170,1088,-0.042,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,light,7,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,normal,23,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,hyper,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,コモーション,フラフラ,indoor cats.,ex,42,160,955,+0.280,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,プリンとマフィンのポムポムビート☆,プリンとマフィンのポムポムビート☆,ポムポムプリン,light,6,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,プリンとマフィンのポムポムビート☆,プリンとマフィンのポムポムビート☆,ポムポムプリン,normal,14,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,プリンとマフィンのポムポムビート☆,プリンとマフィンのポムポムビート☆,ポムポムプリン,hyper,20,,,,2026-10-21T19:46:34+09:00
@@ -6632,6 +7027,8 @@
 29,pop'n music High☆Cheers!!,SNSミクスチャー,ブロックしよ♡,My Complex of Academy,ex,45,154,1070,-0.336,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,light,9,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,normal,25,,,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,hyper,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ニューミュージック,僕の飛行機,covered by 不知火フレア,ex,43,142,1076,+0.174,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,マツケンサンバII,マツケンサンバII,♪♪♪♪♪,light,3,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,マツケンサンバII,マツケンサンバII,♪♪♪♪♪,normal,16,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,マツケンサンバII,マツケンサンバII,♪♪♪♪♪,hyper,31,,,,2026-10-21T19:46:34+09:00
@@ -6644,6 +7041,10 @@
 29,pop'n music High☆Cheers!!,モニタリング,モニタリング,DECO*27,normal,21,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,モニタリング,モニタリング,DECO*27,hyper,35,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,モニタリング,モニタリング,DECO*27,ex,43,132,1122,+0.067,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ステッチ(UPPER),モヘア(UPPER),seiya-murai feat.藤野マナミ,light,10,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ステッチ(UPPER),モヘア(UPPER),seiya-murai feat.藤野マナミ,normal,25,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ステッチ(UPPER),モヘア(UPPER),seiya-murai feat.藤野マナミ,hyper,35,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ステッチ(UPPER),モヘア(UPPER),seiya-murai feat.藤野マナミ,ex,44,140,1093,-0.028,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ロシアンシンフォニー,雪のラヴニーナ,劇団レコード,light,10,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ロシアンシンフォニー,雪のラヴニーナ,劇団レコード,normal,27,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,ロシアンシンフォニー,雪のラヴニーナ,劇団レコード,hyper,39,,,,2026-10-21T19:46:34+09:00
@@ -6652,8 +7053,14 @@
 29,pop'n music High☆Cheers!!,夢色ワンダー,夢色ワンダー,hololive IDOL PROJECT,normal,24,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,夢色ワンダー,夢色ワンダー,hololive IDOL PROJECT,hyper,37,,,,2026-10-21T19:46:34+09:00
 29,pop'n music High☆Cheers!!,夢色ワンダー,夢色ワンダー,hololive IDOL PROJECT,ex,45,135～208,1381,,2026-10-21T19:46:34+09:00
+29,pop'n music High☆Cheers!!,ドラムンコアダスト2(UPPER),ラピストリアの約束(UPPER),positive MAD-crew,light,12,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドラムンコアダスト2(UPPER),ラピストリアの約束(UPPER),positive MAD-crew,normal,31,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドラムンコアダスト2(UPPER),ラピストリアの約束(UPPER),positive MAD-crew,hyper,42,186,1030,+0.253,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ドラムンコアダスト2(UPPER),ラピストリアの約束(UPPER),positive MAD-crew,ex,48,186,1459,+0.583,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,light,9,,,,2026-10-21T19:49:55+09:00
 29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,normal,25,,,,2026-10-21T19:49:55+09:00
+29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,hyper,36,,,,2026-10-23T09:11:06+09:00
+29,pop'n music High☆Cheers!!,ガールズティーパーティー,レシピのリドル,音戯探偵ひなビタ♫,ex,46,245,1276,-0.162,2026-10-23T09:11:06+09:00
 29,pop'n music High☆Cheers!!,わたしの一番かわいいところ,わたしの一番かわいいところ,FRUITS ZIPPER,light,4,,,,2026-10-21T19:49:55+09:00
 29,pop'n music High☆Cheers!!,わたしの一番かわいいところ,わたしの一番かわいいところ,FRUITS ZIPPER,normal,14,,,,2026-10-21T19:49:55+09:00
 29,pop'n music High☆Cheers!!,わたしの一番かわいいところ,わたしの一番かわいいところ,FRUITS ZIPPER,hyper,27,,,,2026-10-21T19:49:55+09:00
