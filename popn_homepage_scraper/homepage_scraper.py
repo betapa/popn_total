@@ -164,7 +164,7 @@ def wiki_genre_key(genre_diff_text):
 
 def fetch_wiki_data(session):
     """
-    popn.wiki 의 40~50레벨 표를 수집한다.
+    popn.wiki 의 29~50레벨 표를 수집한다.
     반환:
       wiki_data    : {(정규화 제목, 난이도): [entry, ...]}  (매칭용)
       wiki_entries : 수집한 모든 위키 행 (매칭 여부 확인 및 wiki.csv 출력용)
@@ -173,7 +173,7 @@ def fetch_wiki_data(session):
     wiki_data = {}
     wiki_entries = []
 
-    for lv in range(40, 51):
+    for lv in range(29, 51):
         target_path = quote('難易度表') + f"/lv{lv}"
         url = f"https://popn.wiki/{target_path}"
 
